@@ -46,28 +46,28 @@ export const DarbaGaitaView = ({ lang = "LV" }: { lang?: "LV" | "ENG" }) => {
     {
       num: "01",
       title: "Konsultācija un telpas dizaina koncepts",
-      desc: "Mūsu sadarbība vienmēr sākas ar niansētu sarunu. Sazinoties ar Jums, mēs rūpīgi izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam labāko koksnes un metāla materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra kāpņu šķautne vai mēbeles līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Mēs veicam sākotnējo objekta vizuālo izpēti un sagatavojam ieteikumus ergonomikai.",
+      desc: "Mūsu sadarbība vienmēr sākas ar niansētu sarunu. Sazinoties ar Jums, mēs rūpīgi izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam labāko koksnes un metāla materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra kāpņu šķautne vai mēbeles līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Mēs veicam sākotnējo objekta vizuālo izpēti un sagatavojam ieteikumus augstākai ergonomikai.",
       img: step1Img,
       badge: "Sākotnējā plānošana"
     },
     {
       num: "02",
       title: "3D modelēšana un tehnisks projekts",
-      desc: "Šajā posmā topošais mākslas darbs iegūst precizitāti un izteiksmi. Mūsu inženieri un dizaineri izstrādā detalizētus trīsdimensiju (3D) rasējumus, modeļus un veic nepieciešamos mezglu aprēķinus. Mēs piemeklējam tieši Jūsu projektam atbilstošās koksnes struktūras (ozols, josis, riekstkoks) un veicam apdares toņu paraugu saskaņošanu. Tikai tad, kad katrs stiprinājums un estētiskā līnija saņem Jūsu pilnīgu apstiprinājumu, projekts tiek nodots ražošanā.",
+      desc: "Šajā posmā tiek izstrādāts precīzs projekta tehniskais risinājums. Mūsu inženieri un dizaineri sagatavo detalizētus trīsdimensiju (3D) rasējumus, modeļus un veic nepieciešamos mezglu aprēķinus. Mēs piemeklējam projektam atbilstošas koksnes sugas (ozols, osis, riekstkoks) un saskaņojam apdares toņu paraugus. Tikai tad, kad katrs stiprinājums un konstrukcijas līnija saņem Jūsu apstiprinājumu, projekts tiek nodots ražošanā.",
       img: step2Img,
       badge: "Projekta inženierija"
     },
     {
       num: "03",
       title: "Ražošana AVANGART darbnīcā",
-      desc: "Īstā maģija un smalkais roku darbs norisinās mūsu specializētajā AVANGART galdniecības darbnīcā. Pieredzējuši meistari ar juveliera rūpību un sirds siltumu apstrādā katru koka šķiedru. Apvienojot itāļu un vācu augstākās tehnoloģijas iekārtas ar tradicionāliem galdniecības noslēpumiem, mēs panākam nevainojamus locījumus, izcilu gludumu un apbrīnojamu stiprību. Katra detaļa pirms nosūtīšanas tiek pakļauta dzelžainai kvalitātes kontrolei.",
+      desc: "Ražošanas process norisinās AVANGART galdniecības darbnīcā, kurā pieredzējuši meistari apstrādā katru detaļu. Izmantojot profesionālas iekārtas un tradicionālas galdniecības metodes, mēs nodrošinām izcilu apstrādes kvalitāti, virsmu gludumu un konstrukciju izturību. Katra detaļa pirms nosūtīšanas tiek rūpīgi pārbaudīta, lai garantētu tās atbilstību tehniskajām prasībām.",
       img: step3Img,
       badge: "Amatnieku darbs"
     },
     {
       num: "04",
       title: "Piegāde, uzstādīšana un garantija",
-      desc: "Jebkura izcila galdniecības darba vainagojums ir pareiza un droša montāža. Mūsu montāžas speciālisti veic ātru, tīru un akustiski izolētu konstrukciju uzstādīšanu Jūsu mājoklī. Mēs nodrošinām, ka pakāpieni nečīkst, stiprinājumi ir vizuāli neredzami un konstrukcijas izturība saglabājas gadu desmitiem. Pēc darbu pabeigšanas mēs sniedzam detalizētas rekomendācijas pareizai koka virsmu kopšanai un piešķiram ilgtermiņa garantiju.",
+      desc: "Svarīgs posms ir profesionāla un droša konstrukciju montāža. Mūsu speciālisti veic ātru un precīzu uzstādīšanu Jūsu mājoklī, nodrošinot mezglu stiprību, neredzamus stiprinājumus un ilgmūžību. Pēc darbu pabeigšanas mēs sniedzam rekomendācijas par tālāku koka izstrādājumu kopšanu un noformējam garantiju.",
       img: step4Img,
       badge: "Montāža un garantija"
     }
@@ -118,10 +118,10 @@ export const DarbaGaitaView = ({ lang = "LV" }: { lang?: "LV" | "ENG" }) => {
         {/* Header */}
         <div className="max-w-3xl mb-16 md:mb-24">
           <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-            {lang === "ENG" ? "Our Standards & Approach" : "Mūsu darba standarti"}
+            {lang === "ENG" ? "Work Process" : "Darba gaita"}
           </span>
-          <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark mb-4 leading-tight">
-            {lang === "ENG" ? "Our work process from first vision to result" : "Mūsu darba process no pirmās vīzijas līdz rezultātam"}
+          <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark mb-4 leading-tight">
+            {lang === "ENG" ? "Work process from vision to result" : "Darba process no vīzijas līdz rezultātam"}
           </h1>
           <p className="text-zinc-500 font-light text-xs md:text-sm leading-relaxed">
             {lang === "ENG" 
@@ -187,8 +187,8 @@ export const DarbaGaitaView = ({ lang = "LV" }: { lang?: "LV" | "ENG" }) => {
           </h3>
           <p className="text-zinc-400 font-light text-xs md:text-sm max-w-xl mx-auto leading-relaxed">
             {lang === "ENG"
-              ? "Our team is capable of realizing your boldest dreams and material combinations with the highest execution and installation quality in Latvia."
-              : "Mūsu komanda spēj realizēt Jūsu drosmīgākās idejas un materiālu salikumus ar augstāko izpildījuma un montāžas kvalitāti Latvijā."}
+              ? "Our team is capable of realizing your boldest dreams and material combinations with the highest execution and installation quality."
+              : "Mūsu komanda spēj realizēt Jūsu drosmīgākās idejas un materiālu salikumus ar augstāko izpildījuma un montāžas kvalitāti."}
           </p>
           <div className="pt-2">
             <a 

@@ -45,7 +45,7 @@ import catStairsImg from './assets/images/bespoke_staircase_1779372610768.png';
 import catFurnitureImg from './assets/images/bespoke_furniture_1779372630283.png';
 import catInteriorImg from './assets/images/bespoke_interior_1779372652331.png';
 import designerCollabImg from './assets/images/designer_collaboration_1779377018842.png';
-import logoCleanImg from './assets/images/Logo_new.png';
+import logoCleanImg from './assets/images/Avangart_new.png';
 
 // --- Types ---
 interface PortfolioItem {
@@ -69,10 +69,10 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     titleEN: "Bespoke solid oak stairs in a private home",
     category: "Kāpnes",
     images: [catStairsImg, staircaseHeroImg, step2Img, step4Img, catFurnitureImg, step3Img, catInteriorImg],
-    description: "Projektētas un uzstādītas modernas konsolkāpnes privātmājā Mārupē. Izstrādātas no atlasīta, augstākās kvalitātes 40mm masīvā ozolkoka, kas apstrādāts ar nodilumizturīgu Rubio Monocoat dabīgo eļļas vasku zīdainam spīdumam. Konstrukciju atbalsta sienā paslēpts tērauda karkass un elegantas, roku darba melni pulverkrāsotas metāla margas ar koka roku balstiem.",
-    descriptionEN: "Designed and installed modern cantilevered stairs in a private residence in Mārupe. Crafted from select premium 40mm solid oak wood treated with durable Rubio Monocoat natural oil wax. Supported by a concealed structural steel frame and handmade black powder-coated metal railings with wood handrails.",
-    materials: "Masīvs ozols, tērauds",
-    materialsEN: "Solid oak, steel",
+    description: "Projektētas un uzstādītas modernas masīvkoka kāpnes privātmājā Mārupē. Tās ir izgatavotas no atlasīta, augstas kvalitātes ozola, kas apstrādāts ar nodilumizturīgu dabīgo aizsargeļļu. Konstrukcija ir rūpīgi izstrādāta, lai nodrošinātu maksimālu izturību un drošību, lieliski iekļaujoties mājas koptēlā.",
+    descriptionEN: "Designed and installed modern solid wood stairs in a private home in Mārupe. Crafted from select, high-quality oak treated with a durable protective natural oil. The structure is carefully designed to ensure maximum durability and safety, fitting perfectly into the overall home design.",
+    materials: "Masīvs ozols",
+    materialsEN: "Solid oak",
     year: "2024"
   },
   {
@@ -81,34 +81,34 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     titleEN: "Custom premium oak fitted kitchen",
     category: "Virtuve",
     images: [catFurnitureImg, step3Img, staircaseHeroImg, step1Img, step2Img, step4Img, designerCollabImg],
-    description: "Iebūvētā virtuves iekārta izstrādāta divstāvu privātmājā Babītē. Izmantotas dabīgā ozola fasādes ar vertikālo tekstūras saskaņošanu un akmens virsmas apdarē. Koka detaļas ir tonētas siltā smilšu tonī un lakotas ar ekoloģisku, ūdens bāzes matēto laku. Aprīkota ar pilnībā integrētu Blum klusās aizvēršanas furnitūru un slēpto LED apgaismojumu darba virsmām.",
-    descriptionEN: "A built-in kitchen set designed for a two-story private home in Babīte. Features natural oak facades with vertical grain matching and stone worktop finishes. Wooden details are tinted in a warm sand tone and varnished with an eco-friendly water-based matte lacquer. Equipped with integrated Blum soft-close hardware.",
+    description: "Iebūvētā virtuves iekārta izstrādāta divstāvu privātmājā Babītē. Tajā izmantotas dabīgā ozola fasādes ar saskaņotu koksnes tekstūru un eleganta akmens darba virsma. Koka detaļas ir tonētas siltā smilšu tonī un lakotas ar ekoloģisku, ūdens bāzes matēto laku. Aprīkota ar pilnībā integrētu Blum klusās aizvēršanas furnitūru un slēpto LED apgaismojumu darba virsmām.",
+    descriptionEN: "A built-in kitchen set designed for a two-story private home in Babīte. It features natural oak facades with matched wood grain and an elegant stone worktop. Wooden details are tinted in a warm sand tone and varnished with an eco-friendly water-based matte lacquer. Equipped with integrated Blum soft-close hardware and hidden countertop LED lighting.",
     materials: "Ozols, akmens virsma",
     materialsEN: "Oak, stone surface",
     year: "2024"
   },
   {
     id: 3,
-    title: "Rievota ozola mediju siena viesistabā",
-    titleEN: "Ribbed oak living room media wall",
+    title: "TV apdare un mediju siena viesistabā",
+    titleEN: "TV wall wood cladding and media unit in living room",
     category: "Viesistaba",
     images: [step2Img, catFurnitureImg, designerCollabImg, step3Img, staircaseHeroImg, step1Img, catInteriorImg],
-    description: "Mūsdienīga TV mēbeļu sistemā, kas izgatavota dzīvoklim Rīgas centrā. Korpuss izstrādāts no premium ozola finierējuma, bet fasādes veidotas no smalki rievota masīvkoka profilējuma, kas tonēts ar pelēko eļļas vasku. Mēbelē iestrādāti slēptie kabeļu kanāli un integrēta silta, dimmējama LED fona gaisma izsmalcinātam un mājīgam interjera akcentam.",
-    descriptionEN: "A modern TV media wall system crafted for an apartment in the center of Rīga. The body is built with premium oak veneer, while the facades feature finely ribbed solid wood profiles treated with grey oil wax. Features integrated cable routing channels and warm, dimmable LED backlight accents.",
+    description: "Mūsdienīga TV apdare, kas izgatavota dzīvoklim Rīgas centrā. Korpuss izstrādāts no premium ozola finierējuma, bet fasādes veidotas no smalki rievota masīvkoka profilējuma, kas tonēts ar pelēko eļļas vasku. Mēbelē iestrādāti slēptie kabeļu kanāli un integrēta silta, dimmējama LED fona gaisma izsmalcinātam un mājīgam interjera akcentam.",
+    descriptionEN: "A modern TV wall wood cladding and media unit crafted for an apartment in the center of Rīga. The body is built with premium oak veneer, while the facades feature finely ribbed solid wood profiles treated with grey oil wax. Features integrated cable routing channels and warm, dimmable LED backlight accents.",
     materials: "Masīvs ozols, LED",
     materialsEN: "Solid oak, LED",
     year: "2025"
   },
   {
     id: 4,
-    title: "Dūmots ozolkoka guļamistabas mēbeļu komplekts",
-    titleEN: "Smoked oak bedroom furniture set",
+    title: "Ozolkoka guļamistabas mēbeļu komplekts",
+    titleEN: "Oak bedroom furniture set",
     category: "Guļamistaba",
     images: [step1Img, step3Img, catInteriorImg, step4Img, catStairsImg, step2Img, designerCollabImg],
-    description: "Guļamistabas mēbeļu komplekts privātmājai Ādažos. Gultas rāmis un pakarināmie naktsskapīši izgatavoti no īpaši atlasīta, dūmota un vecināta ozolkoka dēļiem, kas pulēti ar dabīgo vasku. Galvgalis apvilkts ar nodilumizturīgu dabisko lina maisauduma tekstilu. Visas mēbeles montētas pie sienas, radot gaisīgu 'peldošo' efektu telpā.",
-    descriptionEN: "A bedroom furniture collection for a private house in Ādaži. The bed frame and wall-mounted bedside tables are made of specially selected, smoked and aged oak planks polished with natural wax. The headboard is upholstered in highly durable natural linen textile, creating a floating effect.",
-    materials: "Dūmots ozols, tekstils",
-    materialsEN: "Smoked oak, textile",
+    description: "Guļamistabas mēbeļu komplekts privātmājai Ādažos. Gultas rāmis un pie sienas montētie naktsskapīši izgatavoti no īpaši atlasītiem ozolkoka dēļiem, kas pulēti ar dabīgo vasku. Galvgalis apvilkts ar nodilumizturīgu dabisko lina maisauduma tekstilu. Pie sienas montētie naktsskapīši rada gaisīgu un modernu efektu telpā.",
+    descriptionEN: "A bedroom furniture collection for a private house in Ādaži. The bed frame and wall-mounted bedside tables are made of specially selected oak planks polished with natural wax. The headboard is upholstered in highly durable natural linen textile. The wall-mounted bedside tables create a light and modern feel in the space.",
+    materials: "Ozols, tekstils",
+    materialsEN: "Oak, textile",
     year: "2025"
   },
   {
@@ -117,14 +117,14 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     titleEN: "Premium humidity-resistant solid oak bathroom vanity system",
     category: "Vannas istaba",
     images: [
-      "https://images.unsplash.com/photo-1620626011160-9928f1b95b59?auto=format&fit=crop&w=800&q=75",
-      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=75",
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=75",
+      "https://images.unsplash.com/photo-1620626011160-9928f1b95b59?auto=format&fit=crop&w=600&q=50&fm=webp",
+      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=50&fm=webp",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=50&fm=webp",
       step3Img,
       catInteriorImg
     ],
-    description: "Izsmalcināts vannas istabas mēbeļu komplekts, kas izgatavots no speciāli apstrādāta mitrumizturīga masīvā ozolkoka, kas aizsargāts ar speciālu eļļas vasku. Komplektā ietilpst peldoša dizaina izlietnes skapītis ar integrētām Hettich atvilktņu sistēmām un saskaņots spoguļa rāmis ar slēptu dimmējamu LED aizmugures apgaismojumu.",
-    descriptionEN: "A sophisticated master bathroom furniture set crafted from custom marine-treated humidity-resistant solid oak, sealed with premium protective oil wax. The set features a floating double-sink vanity with integrated Hettich whisper-close drawer systems, and a matching full-grain vanity mirror frame with hidden dual-zone dimmable LEDs.",
+    description: "Izsmalcināts vannas istabas mēbeļu komplekts, kas izgatavots no speciāli apstrādāta mitrumizturīga masīvā ozolkoka, kas aizsargāts ar speciālu eļļu. Komplektā ietilpst atvilktņu un durvju konsoles komplekts ar izlietni un spoguli, kurā iestrādāts slēpts LED aizmugures apgaismojums.",
+    descriptionEN: "A sophisticated master bathroom furniture set crafted from custom-treated humidity-resistant solid oak, sealed with premium protective oil. The set features a drawer and door vanity console with a sink and a matching mirror with integrated hidden LED backlighting.",
     materials: "Mitrumizturīgs ozols, LED",
     materialsEN: "Moisture-resistant oak, LED",
     year: "2024"
@@ -392,6 +392,27 @@ const FAQ_ITEMS: FAQItem[] = [
       "and guidelines on natural wood care and maintenance."
     ],
     outroEN: "This keeps responsibility in our hands and lets you enjoy a clean, finished, ready-to-live product."
+  },
+  {
+    id: 11,
+    question: "Vai tiek dota garantija izgatavotajām kāpnēm un mēbelēm?",
+    intro: "Jā, visām mūsu izgatavotajām mēbelēm un kāpēm nodrošinām 2 gadu garantiju. Tā kā mēs izmantojam tikai augstākās kvalitātes kokmateriālus, profesionālu furnitūru un montāžas tehnoloģijas, mūsu kāpnes un mēbeles kalpos desmitgadēm ilgi.",
+    bullets: [
+      "2 gadu ražotāja garantija visām konstrukcijām;",
+      "Garantijas apkalpošana un radušos jautājumu risināšana;",
+      "Pēc-garantijas tehniskais atbalsts un apkopes konsultācijas;",
+      "Premium furnitūras ražotāja nodrošinātā mūža funkcionālā garantija."
+    ],
+    outro: "Mums ir svarīgi, lai katrs radītais elements sniegtu Jums drošību un pārliecību par ilgmūžīgu kvalitāti.",
+    questionEN: "Is there a warranty provided for your manufactured staircases and furniture?",
+    introEN: "Yes, we provide an official 2-year warranty for all our manufactured woodwork and installation services. Since we only use top-grade timber, professional-grade hardware, and field-tested installation techniques, our stairs and furniture are built to last for decades.",
+    bulletsEN: [
+      "2-year manufacturer's structural and material warranty;",
+      "Full warranty service and prompt resolution of any issues that might arise;",
+      "Post-warranty maintenance advice, support, and technical services;",
+      "Manufacturer-backed lifetime structural warranty on premium hardware (e.g., Blum)."
+    ],
+    outroEN: "It is crucial for us that every bespoke piece we deliver provides you with complete security and peace of mind regarding long-term quality."
   }
 ];
 
@@ -560,10 +581,10 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
     <nav className={cn(
       "fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6",
       isScrolled 
-        ? "bg-white/95 backdrop-blur-md shadow-md border-b border-zinc-200/50 py-1.5 md:py-2.5" 
+        ? "bg-white/95 backdrop-blur-md shadow-md border-b border-zinc-200/50 py-3 md:py-4" 
         : (isHomeActive
-            ? "bg-transparent py-1.5 md:py-2.5"
-            : "bg-white/95 backdrop-blur-md shadow-sm border-b border-zinc-200/50 py-1.5 md:py-2.5"
+            ? "bg-transparent py-3 md:py-4"
+            : "bg-white/95 backdrop-blur-md shadow-sm border-b border-zinc-200/50 py-3 md:py-4"
           ),
       "[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]"
     )}>
@@ -585,8 +606,8 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
           <LogoImage 
             isDarkBackground={!(isScrolled || !isHomeActive)} 
             className={cn(
-              "w-auto transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]",
-              "h-[36px] sm:h-[46px] md:h-[50px]"
+               "w-auto transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]",
+               "h-[55px] sm:h-[65px] md:h-[72px]"
             )}
           />
         </a>
@@ -741,13 +762,13 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
             <h1 className="text-xl sm:text-3xl md:text-[36px] lg:text-[40px] font-serif leading-tight mb-6 tracking-tight">
               {lang === "ENG" ? (
                 <>
-                  Design and modern technologies <br className="hidden md:inline" />
-                  combined with master craftsmanship
+                  Modern design and modern technologies combined <br className="hidden md:inline" />
+                  with master craftsmanship
                 </>
               ) : (
                 <>
-                  Dizains un mūsdienu tehnoloģijas <br className="hidden md:inline" />
-                  apvienojumā ar meistara darbu
+                  Moderns dizains un mūsdienu tehnoloģijas apvienojumā <br className="hidden md:inline" />
+                  ar meistara darbu
                 </>
               )}
             </h1>
@@ -764,10 +785,10 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
                   window.location.hash = lang === 'ENG' ? '#portfolio-stairs' : '#portfolio-kapnes';
                   window.scrollTo({ top: 0, behavior: 'instant' });
                 }}
-                className="inline-flex items-center justify-center space-x-4 bg-brand-brown text-white px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:bg-brand-orange hover:scale-[1.02] active:scale-95 transition-all duration-300 group cursor-pointer"
+                className="inline-flex items-center justify-center space-x-4 bg-zinc-100 hover:bg-zinc-200 text-brand-brown border border-zinc-300 hover:border-zinc-400 px-8 py-4 uppercase text-xs tracking-[0.2em] font-extrabold hover:scale-[1.02] active:scale-95 transition-all duration-300 group cursor-pointer shadow-sm"
               >
-                <span>{lang === "ENG" ? "Our work" : "Mūsu darbi"}</span>
-                <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
+                <span>{lang === "ENG" ? "Completed projects" : "Īstenotie projekti"}</span>
+                <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform text-brand-brown" />
               </button>
               <button 
                 onClick={onNavigateToContact}
@@ -801,12 +822,12 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               className="lg:col-span-6 space-y-6 text-left"
             >
               <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold block">
-                {lang === "ENG" ? "Uncompromising craftsmanship" : "Meistarība bez kompromisiem"}
+                {lang === "ENG" ? "Quality without compromise" : "Kvalitāte bez kompromisiem"}
               </span>
-              <h2 className="text-3xl md:text-5xl font-serif leading-tight text-brand-brown-dark">
+              <h2 className="text-2xl md:text-3xl font-serif leading-tight text-brand-brown-dark">
                 {lang === "ENG" ? "Precision in every detail" : "Precizitāte katrā detaļā"}
               </h2>
-              <div className="space-y-6 text-brand-grey font-light text-sm md:text-base leading-relaxed">
+              <div className="space-y-6 text-brand-grey font-light text-xs md:text-sm leading-relaxed">
                 <p>
                   {lang === "ENG" ? (
                     <>
@@ -822,7 +843,7 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
                   {lang === "ENG" ? (
                     "Every detail we create is carefully thought out, using only the highest quality materials — from solid oak to innovative composite materials. Our goal is to create an environment that inspires and will serve for generations."
                   ) : (
-                    "Katra mūsu radītā detaļa ir rūpīgi pārdomāta, izmantojot tikai augstvērtīgākos materiālus — sākot no masīva ozolkoka līdz inovatīviem kompozītmateriāliem. Mūsu mērķis ir radīt vidi, kas iedvesmo un kalpos paaudzēm ilgi."
+                    "Katra mūsu radītā detaļa ir rūpīgi pārdomāta, izmantojot tikai augstvērtīgākos materiālus — sākot no masīva ozolkoka līdz inovatīviem kompozītmateriāliem. Mūsu mērķis ir radīt vidi, kas iedvesmo un kalpos daudzus gadus."
                   )}
                 </p>
               </div>
@@ -840,7 +861,7 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               className="lg:col-span-6 relative aspect-[4/3] overflow-hidden shadow-2xl border border-zinc-200 bg-zinc-50"
             >
               <img 
-                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=85" 
+                src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=50&fm=webp" 
                 alt="Smalkas mēbeļu detaļas un telpas raksturs" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 referrerPolicy="no-referrer"
@@ -863,12 +884,12 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               transition={{ duration: 0.45 }}
             >
               <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-                {lang === "ENG" ? "Exquisite joinery craftsmanship" : "Izcila galdniecības māksla"}
+                {lang === "ENG" ? "Exquisite artisanal craftsmanship" : "Izcila amatniecības māksla"}
               </span>
-              <h2 className="text-3xl md:text-5xl font-serif leading-tight text-brand-brown-dark mb-6">
+              <h2 className="text-2xl md:text-3xl font-serif leading-tight text-brand-brown-dark mb-6">
                 {lang === "ENG" ? "Staircases and furniture with lasting value" : "Kāpnes un mēbeles ar paliekošu vērtību"}
               </h2>
-              <div className="space-y-5 text-brand-grey leading-relaxed text-sm md:text-base font-light">
+              <div className="space-y-5 text-brand-grey leading-relaxed text-xs md:text-sm font-light">
                 {lang === "ENG" ? (
                   <>
                     <p>
@@ -884,10 +905,10 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
                 ) : (
                   <>
                     <p>
-                      Mēs uzskatām, ka mājoklis ir personības spogulis, kura galvenā struktūra sastāv no pamatīgiem un mīlestībā radītiem elementiem. Kopš pirmās dienas AVANGART rada risinājumus, kuri kalpo gan kā funkcionāls rīks, gan kā unikāla dizaina skulptūra.
+                      Mēs uzskatām, ka mājoklis ir personības spogulis, kura galvenā struktūra sastāv no pamatīgiem un mīlestībā radītiem elementiem. Kopš pirmās dienas AVANGART rada risinājumus, kuri kalpo gan kā funkcionāls rīks, gan kā unikāls dizaina elements.
                     </p>
                     <p>
-                      Precīza koka apstrāde pārdomātajā AVANGART darbnīcā ļauj mums realizēt vissarežģītāko – no gaisīgām un modernām koka un dzelzs konstrukcijām līdz masīvām, lakoniskām virtuves un viesistabas mēbelēm, kas papildinātas ar inovatīvām tehnoloģijām un gaumīgu LED apgaismojumu.
+                      Kvalitatīva un precīza koka apstrāde ļauj realizēt tehniski sarežģītus risinājumus – no gaisīgām un modernām koka un metāla konstrukcijām līdz funkcionālām virtuves un viesistabas mēbelēm, kas aprīkotas ar mūsdienīgām tehnoloģijām un gaumīgu LED apgaismojumu.
                     </p>
                     <p className="font-semibold text-brand-brown text-sm">
                       Mēs projektējam, ražojam un uzstādām risinājumus no idejas skices līdz pat pēdējai skrūvītei.
@@ -902,12 +923,12 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.45 }}
-              className="relative aspect-[16/11] lg:aspect-[4/3] overflow-hidden shadow-xl border border-zinc-200 bg-zinc-300"
+              className="relative aspect-[16/11] lg:aspect-[4/3] overflow-hidden shadow-xl border border-zinc-200 bg-zinc-350"
             >
               <img 
-                src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=60" 
+                src={catStairsImg} 
                 alt="Avangart meistarības piemērs" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 referrerPolicy="no-referrer"
                 loading="lazy"
               />
@@ -928,67 +949,77 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
       <section className="pt-14 pb-8 md:pt-20 md:pb-10 bg-zinc-50 border-t border-b border-zinc-200/60">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
           <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-            {lang === "ENG" ? "Our Portfolio" : "Mūsu Portfolio"}
+            {lang === "ENG" ? "Portfolio" : "Portfolio"}
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-brand-brown-dark mb-4 max-w-xl mx-auto leading-tight">
+          <h2 className="text-2xl md:text-3xl font-serif text-brand-brown-dark mb-4 max-w-xl mx-auto leading-tight">
             {lang === "ENG" ? "Our completed projects" : "Mūsu īstenotie projekti"}
           </h2>
-          <p className="text-zinc-500 font-light text-sm max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-zinc-500 font-light text-xs md:text-sm max-w-2xl mx-auto leading-relaxed mb-8">
             {lang === "ENG"
-              ? "We design and build exclusive stairs, shelving, kitchens, as well as signature design details that perfectly fit the overall mood of the home. Each work has its own story and prominent texture."
-              : "Dizainējam un būvējam ekskluzīvas kāpnes, plauktus, virtuves, kā arī autora dizaina detaļas, kas lieliski iekļaujas mājokļa kopējā noskaņā. Katram darbam ir savs stāsts un izteiksmīga tekstūra."}
+              ? "We design and build exclusive stairs, built-in furniture and kitchen equipment, shelving, as well as design elements that will perfectly fit into the overall mood of your home."
+              : "Dizainējam un būvējam ekskluzīvas kāpnes, iebūvētās mēbeles un virtuves iekārtas, plauktus, kā arī dizaina elementus, kas lieliski iekļausies Jūsu mājokļa kopējā noskaņā."}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-6xl mx-auto mb-12 text-left">
-            <div className="bg-white p-5 shadow-sm border border-zinc-200/70 hover:border-brand-orange/45 transition-colors duration-300">
-              <h4 className="font-serif font-bold text-sm text-brand-brown mb-2">
-                {lang === "ENG" ? "1. Wooden Stairs" : "1. Koka kāpnes"}
-              </h4>
-              <p className="text-zinc-500 text-[11px] font-light leading-relaxed">
-                {lang === "ENG" 
-                  ? "Exclusive cantilever stairs and solid oak steps with concealed steel mountings."
-                  : "Ekskluzīvas konsolkāpnes un masīva ozola pakāpieni ar paslēptiem tērauda stiprinājumiem."}
-              </p>
-            </div>
-            <div className="bg-white p-5 shadow-sm border border-zinc-200/70 hover:border-brand-orange/45 transition-colors duration-300">
-              <h4 className="font-serif font-bold text-sm text-brand-brown mb-2">
-                {lang === "ENG" ? "2. Kitchen Systems" : "2. Virtuves Iekārtas"}
-              </h4>
-              <p className="text-zinc-500 text-[11px] font-light leading-relaxed">
-                {lang === "ENG"
-                  ? "Custom built-in kitchens with natural oak facades, stone surfaces, and Blum hardware."
-                  : "Pēc mēra iebūvētas virtuves ar dabīga ozola fasādēm, akmeni un Blum furnitūru."}
-              </p>
-            </div>
-            <div className="bg-white p-5 shadow-sm border border-zinc-200/70 hover:border-brand-orange/45 transition-colors duration-300">
-              <h4 className="font-serif font-bold text-sm text-brand-brown mb-2">
-                {lang === "ENG" ? "3. Living Room" : "3. Viesistabas Mēbeles"}
-              </h4>
-              <p className="text-zinc-500 text-[11px] font-light leading-relaxed">
-                {lang === "ENG"
-                  ? "Elegant TV media wall systems with finely reeded facades and warm LED lighting styles."
-                  : "Elegantas TV mediju sienu sistēmas ar smalki rievotām fasādēm un siltiem LED apgaismojumiem."}
-              </p>
-            </div>
-            <div className="bg-white p-5 shadow-sm border border-zinc-200/70 hover:border-brand-orange/45 transition-colors duration-300">
-              <h4 className="font-serif font-bold text-sm text-brand-brown mb-2">
-                {lang === "ENG" ? "4. Bedroom Suite" : "4. Guļamistaba"}
-              </h4>
-              <p className="text-zinc-500 text-[11px] font-light leading-relaxed">
-                {lang === "ENG"
-                  ? "Handcrafted smoked oak beds and nightstands for a harmonious and natural atmosphere."
-                  : "Roku darba gultas un naktsskapīši no dūmota ozola harmoniskam un dabiskam mieram mājoklī."}
-              </p>
-            </div>
-            <div className="bg-white p-5 shadow-sm border border-zinc-200/70 hover:border-brand-orange/45 transition-colors duration-300">
-              <h4 className="font-serif font-bold text-sm text-brand-brown mb-2">
-                {lang === "ENG" ? "5. Bathroom" : "5. Vannas istaba"}
-              </h4>
-              <p className="text-zinc-500 text-[11px] font-light leading-relaxed">
-                {lang === "ENG"
-                  ? "Humidity-resistant solid oak bathroom vanity systems with hidden LED backlight features."
-                  : "Mitrumizturīgas ozolkoka vannas istabas mēbeļu sistēmas ar slēptiem LED apgaismojumiem."}
-              </p>
-            </div>
+            {[
+              {
+                titleLV: "Koka kāpnes",
+                titleEN: "Wooden stairs",
+                hashLV: "#portfolio-kapnes",
+                hashEN: "#portfolio-stairs",
+                img: catStairsImg
+              },
+              {
+                titleLV: "Virtuves iekārtas",
+                titleEN: "Kitchen units",
+                hashLV: "#portfolio-virtuve",
+                hashEN: "#portfolio-kitchen",
+                img: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=40&fm=webp"
+              },
+              {
+                titleLV: "Viesistabas mēbeles",
+                titleEN: "Living room furniture",
+                hashLV: "#portfolio-viesistaba",
+                hashEN: "#portfolio-livingroom",
+                img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=40&fm=webp"
+              },
+              {
+                titleLV: "Guļamistabas mēbeles",
+                titleEN: "Bedroom furniture",
+                hashLV: "#portfolio-gulamistaba",
+                hashEN: "#portfolio-bedroom",
+                img: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=400&q=40&fm=webp"
+              },
+              {
+                titleLV: "Vannas istabas mēbeles",
+                titleEN: "Bathroom furniture",
+                hashLV: "#portfolio-vannas-istaba",
+                hashEN: "#portfolio-bathroom",
+                img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=40&fm=webp"
+              }
+            ].map((item, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  window.location.hash = lang === "ENG" ? item.hashEN : item.hashLV;
+                  window.scrollTo({ top: 0, behavior: "instant" });
+                }}
+                className="group bg-white p-4 shadow-sm border border-zinc-200/70 hover:border-brand-orange/60 hover:shadow-md transition-all duration-300 text-center flex flex-col justify-between cursor-pointer w-full focus:outline-none"
+              >
+                <div className="w-full aspect-[4/3] overflow-hidden mb-4 border border-zinc-100 bg-zinc-50 relative">
+                  <img
+                    src={item.img}
+                    alt={lang === "ENG" ? item.titleEN : item.titleLV}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-brand-brown-dark/5 pointer-events-none" />
+                </div>
+                <h4 className="font-serif font-bold text-sm text-brand-brown group-hover:text-brand-orange transition-colors duration-300 leading-tight w-full text-center">
+                  {lang === "ENG" ? item.titleEN : item.titleLV}
+                </h4>
+              </button>
+            ))}
           </div>
           <button 
             onClick={() => { window.location.hash = lang === "ENG" ? "#portfolio-stairs" : "#portfolio-kapnes"; }}
@@ -1059,10 +1090,10 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
       {/* Banner instead of the contact form */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-brand-grey-light to-zinc-100 flex items-center justify-center border-t border-zinc-200">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
-          <h2 className="text-3xl md:text-5xl font-serif text-brand-brown-dark tracking-tight leading-tight">
+          <h2 className="text-2xl md:text-3xl font-serif text-brand-brown-dark tracking-tight leading-tight">
             {lang === "ENG" ? "Ready for a fresh transformation in your home?" : "Vai esat gatavs jaunām pārmaiņām savā mājoklī?"}
           </h2>
-          <p className="text-zinc-500 font-light text-sm max-w-xl mx-auto">
+          <p className="text-zinc-500 font-light text-xs md:text-sm max-w-xl mx-auto">
             {lang === "ENG"
               ? "AVANGART master craftsmen and designers are ready to turn your concept into a superb masterpiece."
               : "AVANGART amata meistari un dizaineri ir gatavi pārvērst Jūsu ideju izcilā meistardarbā."}
@@ -1132,28 +1163,28 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
     {
       num: "01",
       title: "Konsultācija un telpas dizaina koncepts",
-      desc: "Mūsu sadarbība vienmēr sākas ar niansētu sarunu. Sazinoties ar Jums, mēs rūpīgi izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam labāko koksnes un metāla materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra kāpņu šķautne vai mēbeles līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Mēs veicam sākotnējo objekta vizuālo izpēti un sagatavojam ieteikumus ergonomikai.",
+      desc: "Mūsu sadarbība vienmēr sākas ar niansētu sarunu. Sazinoties ar Jums, mēs rūpīgi izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam labāko koksnes un metāla materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra kāpņu šķautne vai mēbeles līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Mēs veicam sākotnējo objekta vizuālo izpēti un sagatavojam ieteikumus augstākai ergonomikai.",
       img: step1Img,
       badge: "Sākotnējā plānošana"
     },
     {
       num: "02",
       title: "3D modelēšana un tehnisks projekts",
-      desc: "Dizainam un inženierijai tālāk seko šis posms, kur topošais mākslas darbs iegūst precizitāti un izteiksmi. Mūsu inženieri un dizaineri izstrādā detalizētus trīsdimensiju (3D) rasējumus, modeļus un veic nepieciešamos mezglu aprēķinus. Mēs piemeklējam tieši Jūsu projektam atbilstošās koksnes struktūras (ozols, josis, riekstkoks) un veicam apdares toņu paraugu saskaņošanu. Tikai tad, kad katrs stiprinājums un estētiskā līnija saņem Jūsu pilnīgu apstiprinājumu, projekts tiek nodots ražošanā.",
+      desc: "Šajā posmā tiek izstrādāts precīzs projekta tehniskais risinājums. Mūsu inženieri un dizaineri sagatavo detalizētus trīsdimensiju (3D) rasējumus, modeļus un veic nepieciešamos mezglu aprēķinus. Mēs piemeklējam projektam atbilstošas koksnes sugas (ozols, osis, riekstkoks) un saskaņojam apdares toņu paraugus. Tikai tad, kad katrs stiprinājums un konstrukcijas līnija saņem Jūsu apstiprinājumu, projekts tiek nodots ražošanā.",
       img: step2Img,
       badge: "Projekta inženierija"
     },
     {
       num: "03",
       title: "Ražošana AVANGART darbnīcā",
-      desc: "Īstā maģija un smalkais roku darbs norisinās mūsu specializētajā AVANGART galdniecības darbnīcā. Pieredzējuši meistari ar juveliera rūpību un sirds siltumu apstrādā katru koka šķiedru. Apvienojot itāļu un vācu augstākās tehnoloģijas iekārtas ar tradicionāliem galdniecības noslēpumiem, mēs panākam nevainojamus locījumus, izcilu gludumu un apbrīnojamu stiprību. Katra detaļa pirms nosūtīšanas tiek pakļauta dzelžainai kvalitātes kontrolei.",
+      desc: "Ražošanas process norisinās AVANGART galdniecības darbnīcā, kurā pieredzējuši meistari apstrādā katru detaļu. Izmantojot profesionālas iekārtas un tradicionālas galdniecības metodes, mēs nodrošinām izcilu apstrādes kvalitāti, virsmu gludumu un konstrukciju izturību. Katra detaļa pirms nosūtīšanas tiek rūpīgi pārbaudīta, lai garantētu tās atbilstību tehniskajām prasībām.",
       img: step3Img,
       badge: "Amatnieku darbs"
     },
     {
       num: "04",
       title: "Piegāde, uzstādīšana un garantija",
-      desc: "Jebkura izcila galdniecības darba vainagojums ir pareiza un droša montāža. Mūsu montāžas speciālisti veic ātru, tīru un akustiski izolētu konstrukciju uzstādīšanu Jūsu mājoklī. Mēs nodrošinām, ka pakāpieni nečīkst, stiprinājumi ir vizuāli neredzami un konstrukcijas izturība saglabājas gadu desmitiem. Pēc darbu pabeigšanas mēs sniedzam detalizētas rekomendācijas pareizai koka virsmu kopšanai un piešķiram ilgtermņa garantiju.",
+      desc: "Svarīgs posms ir profesionāla un droša konstrukciju montāža. Mūsu speciālisti veic ātru un precīzu uzstādīšanu Jūsu mājoklī, nodrošinot mezglu stiprību, neredzamus stiprinājumus un ilgmūžību. Pēc darbu pabeigšanas mēs sniedzam rekomendācijas par tālāku koka izstrādājumu kopšanu un noformējam garantiju.",
       img: step4Img,
       badge: "Montāža un garantija"
     }
@@ -1164,10 +1195,10 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="mb-14 text-center md:text-left">
           <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-            {lang === "ENG" ? "Our Approach" : "Mūsu pieeja"}
+            {lang === "ENG" ? "Work Process" : "Darba gaita"}
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-tight">
-            {lang === "ENG" ? "Work process from vision to perfection" : "Darba gaita no vīzijas līdz pilnībai"}
+          <h2 className="text-2xl md:text-3xl font-serif text-white tracking-tight leading-tight">
+            {lang === "ENG" ? "Work process from vision to result" : "Darba process no vīzijas līdz rezultātam"}
           </h2>
           <p className="text-zinc-400 font-light text-xs md:text-sm max-w-2xl mt-3 leading-relaxed">
             {lang === "ENG"
@@ -1264,9 +1295,9 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
             className="lg:col-span-6 space-y-6"
           >
             <div className="inline-flex items-center space-x-2 bg-zinc-100 text-brand-brown px-4 py-1 uppercase text-[9px] tracking-[0.25em] font-extrabold border-l-2 border-brand-orange">
-              <span>{lang === "ENG" ? "Collaboration & Technical Support" : "Sadarbība un tehnisks atbalsts"}</span>
+              <span>{lang === "ENG" ? "The Art of Collaboration & Co-creation" : "Sadarbības un koprades māksla"}</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark leading-tight mt-1 mb-3">
+            <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark leading-tight mt-1 mb-3">
               {lang === "ENG" ? (
                 <>Our collaboration with <br />artists and designers</>
               ) : (
@@ -1274,7 +1305,7 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
               )}
             </h1>
             
-            <p className="text-brand-grey font-light leading-relaxed text-sm md:text-base">
+            <p className="text-brand-grey font-light leading-relaxed text-xs md:text-sm">
               {lang === "ENG"
                 ? "AVANGART collaborates with leading Latvian and international interior artists and designers. We understand the importance of every single line, material harmony, and precision in drawings, ensuring flawless project implementation."
                 : "AVANGART sadarbojas ar vadošajiem Latvijas un ārvalstu interjera māksliniekiem un dizaineriem. Mēs izprotam katras līnijas nozīmi, materiālu saspēli un augstu precizitāti rasējumos, nodrošinot nevainojamu projektu realizāciju."}
@@ -1303,19 +1334,10 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
                 </strong>
                 {lang === "ENG"
                   ? "When site measurements reveal structural anomalies, we actively collaborate with the architect to supply smart solutions preserving design integrity."
-                  : "Ja projekta gaitā parādās negaidīti struktūras vai telpas šķēršļi, kopīgiem spēkiem rodam ideālus tehniskos un materiālos risinājumus, lai saglabātu autora vīziju."}
+                  : "Ja projekta gaitā parādās negaidīti šķēršļi, kopīgiem spēkiem rodam labākos tehniskos un materiālos risinājumus, lai saglabātu autora vīziju."}
               </p>
             </div>
  
-            <div className="pt-1">
-              <button 
-                onClick={onNavigateToContact}
-                className="inline-flex items-center space-x-3 bg-brand-brown text-white px-8 py-4 uppercase text-xs tracking-wider font-extrabold hover:bg-brand-orange hover:scale-102 transition-all duration-300 cursor-pointer shadow-md"
-              >
-                <span>{lang === "ENG" ? "Request consultation" : "Pieteikties uz konsultāciju"}</span>
-                <ArrowRight size={15} />
-               </button>
-            </div>
           </motion.div>
  
           <motion.div
@@ -1351,7 +1373,32 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
 
         </div>
 
-        <ScrollToTopButton />
+        {/* Centered Navigation Buttons below columns, partially under the image/text */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-12 md:mt-16 flex flex-wrap gap-4 justify-center items-center w-full"
+        >
+          <button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="inline-flex items-center space-x-2 bg-zinc-100 hover:bg-zinc-200 text-brand-brown text-xs uppercase tracking-wider font-extrabold py-4 px-6 transition-all duration-300 cursor-pointer border border-zinc-300 hover:border-zinc-400 font-sans shadow-sm"
+          >
+            <ArrowUp size={14} />
+            <span>{lang === "ENG" ? "To top" : "Uz augšu"}</span>
+          </button>
+
+          <button 
+            onClick={onNavigateToContact}
+            className="inline-flex items-center space-x-3 bg-brand-brown text-white px-8 py-4 uppercase text-xs tracking-wider font-extrabold hover:bg-brand-orange hover:scale-102 transition-all duration-300 cursor-pointer shadow-md"
+          >
+            <span>{lang === "ENG" ? "Apply for cooperation" : "Pieteikties sadarbībai"}</span>
+            <ArrowRight size={15} />
+          </button>
+        </motion.div>
+
       </div>
     </div>
   );
@@ -1418,7 +1465,7 @@ const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
           <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
             {lang === "ENG" ? "Projects catalog" : "Projektu katalogs"}
           </span>
-          <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark mb-4">
+          <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark mb-4">
             {lang === "ENG" ? "Portfolio" : "Portfolio"}
           </h1>
         </div>
@@ -1642,7 +1689,7 @@ const BUJView = ({ lang }: BUJViewProps) => {
 
         {/* Header */}
         <div className="max-w-3xl mb-12">
-          <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark mb-4">
+          <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark mb-4">
             {lang === "ENG" ? "Frequently Asked Questions" : "Biežāk uzdotie jautājumi"}
           </h1>
         </div>
@@ -1694,7 +1741,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
               <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
                 {lang === "ENG" ? "Get in Touch" : "Saziņa un pieteikumi"}
               </span>
-              <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark leading-tight mb-4">
+              <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark leading-tight mb-4">
                 {lang === "ENG" ? "Contact us" : "Sazinieties ar mums"}
               </h1>
             </div>
@@ -1705,7 +1752,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                   <MapPin size={18} className="text-brand-orange" />
                 </div>
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest font-extrabold text-brand-grey">{lang === "ENG" ? "Office & Workshop" : "Birojs & Darbnīca"}</h4>
+                  <h4 className="text-[10px] uppercase tracking-widest font-extrabold text-brand-grey">{lang === "ENG" ? "Address" : "Adrese"}</h4>
                   <p className="text-brand-grey-dark font-light text-xs md:text-sm mt-0.5">Katlakalna iela 11, Rīga, LV-1073</p>
                 </div>
               </div>
@@ -1791,6 +1838,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                     <select className="w-full bg-transparent border-b border-zinc-350 py-2 focus:outline-none focus:border-brand-orange transition-colors font-light text-brand-grey-dark text-xs md:text-sm cursor-pointer">
                       {lang === "ENG" ? (
                         <>
+                          <option>Apply for cooperation</option>
                           <option>Staircase manufacturing</option>
                           <option>Kitchen system manufacturing</option>
                           <option>Living room furniture manufacturing</option>
@@ -1799,6 +1847,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                         </>
                       ) : (
                         <>
+                          <option>Pieteikties sadarbībai</option>
                           <option>Kāpņu izgatavošana</option>
                           <option>Virtuves mēbeļu izgatavošana</option>
                           <option>Viesistabas mēbeļu izgatavošana</option>
@@ -1927,14 +1976,14 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start mb-3">
           
           {/* Brand Col - Left */}
-          <div className="lg:col-span-4 space-y-3">
+          <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center select-none py-1 h-auto">
               <LogoImage 
                 isDarkBackground={true} 
-                className="h-[124px] md:h-[159px] w-auto" 
+                className="h-[55px] sm:h-[65px] md:h-[72px] w-auto" 
               />
             </div>
-            <div className="relative -translate-y-6 md:-translate-y-8">
+            <div className="relative">
               <p className="text-xs text-zinc-400 uppercase tracking-widest font-bold mb-1">
                 {lang === "ENG" ? "Bespoke design and craftsmanship" : "Individuāls dizains un roku darbs"}
               </p>
@@ -1947,7 +1996,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
           </div>
 
           {/* Social Networks Center Col */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-start text-center space-y-4 pt-10 lg:pt-12">
+          <div className="lg:col-span-4 flex flex-col items-center justify-start text-center space-y-4 pt-4 lg:pt-6">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-brand-orange-light">
               {lang === "ENG" ? "Social Networks" : "Sociālie tīkli"}
             </h4>
@@ -1965,7 +2014,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
           </div>
 
           {/* Contacts Col - Right */}
-          <div className="lg:col-span-4 flex flex-col space-y-3 pt-10 lg:pt-12 lg:items-start lg:text-left lg:pl-16">
+          <div className="lg:col-span-4 flex flex-col space-y-3 pt-4 lg:pt-6 lg:items-start lg:text-left lg:pl-16">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-brand-orange-light">
               {lang === "ENG" ? "Contacts" : "Kontakti"}
             </h4>
