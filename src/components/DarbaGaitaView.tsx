@@ -46,7 +46,7 @@ export const DarbaGaitaView = ({ lang = "LV" }: { lang?: "LV" | "ENG" }) => {
     {
       num: "01",
       title: "Konsultācija un telpas dizaina koncepts",
-      desc: "Mūsu sadarbība vienmēr sākas ar niansētu sarunu. Sazinoties ar Jums, mēs rūpīgi izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam labāko koksnes un metāla materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra kāpņu šķautne vai mēbeles līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Mēs veicam sākotnējo objekta vizuālo izpēti un sagatavojam ieteikumus augstākai ergonomikai.",
+      desc: "Mūsu sadarbība vienmēr sākas ar sarunu, kurā mēs izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam piemērotāko kokmateriālu un citu materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra mūsu izgatavotās mēbeles šķautne un līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Tādā veidā mēs veicam rūpīgu Jūsu ideju izpēti un sagatavojam ieteikumus augstākai ergonomikai.",
       img: step1Img,
       badge: "Sākotnējā plānošana"
     },

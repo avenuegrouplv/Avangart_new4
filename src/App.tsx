@@ -46,6 +46,20 @@ import catFurnitureImg from './assets/images/bespoke_furniture_1779372630283.png
 import catInteriorImg from './assets/images/bespoke_interior_1779372652331.png';
 import designerCollabImg from './assets/images/designer_collaboration_1779377018842.png';
 import logoCleanImg from './assets/images/Avangart_new.png';
+import stairNew1 from './assets/images/photo_5798425477507649255_y.jpg';
+import stairNew2 from './assets/images/staircase_modern_led_1779450208040.jpg';
+import stairNew3 from './assets/images/photo_5798425477507649254_y.jpg';
+import kitchenNew1 from './assets/images/photo_5798425477507649257_y.jpg';
+import kitchenNew2 from './assets/images/photo_5798425477507649259_y.jpg';
+import kitchenNew3 from './assets/images/photo_5798425477507649263_y.jpg';
+import livingNew1 from './assets/images/photo_5798425477507649258_y.jpg';
+import livingNew2 from './assets/images/photo_5798425477507649262_y.jpg';
+import bedroomNew1 from './assets/images/photo_5798425477507649256_y.jpg';
+import bedroomNew2 from './assets/images/photo_5798425477507649260_y.jpg';
+import bedroomNew3 from './assets/images/photo_5798425477507649261_y.jpg';
+import bedroomNew4 from './assets/images/photo_5798425477507649268_y.jpg';
+import bedroomNew5 from './assets/images/photo_5798425477507649269_y.jpg';
+import bedroomNew6 from './assets/images/photo_5798425477507649270_y.jpg';
 
 // --- Types ---
 interface PortfolioItem {
@@ -68,7 +82,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Individuālas masīvkoka kāpnes privātmājā",
     titleEN: "Bespoke solid oak stairs in a private home",
     category: "Kāpnes",
-    images: [catStairsImg, staircaseHeroImg, step2Img, step4Img, catFurnitureImg, step3Img, catInteriorImg],
+    images: [catStairsImg, staircaseHeroImg, step4Img, stairNew1, stairNew2, stairNew3],
     description: "Projektētas un uzstādītas modernas masīvkoka kāpnes privātmājā Mārupē. Tās ir izgatavotas no atlasīta, augstas kvalitātes ozola, kas apstrādāts ar nodilumizturīgu dabīgo aizsargeļļu. Konstrukcija ir rūpīgi izstrādāta, lai nodrošinātu maksimālu izturību un drošību, lieliski iekļaujoties mājas koptēlā.",
     descriptionEN: "Designed and installed modern solid wood stairs in a private home in Mārupe. Crafted from select, high-quality oak treated with a durable protective natural oil. The structure is carefully designed to ensure maximum durability and safety, fitting perfectly into the overall home design.",
     materials: "Masīvs ozols",
@@ -80,7 +94,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Pēc mēra iebūvēta premium ozolkoka virtuve",
     titleEN: "Custom premium oak fitted kitchen",
     category: "Virtuve",
-    images: [catFurnitureImg, step3Img, staircaseHeroImg, step1Img, step2Img, step4Img, designerCollabImg],
+    images: [kitchenNew1, kitchenNew2, kitchenNew3],
     description: "Iebūvētā virtuves iekārta izstrādāta divstāvu privātmājā Babītē. Tajā izmantotas dabīgā ozola fasādes ar saskaņotu koksnes tekstūru un eleganta akmens darba virsma. Koka detaļas ir tonētas siltā smilšu tonī un lakotas ar ekoloģisku, ūdens bāzes matēto laku. Aprīkota ar pilnībā integrētu Blum klusās aizvēršanas furnitūru un slēpto LED apgaismojumu darba virsmām.",
     descriptionEN: "A built-in kitchen set designed for a two-story private home in Babīte. It features natural oak facades with matched wood grain and an elegant stone worktop. Wooden details are tinted in a warm sand tone and varnished with an eco-friendly water-based matte lacquer. Equipped with integrated Blum soft-close hardware and hidden countertop LED lighting.",
     materials: "Ozols, akmens virsma",
@@ -92,7 +106,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "TV apdare un mediju siena viesistabā",
     titleEN: "TV wall wood cladding and media unit in living room",
     category: "Viesistaba",
-    images: [step2Img, catFurnitureImg, designerCollabImg, step3Img, staircaseHeroImg, step1Img, catInteriorImg],
+    images: [livingNew1, livingNew2],
     description: "Mūsdienīga TV apdare, kas izgatavota dzīvoklim Rīgas centrā. Korpuss izstrādāts no premium ozola finierējuma, bet fasādes veidotas no smalki rievota masīvkoka profilējuma, kas tonēts ar pelēko eļļas vasku. Mēbelē iestrādāti slēptie kabeļu kanāli un integrēta silta, dimmējama LED fona gaisma izsmalcinātam un mājīgam interjera akcentam.",
     descriptionEN: "A modern TV wall wood cladding and media unit crafted for an apartment in the center of Rīga. The body is built with premium oak veneer, while the facades feature finely ribbed solid wood profiles treated with grey oil wax. Features integrated cable routing channels and warm, dimmable LED backlight accents.",
     materials: "Masīvs ozols, LED",
@@ -104,7 +118,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Ozolkoka guļamistabas mēbeļu komplekts",
     titleEN: "Oak bedroom furniture set",
     category: "Guļamistaba",
-    images: [step1Img, step3Img, catInteriorImg, step4Img, catStairsImg, step2Img, designerCollabImg],
+    images: [bedroomNew1, bedroomNew2, bedroomNew3, bedroomNew4, bedroomNew5, bedroomNew6],
     description: "Guļamistabas mēbeļu komplekts privātmājai Ādažos. Gultas rāmis un pie sienas montētie naktsskapīši izgatavoti no īpaši atlasītiem ozolkoka dēļiem, kas pulēti ar dabīgo vasku. Galvgalis apvilkts ar nodilumizturīgu dabisko lina maisauduma tekstilu. Pie sienas montētie naktsskapīši rada gaisīgu un modernu efektu telpā.",
     descriptionEN: "A bedroom furniture collection for a private house in Ādaži. The bed frame and wall-mounted bedside tables are made of specially selected oak planks polished with natural wax. The headboard is upholstered in highly durable natural linen textile. The wall-mounted bedside tables create a light and modern feel in the space.",
     materials: "Ozols, tekstils",
@@ -581,10 +595,10 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
     <nav className={cn(
       "fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6",
       isScrolled 
-        ? "bg-white/95 backdrop-blur-md shadow-md border-b border-zinc-200/50 py-3 md:py-4" 
+        ? "bg-white/95 backdrop-blur-md shadow-md border-b border-zinc-200/50 py-0" 
         : (isHomeActive
-            ? "bg-transparent py-3 md:py-4"
-            : "bg-white/95 backdrop-blur-md shadow-sm border-b border-zinc-200/50 py-3 md:py-4"
+            ? "bg-transparent py-0"
+            : "bg-white/95 backdrop-blur-md shadow-sm border-b border-zinc-200/50 py-0"
           ),
       "[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]"
     )}>
@@ -607,7 +621,7 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
             isDarkBackground={!(isScrolled || !isHomeActive)} 
             className={cn(
                "w-auto transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]",
-               "h-[55px] sm:h-[65px] md:h-[72px]"
+               "h-[72px] sm:h-[85px] md:h-[94px]"
             )}
           />
         </a>
@@ -785,10 +799,9 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
                   window.location.hash = lang === 'ENG' ? '#portfolio-stairs' : '#portfolio-kapnes';
                   window.scrollTo({ top: 0, behavior: 'instant' });
                 }}
-                className="inline-flex items-center justify-center space-x-4 bg-zinc-100 hover:bg-zinc-200 text-brand-brown border border-zinc-300 hover:border-zinc-400 px-8 py-4 uppercase text-xs tracking-[0.2em] font-extrabold hover:scale-[1.02] active:scale-95 transition-all duration-300 group cursor-pointer shadow-sm"
+                className="inline-flex items-center justify-center bg-zinc-100 hover:bg-zinc-200 text-brand-brown border border-zinc-300 hover:border-zinc-400 px-8 py-4 uppercase text-xs tracking-[0.2em] font-extrabold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-sm"
               >
                 <span>{lang === "ENG" ? "Completed projects" : "Īstenotie projekti"}</span>
-                <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform text-brand-brown" />
               </button>
               <button 
                 onClick={onNavigateToContact}
@@ -1163,7 +1176,7 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
     {
       num: "01",
       title: "Konsultācija un telpas dizaina koncepts",
-      desc: "Mūsu sadarbība vienmēr sākas ar niansētu sarunu. Sazinoties ar Jums, mēs rūpīgi izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam labāko koksnes un metāla materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra kāpņu šķautne vai mēbeles līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Mēs veicam sākotnējo objekta vizuālo izpēti un sagatavojam ieteikumus augstākai ergonomikai.",
+      desc: "Mūsu sadarbība vienmēr sākas ar sarunu, kurā mēs izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam piemērotāko kokmateriālu un citu materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra mūsu izgatavotās mēbeles šķautne un līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Tādā veidā mēs veicam rūpīgu Jūsu ideju izpēti un sagatavojam ieteikumus augstākai ergonomikai.",
       img: step1Img,
       badge: "Sākotnējā plānošana"
     },
@@ -1980,7 +1993,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
             <div className="flex items-center select-none py-1 h-auto">
               <LogoImage 
                 isDarkBackground={true} 
-                className="h-[55px] sm:h-[65px] md:h-[72px] w-auto" 
+                className="h-[72px] sm:h-[85px] md:h-[94px] w-auto" 
               />
             </div>
             <div className="relative">
