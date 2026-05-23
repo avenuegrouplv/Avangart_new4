@@ -4,10 +4,10 @@ import { ArrowLeft, ArrowRight, ArrowUp } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 // Image Imports
-const step1Img = '/images/consultation_meeting.webp';
-const step2Img = '/images/staircase_design.webp';
-const step3Img = '/images/furniture_crafting.webp';
-const step4Img = '/images/staircase_installation.webp';
+const step1Img = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/consultation_meeting.webp';
+const step2Img = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/staircase_design.webp';
+const step3Img = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/furniture_crafting.webp';
+const step4Img = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/staircase_installation.webp';
 
 const BackToHomeButton = ({ lang }: { lang: "LV" | "ENG" }) => {
   return (
