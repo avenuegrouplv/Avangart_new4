@@ -2168,7 +2168,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
-            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved.." : "SIA AVANGART © 2026 Visas tiesības aizsargātas.."}
+            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved..." : "SIA AVANGART © 2026 Visas tiesības aizsargātas..."}
           </div>
 
           {/* Right policy links (one font size larger: text-[11px] md:text-[12px]) */}
@@ -2431,87 +2431,92 @@ export default function App() {
       <AnimatePresence>
         {showCookieBanner && (
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 50, opacity: 0 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed bottom-4 right-4 left-4 md:left-auto md:max-w-md w-auto z-[120] bg-white text-zinc-800 border-l-4 border-brand-orange border-t border-r border-b border-zinc-200/80 shadow-[0_10px_40px_rgba(0,0,0,0.12)] p-5 md:p-6"
+            exit={{ y: 80, opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="fixed bottom-6 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 w-auto md:w-full md:max-w-4xl z-[120] bg-white/95 backdrop-blur-md text-zinc-900 border-l-[6px] border-brand-orange border-t border-r border-b border-zinc-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-2xl p-6 md:p-8"
           >
-            <div className="relative">
+            <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
               {/* Close 'X' Button on top-right */}
               <button
                 onClick={() => {
                   localStorage.setItem('avangart-cookie-consent', 'dismissed');
                   setShowCookieBanner(false);
                 }}
-                className="absolute top-0 right-0 p-1 text-zinc-400 hover:text-zinc-650 transition-colors cursor-pointer"
+                className="absolute -top-2 -right-2 p-1.5 text-zinc-400 hover:text-zinc-600 transition-colors cursor-pointer rounded-full hover:bg-zinc-100"
                 aria-label="Aizvērt"
               >
-                <X size={16} />
+                <X size={18} />
               </button>
 
-              <div className="flex items-center space-x-2 mb-3">
-                <Cookie className="text-brand-orange animate-pulse" size={18} />
-                <h4 className="text-sm font-serif font-bold text-brand-brown-dark">
-                  {lang === "ENG" ? "Cookie Settings" : "Sīkdatņu uzstādījumi"}
-                </h4>
+              {/* Left Column: Text & Header */}
+              <div className="flex-1">
+                <div className="flex items-center space-x-2.5 mb-2.5">
+                  <div className="p-1 px-1.5 bg-brand-orange/10 rounded-lg">
+                    <Cookie className="text-brand-orange animate-pulse" size={18} />
+                  </div>
+                  <h4 className="text-sm md:text-base font-serif font-bold text-brand-brown-dark tracking-wide">
+                    {lang === "ENG" ? "Cookie Settings" : "Sīkdatņu uzstādījumi"}
+                  </h4>
+                </div>
+ 
+                {/* Text content with converted policy links */}
+                <p className="text-[11px] md:text-[13px] leading-relaxed text-zinc-600 font-sans tracking-wide pr-4">
+                  {lang === "ENG" ? (
+                    <>
+                      We use our own and third-party cookies to ensure and improve the performance of our website, personalize information about our products and services, and analyze website traffic. By clicking "Accept All", you agree to the use of all cookies. Closing the cookie window with "X" does not activate cookies. Read more about the{' '}
+                      <button
+                        onClick={() => {
+                          window.location.hash = '#cookie-policy';
+                        }}
+                        className="text-brand-orange font-bold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-[13px]"
+                      >
+                        Cookie Policy
+                      </button>{' '}
+                      and{' '}
+                      <button
+                        onClick={() => {
+                          window.location.hash = '#privacy-policy';
+                        }}
+                        className="text-brand-orange font-bold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-[13px]"
+                      >
+                        Privacy Policy
+                      </button>.
+                    </>
+                  ) : (
+                    <>
+                      Mēs izmantojam savas un trešo pušu sīkdatnes, lai nodrošinātu un uzlabotu tīmekļa vietnes darbību, pielāgotu informāciju mūsu produktiem un pakalvijumiem, kā arī analizētu vietnes apmeklējumu. Spiežot "Apstiprināt visas", jūs piekrītat visu sīkdatņu izmantošanai. Sīkdatņu loga aizvēršana ar "X" neaktivizē sīkdatnes. Lasiet vairāk par{' '}
+                      <button
+                        onClick={() => {
+                          window.location.hash = '#sikdatnu-politika';
+                        }}
+                        className="text-brand-orange font-bold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-[13px]"
+                      >
+                        Sīkdatņu politiku
+                      </button>{' '}
+                      un{' '}
+                      <button
+                        onClick={() => {
+                          window.location.hash = '#privatuma-politika';
+                        }}
+                        className="text-brand-orange font-bold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-[13px]"
+                      >
+                        Privātuma politiku
+                      </button>.
+                    </>
+                  )}
+                </p>
               </div>
 
-              {/* Text content with converted policy links */}
-              <div className="text-[11px] md:text-xs leading-relaxed text-zinc-500 font-sans tracking-wide mb-5 pr-6">
-                {lang === "ENG" ? (
-                  <>
-                    We use our own and third-party cookies to ensure and improve the performance of our website, personalize information about our products and services, and analyze website traffic. By clicking "Accept All", you agree to the use of all cookies. Closing the cookie window with "X" does not activate cookies. Read more about the{' '}
-                    <button
-                      onClick={() => {
-                        window.location.hash = '#cookie-policy';
-                      }}
-                      className="text-brand-orange font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-xs"
-                    >
-                      Cookie Policy
-                    </button>{' '}
-                    and{' '}
-                    <button
-                      onClick={() => {
-                        window.location.hash = '#privacy-policy';
-                      }}
-                      className="text-brand-orange font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-xs"
-                    >
-                      Privacy Policy
-                    </button>.
-                  </>
-                ) : (
-                  <>
-                    Mēs izmantojam savas un trešo pušu sīkdatnes, lai nodrošinātu un uzlabotu tīmekļa vietnes darbību, pielāgotu informāciju mūsu produktiem un pakalpojumiem, kā arī analizētu vietnes apmeklējumu. Spiežot "Apstiprināt visas", jūs piekrītat visu sīkdatņu izmantošanai. Sīkdatņu loga aizvēršana ar "X" neaktivizē sīkdatnes. Lasiet vairāk par{' '}
-                    <button
-                      onClick={() => {
-                        window.location.hash = '#sikdatnu-politika';
-                      }}
-                      className="text-brand-orange font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-xs"
-                    >
-                      Sīkdatņu politiku
-                    </button>{' '}
-                    un{' '}
-                    <button
-                      onClick={() => {
-                        window.location.hash = '#privatuma-politika';
-                      }}
-                      className="text-brand-orange font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-xs"
-                    >
-                      Privātuma politiku
-                    </button>.
-                  </>
-                )}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex items-center gap-2.5 justify-end">
+              {/* Right Column: Dynamic Action Buttons */}
+              <div className="flex items-center gap-3 shrink-0 w-full md:w-auto md:flex-row justify-end xs:justify-start">
                 <button
                   onClick={() => {
                     localStorage.setItem('avangart-cookie-consent', 'rejected');
                     setShowCookieBanner(false);
                   }}
-                  className="bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-zinc-655 hover:text-zinc-800 py-2.5 px-4 uppercase text-[9px] tracking-widest font-extrabold cursor-pointer transition-colors text-center"
+                  className="bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-800 py-3 px-6 rounded-lg uppercase text-[10px] tracking-widest font-extrabold cursor-pointer transition-colors text-center w-1/2 md:w-auto"
                 >
                   {lang === "ENG" ? "Decline" : "Noraidīt"}
                 </button>
@@ -2520,7 +2525,7 @@ export default function App() {
                     localStorage.setItem('avangart-cookie-consent', 'accepted');
                     setShowCookieBanner(false);
                   }}
-                  className="bg-zinc-900 hover:bg-zinc-850 border border-zinc-900 text-white py-2.5 px-5 uppercase text-[9px] tracking-widest font-extrabold cursor-pointer transition-colors text-center"
+                  className="bg-zinc-900 hover:bg-zinc-800 border border-zinc-900 text-white py-3 px-7 rounded-lg shadow-md hover:shadow-lg hover:shadow-zinc-900/10 transition-all duration-200 uppercase text-[10px] tracking-widest font-extrabold cursor-pointer text-center w-1/2 md:w-auto"
                 >
                   {lang === "ENG" ? "Accept All" : "Apstiprināt visas"}
                 </button>
