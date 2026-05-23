@@ -234,7 +234,7 @@ export const CookiePolicyView = ({ lang }: PolicyViewProps) => {
           <div className="mt-12 pt-6 border-t border-zinc-100 flex justify-end">
             <button
               onClick={navigateToHome}
-              className="inline-flex items-center space-x-2 bg-brand-brown hover:bg-brand-orange text-white text-[10px] tracking-widest font-extrabold uppercase py-3 px-6 transition-colors duration-300 cursor-pointer border border-brand-brown hover:border-brand-orange"
+              className="inline-flex items-center space-x-2 btn-wood-oak text-white text-[10px] tracking-widest font-extrabold uppercase py-3 px-6 cursor-pointer"
             >
               <span>{lang === "ENG" ? "Close" : "Aizvērt"}</span>
             </button>
@@ -526,7 +526,7 @@ export const PrivacyPolicyView = ({ lang }: PolicyViewProps) => {
           <div className="mt-12 pt-6 border-t border-zinc-100 flex justify-end">
             <button
               onClick={navigateToHome}
-              className="inline-flex items-center space-x-2 bg-brand-brown hover:bg-brand-orange text-white text-[10px] tracking-widest font-extrabold uppercase py-3 px-6 transition-colors duration-300 cursor-pointer border border-brand-brown hover:border-brand-orange"
+              className="inline-flex items-center space-x-2 btn-wood-oak text-white text-[10px] tracking-widest font-extrabold uppercase py-3 px-6 cursor-pointer"
             >
               <span>{lang === "ENG" ? "Close" : "Aizvērt"}</span>
             </button>

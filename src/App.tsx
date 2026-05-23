@@ -36,30 +36,16 @@ import { DarbaGaitaView } from './components/DarbaGaitaView';
 import { CookiePolicyView, PrivacyPolicyView } from './components/PolicyViews';
 
 // --- Image Imports ---
-import staircaseHeroImg from './assets/images/staircase_hero_1779372484992.png';
-import step1Img from './assets/images/consultation_meeting_1779372587565.png';
-import step2Img from './assets/images/staircase_design_1779372522048.png';
-import step3Img from './assets/images/furniture_crafting_1779372547170.png';
-import step4Img from './assets/images/staircase_installation_1779372567010.png';
-import catStairsImg from './assets/images/bespoke_staircase_1779372610768.png';
-import catFurnitureImg from './assets/images/bespoke_furniture_1779372630283.png';
-import catInteriorImg from './assets/images/bespoke_interior_1779372652331.png';
-import designerCollabImg from './assets/images/designer_collaboration_1779377018842.png';
-import logoCleanImg from './assets/images/Avangart_new.png';
-import stairNew1 from './assets/images/photo_5798425477507649255_y.jpg';
-import stairNew2 from './assets/images/staircase_modern_led_1779450208040.jpg';
-import stairNew3 from './assets/images/photo_5798425477507649254_y.jpg';
-import kitchenNew1 from './assets/images/photo_5798425477507649257_y.jpg';
-import kitchenNew2 from './assets/images/photo_5798425477507649259_y.jpg';
-import kitchenNew3 from './assets/images/photo_5798425477507649263_y.jpg';
-import livingNew1 from './assets/images/photo_5798425477507649258_y.jpg';
-import livingNew2 from './assets/images/photo_5798425477507649262_y.jpg';
-import bedroomNew1 from './assets/images/photo_5798425477507649256_y.jpg';
-import bedroomNew2 from './assets/images/photo_5798425477507649260_y.jpg';
-import bedroomNew3 from './assets/images/photo_5798425477507649261_y.jpg';
-import bedroomNew4 from './assets/images/photo_5798425477507649268_y.jpg';
-import bedroomNew5 from './assets/images/photo_5798425477507649269_y.jpg';
-import bedroomNew6 from './assets/images/photo_5798425477507649270_y.jpg';
+const staircaseHeroImg = "/images/staircase_hero.webp";
+const step1Img = "/images/consultation_meeting.webp";
+const step2Img = "/images/staircase_design.webp";
+const step3Img = "/images/furniture_crafting.webp";
+const step4Img = "/images/staircase_installation.webp";
+const catStairsImg = "/images/bespoke_staircase.webp";
+const catFurnitureImg = "/images/bespoke_furniture.webp";
+const catInteriorImg = "/images/bespoke_interior.webp";
+const designerCollabImg = "/images/designer_collaboration.webp";
+const logoCleanImg = "/images/logo.webp";
 
 // --- Types ---
 interface PortfolioItem {
@@ -74,7 +60,6 @@ interface PortfolioItem {
   descriptionEN?: string;
   materialsEN?: string;
 }
-
 // --- Data ---
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
@@ -82,7 +67,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Individuālas masīvkoka kāpnes privātmājā",
     titleEN: "Bespoke solid oak stairs in a private home",
     category: "Kāpnes",
-    images: [catStairsImg, staircaseHeroImg, step4Img, stairNew1, stairNew2, stairNew3],
+    images: ["/images/stair1.webp", "/images/stair2.webp", "/images/stair3.webp"],
     description: "Projektētas un uzstādītas modernas masīvkoka kāpnes privātmājā Mārupē. Tās ir izgatavotas no atlasīta, augstas kvalitātes ozola, kas apstrādāts ar nodilumizturīgu dabīgo aizsargeļļu. Konstrukcija ir rūpīgi izstrādāta, lai nodrošinātu maksimālu izturību un drošību, lieliski iekļaujoties mājas koptēlā.",
     descriptionEN: "Designed and installed modern solid wood stairs in a private home in Mārupe. Crafted from select, high-quality oak treated with a durable protective natural oil. The structure is carefully designed to ensure maximum durability and safety, fitting perfectly into the overall home design.",
     materials: "Masīvs ozols",
@@ -94,7 +79,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Pēc mēra iebūvēta premium ozolkoka virtuve",
     titleEN: "Custom premium oak fitted kitchen",
     category: "Virtuve",
-    images: [kitchenNew1, kitchenNew2, kitchenNew3],
+    images: ["/images/kitchen1.webp", "/images/kitchen2.webp", "/images/kitchen3.webp"],
     description: "Iebūvētā virtuves iekārta izstrādāta divstāvu privātmājā Babītē. Tajā izmantotas dabīgā ozola fasādes ar saskaņotu koksnes tekstūru un eleganta akmens darba virsma. Koka detaļas ir tonētas siltā smilšu tonī un lakotas ar ekoloģisku, ūdens bāzes matēto laku. Aprīkota ar pilnībā integrētu Blum klusās aizvēršanas furnitūru un slēpto LED apgaismojumu darba virsmām.",
     descriptionEN: "A built-in kitchen set designed for a two-story private home in Babīte. It features natural oak facades with matched wood grain and an elegant stone worktop. Wooden details are tinted in a warm sand tone and varnished with an eco-friendly water-based matte lacquer. Equipped with integrated Blum soft-close hardware and hidden countertop LED lighting.",
     materials: "Ozols, akmens virsma",
@@ -106,7 +91,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "TV apdare un mediju siena viesistabā",
     titleEN: "TV wall wood cladding and media unit in living room",
     category: "Viesistaba",
-    images: [livingNew1, livingNew2],
+    images: ["/images/living1.webp", "/images/living2.webp"],
     description: "Mūsdienīga TV apdare, kas izgatavota dzīvoklim Rīgas centrā. Korpuss izstrādāts no premium ozola finierējuma, bet fasādes veidotas no smalki rievota masīvkoka profilējuma, kas tonēts ar pelēko eļļas vasku. Mēbelē iestrādāti slēptie kabeļu kanāli un integrēta silta, dimmējama LED fona gaisma izsmalcinātam un mājīgam interjera akcentam.",
     descriptionEN: "A modern TV wall wood cladding and media unit crafted for an apartment in the center of Rīga. The body is built with premium oak veneer, while the facades feature finely ribbed solid wood profiles treated with grey oil wax. Features integrated cable routing channels and warm, dimmable LED backlight accents.",
     materials: "Masīvs ozols, LED",
@@ -118,7 +103,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Ozolkoka guļamistabas mēbeļu komplekts",
     titleEN: "Oak bedroom furniture set",
     category: "Guļamistaba",
-    images: [bedroomNew1, bedroomNew2, bedroomNew3, bedroomNew4, bedroomNew5, bedroomNew6],
+    images: ["/images/bedroom1.webp", "/images/bedroom2.webp", "/images/bedroom3.webp", "/images/bedroom4.webp", "/images/bedroom5.webp", "/images/bedroom6.webp"],
     description: "Guļamistabas mēbeļu komplekts privātmājai Ādažos. Gultas rāmis un pie sienas montētie naktsskapīši izgatavoti no īpaši atlasītiem ozolkoka dēļiem, kas pulēti ar dabīgo vasku. Galvgalis apvilkts ar nodilumizturīgu dabisko lina maisauduma tekstilu. Pie sienas montētie naktsskapīši rada gaisīgu un modernu efektu telpā.",
     descriptionEN: "A bedroom furniture collection for a private house in Ādaži. The bed frame and wall-mounted bedside tables are made of specially selected oak planks polished with natural wax. The headboard is upholstered in highly durable natural linen textile. The wall-mounted bedside tables create a light and modern feel in the space.",
     materials: "Ozols, tekstils",
@@ -130,13 +115,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Ekskluzīvas mitrumizturīgas ozolkoka mēbeles vannas istabai",
     titleEN: "Premium humidity-resistant solid oak bathroom vanity system",
     category: "Vannas istaba",
-    images: [
-      "https://images.unsplash.com/photo-1620626011160-9928f1b95b59?auto=format&fit=crop&w=600&q=50&fm=webp",
-      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=50&fm=webp",
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=50&fm=webp",
-      step3Img,
-      catInteriorImg
-    ],
+    images: ["/images/bathroom1.webp", "/images/bathroom2.webp", "/images/bathroom3.webp", "/images/bathroom4.webp"],
     description: "Izsmalcināts vannas istabas mēbeļu komplekts, kas izgatavots no speciāli apstrādāta mitrumizturīga masīvā ozolkoka, kas aizsargāts ar speciālu eļļu. Komplektā ietilpst atvilktņu un durvju konsoles komplekts ar izlietni un spoguli, kurā iestrādāts slēpts LED aizmugures apgaismojums.",
     descriptionEN: "A sophisticated master bathroom furniture set crafted from custom-treated humidity-resistant solid oak, sealed with premium protective oil. The set features a drawer and door vanity console with a sink and a matching mirror with integrated hidden LED backlighting.",
     materials: "Mitrumizturīgs ozols, LED",
@@ -409,24 +388,22 @@ const FAQ_ITEMS: FAQItem[] = [
   },
   {
     id: 11,
-    question: "Vai tiek dota garantija izgatavotajām kāpnēm un mēbelēm?",
-    intro: "Jā, visām mūsu izgatavotajām mēbelēm un kāpēm nodrošinām 2 gadu garantiju. Tā kā mēs izmantojam tikai augstākās kvalitātes kokmateriālus, profesionālu furnitūru un montāžas tehnoloģijas, mūsu kāpnes un mēbeles kalpos desmitgadēm ilgi.",
+    question: "Kāda garantija tiek nodrošināta Jūsu izgatavotajām kāpnēm un mēbelēm?",
+    intro: "Visiem AVANGART izgādātajiem materiāliem un uzstādīšanas darbiem mēs nodrošinām oficiālu 2 gadu (24 mēnešu) garantiju. Tā kā mēs ticam mūsu konstrukciju ilgmūžībai un meistaru darba kvalitātei, mēs sniedzam:",
     bullets: [
-      "2 gadu ražotāja garantija visām konstrukcijām;",
-      "Garantijas apkalpošana un radušos jautājumu risināšana;",
-      "Pēc-garantijas tehniskais atbalsts un apkopes konsultācijas;",
-      "Premium furnitūras ražotāja nodrošinātā mūža funkcionālā garantija."
+      "Garantiju pret konstrukciju deformāciju vai plaisāšanu saprātīgos ekspluatācijas apstākļos;",
+      "Garantiju pret pakāpienu čīkstēšanu un mezglu stiprinājumu atslāpšanu;",
+      "Garantiju izmantotajai premium Eiropas furnitūrai (piemēram, Blum) saskaņā ar ražotāja sniegtajiem nosacījumiem."
     ],
-    outro: "Mums ir svarīgi, lai katrs radītais elements sniegtu Jums drošību un pārliecību par ilgmūžīgu kvalitāti.",
-    questionEN: "Is there a warranty provided for your manufactured staircases and furniture?",
-    introEN: "Yes, we provide an official 2-year warranty for all our manufactured woodwork and installation services. Since we only use top-grade timber, professional-grade hardware, and field-tested installation techniques, our stairs and furniture are built to last for decades.",
+    outro: "Garantija ir spēkā, ja tiek ievēroti pareizas koka kopšanas un telpas mikroklimata noteikumi (optimāls mitruma un temperatūras režīms).",
+    questionEN: "What warranty is provided for your custom staircases and bespoke furniture?",
+    introEN: "We provide an official 2-year (24-month) warranty for all AVANGART custom-fabricated materials and professional installation works. Believing in the extreme durability of our structures and the class of our craft, we deliver:",
     bulletsEN: [
-      "2-year manufacturer's structural and material warranty;",
-      "Full warranty service and prompt resolution of any issues that might arise;",
-      "Post-warranty maintenance advice, support, and technical services;",
-      "Manufacturer-backed lifetime structural warranty on premium hardware (e.g., Blum)."
+      "warranty against structural deformation or splintering under standard indoor climates,",
+      "warranty against squeaks in steps or loosening of invisible structural anchors,",
+      "warranty for premium European hardware fittings (such as Blum) in accordance layout and manufacturer terms."
     ],
-    outroEN: "It is crucial for us that every bespoke piece we deliver provides you with complete security and peace of mind regarding long-term quality."
+    outroEN: "The warranty remains valid provided proper maintenance guidelines are respected and balanced room humidity and temperature metrics are sustained."
   }
 ];
 
@@ -507,7 +484,7 @@ const BackToHomeButton = ({ lang }: { lang?: "LV" | "ENG" }) => {
         window.location.hash = lang === "ENG" ? "#home" : "#sakums";
         window.scrollTo({ top: 0, behavior: "instant" });
       }}
-      className="inline-flex items-center space-x-2 bg-brand-brown hover:bg-brand-orange text-white text-[10px] tracking-widest font-extrabold uppercase py-2.5 px-5 transition-colors cursor-pointer border border-brand-brown hover:border-brand-orange rounded-none shadow-sm"
+      className="inline-flex items-center space-x-2 btn-wood-oak text-white text-[10px] tracking-widest font-extrabold uppercase py-2.5 px-5 cursor-pointer rounded-none shadow-sm"
     >
       <ArrowLeft size={13} className="mr-1" />
       <span>{lang === "ENG" ? "Back to home" : "Atpakaļ uz sākumu"}</span>
@@ -522,9 +499,9 @@ const ScrollToTopButton = ({ lang }: { lang?: "LV" | "ENG" }) => {
         onClick={() => {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
-        className="inline-flex items-center space-x-2 bg-brand-brown hover:bg-brand-orange text-white text-[10px] tracking-widest font-extrabold uppercase py-2.5 px-5 transition-colors cursor-pointer border border-brand-brown hover:border-brand-orange rounded-none shadow-sm"
+        className="inline-flex items-center justify-center space-x-3 bg-white text-zinc-900 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200 px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-sm"
       >
-        <ArrowUp size={13} className="mr-1" />
+        <ArrowUp size={15} />
         <span>{lang === "ENG" ? "To top" : "Uz augšu"}</span>
       </button>
     </div>
@@ -593,21 +570,14 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6",
+      "fixed top-0 left-0 w-full z-50 transition-colors duration-100 px-6 py-0.5 md:py-1",
       isScrolled 
-        ? "bg-white/95 backdrop-blur-md shadow-md border-b border-zinc-200/50 py-0" 
+        ? "bg-white/95 backdrop-blur-md shadow-md border-b border-zinc-200/50" 
         : (isHomeActive
-            ? "bg-transparent py-0"
-            : "bg-white/95 backdrop-blur-md shadow-sm border-b border-zinc-200/50 py-0"
-          ),
-      "[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]"
+            ? "bg-gradient-to-b from-black/50 via-black/25 to-transparent text-white"
+            : "bg-white/95 backdrop-blur-md shadow-sm border-b border-zinc-200/50"
+          )
     )}>
-      {/* Background dark gradient overlay when on Top & Home Active */}
-      <div className={cn(
-        "absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-transparent -z-10 transition-opacity duration-500 pointer-events-none",
-        (isScrolled || !isHomeActive) ? "opacity-0" : "opacity-100"
-      )} />
-
       <div className="max-w-7xl mx-auto flex justify-between items-center bg-transparent">
         <a 
           href={lang === "ENG" ? "#home" : "#sakums"} 
@@ -619,10 +589,7 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
         >
           <LogoImage 
             isDarkBackground={!(isScrolled || !isHomeActive)} 
-            className={cn(
-               "w-auto transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]",
-               "h-[72px] sm:h-[85px] md:h-[94px]"
-            )}
+            className="w-auto h-[61px] sm:h-[74px] md:h-[88px]"
           />
         </a>
 
@@ -639,7 +606,7 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
                   key={link.name} 
                   onClick={() => handleLinkClick(link.href)}
                   className={cn(
-                    "text-[11px] md:text-[12px] uppercase tracking-widest font-extrabold transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] cursor-pointer border-b-2 pb-0.5",
+                    "text-[11px] md:text-[12px] uppercase tracking-widest font-extrabold transition-all duration-150 cursor-pointer border-b-2 pb-0.5",
                     isActive 
                       ? ((isScrolled || !isHomeActive) ? "text-brand-orange border-brand-orange" : "text-brand-orange-light border-brand-orange-light")
                       : "border-transparent " + ((isScrolled || !isHomeActive) ? "text-brand-grey hover:text-brand-orange" : "text-white/90 hover:text-white drop-shadow-sm")
@@ -650,15 +617,12 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
               );
             })}
           </div>
-          <div className={cn("h-4 w-px transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]", (isScrolled || !isHomeActive) ? "bg-zinc-300" : "bg-white/30")} />
-          <div className={cn(
-            "flex items-center space-x-2 text-[11px] md:text-[12px] uppercase tracking-widest font-extrabold select-none transition-colors duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]",
-            (isScrolled || !isHomeActive) ? "text-brand-grey" : "text-white"
-          )}>
+          <div className={cn("h-4 w-px", (isScrolled || !isHomeActive) ? "bg-zinc-300" : "bg-white/30")} />
+          <div className="flex items-center space-x-2 text-[11px] md:text-[12px] uppercase tracking-widest font-extrabold select-none">
             <button 
               onClick={() => onLanguageChange("LV")}
               className={cn(
-                "cursor-pointer transition-colors duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] outline-none", 
+                "cursor-pointer transition-colors duration-150 outline-none", 
                 lang === "LV"
                   ? ((isScrolled || !isHomeActive) ? "text-brand-orange" : "text-brand-orange-light")
                   : ((isScrolled || !isHomeActive) ? "text-zinc-400 hover:text-brand-orange" : "text-white/60 hover:text-white")
@@ -666,11 +630,11 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
             >
               LV
             </button>
-            <span className={cn("transition-colors duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]", (isScrolled || !isHomeActive) ? "text-zinc-300" : "text-white/40")}>/</span>
+            <span className={cn((isScrolled || !isHomeActive) ? "text-zinc-300" : "text-white/40")}>/</span>
             <button 
               onClick={() => onLanguageChange("ENG")}
               className={cn(
-                "cursor-pointer transition-colors duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] outline-none", 
+                "cursor-pointer transition-colors duration-155 outline-none", 
                 lang === "ENG"
                   ? ((isScrolled || !isHomeActive) ? "text-brand-orange" : "text-brand-orange-light")
                   : ((isScrolled || !isHomeActive) ? "text-zinc-400 hover:text-brand-orange" : "text-white/60 hover:text-white")
@@ -684,7 +648,7 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
         {/* Mobile Toggle */}
         <button 
           className={cn(
-            "lg:hidden p-2 transition-colors duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] cursor-pointer",
+            "lg:hidden p-2 transition-colors cursor-pointer",
             (isScrolled || !isHomeActive) ? "text-brand-brown hover:text-brand-orange" : "text-white hover:text-brand-orange-light"
           )}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -770,28 +734,28 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
           >
             <div className="inline-flex items-center space-x-2 bg-brand-orange/25 text-brand-orange px-4 py-1.5 uppercase text-[10px] tracking-[0.3em] font-extrabold mb-6 border border-brand-orange/40">
               <span className="w-1.5 h-1.5 bg-brand-orange rounded-full animate-pulse"></span>
-              <span>{lang === "ENG" ? "Custom wood and metal solutions" : "Individuāli koka un metāla risinājumi"}</span>
+              <span>{lang === "ENG" ? "Bespoke projects and design solutions" : "Individuāli projekti un dizaina risinājumi"}</span>
             </div>
 
             <h1 className="text-xl sm:text-3xl md:text-[36px] lg:text-[40px] font-serif leading-tight mb-6 tracking-tight">
               {lang === "ENG" ? (
                 <>
-                  Modern design and modern technologies combined <br className="hidden md:inline" />
+                  Modern design and modern <br className="hidden md:inline" />
+                  technologies combined <br className="hidden md:inline" />
                   with master craftsmanship
                 </>
               ) : (
                 <>
-                  Moderns dizains un mūsdienu tehnoloģijas apvienojumā <br className="hidden md:inline" />
+                  Moderns dizains un mūsdienu <br className="hidden md:inline" />
+                  tehnoloģijas apvienojumā <br className="hidden md:inline" />
                   ar meistara darbu
                 </>
               )}
             </h1>
 
-            <p className="text-xs sm:text-sm md:text-base font-light mb-8 opacity-95 tracking-wide max-w-xl leading-relaxed text-zinc-200 border-l-2 border-brand-orange pl-6">
-              {lang === "ENG"
-                ? "AVANGART specializes in manufacturing custom stairs, premium furniture, and other bespoke interior items. Our work combines bold design with uncompromising quality."
-                : "AVANGART nodarbojas ar kāpņu, ekskluzīvu mēbeļu un citu mājas interjera priekšmetu izgatavošanu pēc individuāla pasūtījuma. Mūsu darbs apvieno mūsdienīgu dizainu ar bezkompromisa kvalitāti."}
-            </p>
+            <p className="text-xs sm:text-sm md:text-base font-light mb-8 opacity-95 tracking-wide max-w-xl leading-relaxed text-zinc-200 border-l-2 border-brand-orange pl-6">{lang === "ENG"
+              ? "AVANGART specializes in manufacturing custom stairs, premium furniture, and other bespoke interior items. Our work combines bold design with uncompromising quality."
+              : "AVANGART nodarbojas ar kāpņu, ekskluzīvu mēbeļu un citu mājas interjera priekšmetu izgatavošanu pēc individuāla pasūtījuma. Mūsu darbs apvieno mūsdienīgu dizainu ar bezkompromisa kvalitāti."}</p>
 
             <div className="flex flex-col sm:flex-row gap-5 mb-10">
               <button 
@@ -799,13 +763,13 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
                   window.location.hash = lang === 'ENG' ? '#portfolio-stairs' : '#portfolio-kapnes';
                   window.scrollTo({ top: 0, behavior: 'instant' });
                 }}
-                className="inline-flex items-center justify-center bg-zinc-100 hover:bg-zinc-200 text-brand-brown border border-zinc-300 hover:border-zinc-400 px-8 py-4 uppercase text-xs tracking-[0.2em] font-extrabold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-sm"
+                className="inline-flex items-center justify-center bg-white text-zinc-900 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200 px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-sm"
               >
-                <span>{lang === "ENG" ? "Completed projects" : "Īstenotie projekti"}</span>
+                <span>{lang === "ENG" ? "Implemented projects" : "Īstenotie projekti"}</span>
               </button>
               <button 
                 onClick={onNavigateToContact}
-                className="inline-flex items-center justify-center space-x-4 bg-brand-brown hover:bg-brand-orange text-white px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold border border-brand-brown hover:border-brand-orange hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer"
+                className="inline-flex items-center justify-center space-x-4 btn-wood-oak text-white px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-md"
               >
                 <span>{lang === "ENG" ? "Contact us" : "Sazināties ar mums"}</span>
               </button>
@@ -823,7 +787,7 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
       </section>
 
       {/* Precizitātes un detaļu sadaļa (Precision in every detail) */}
-      <section id="precision" className="py-10 md:py-14 bg-white border-b border-zinc-100/60">
+      <section id="precision" className="pt-10 pb-6 md:pt-14 md:pb-8 bg-white border-b border-zinc-100/60">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Satura kolonna (Now on the left side) */}
@@ -834,31 +798,15 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               transition={{ duration: 0.45 }}
               className="lg:col-span-6 space-y-6 text-left"
             >
-              <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold block">
-                {lang === "ENG" ? "Quality without compromise" : "Kvalitāte bez kompromisiem"}
-              </span>
-              <h2 className="text-2xl md:text-3xl font-serif leading-tight text-brand-brown-dark">
-                {lang === "ENG" ? "Precision in every detail" : "Precizitāte katrā detaļā"}
-              </h2>
-              <div className="space-y-6 text-brand-grey font-light text-xs md:text-sm leading-relaxed">
-                <p>
-                  {lang === "ENG" ? (
-                    <>
-                      <strong>AVANGART</strong> is a design furniture studio where innovative production technologies, refined aesthetics, and the best craftsmanship traditions are combined. We create furniture and living design elements that are not just objects, but creators of space character.
-                    </>
-                  ) : (
-                    <>
-                      <strong>AVANGART</strong> ir dizaina mēbeļu studija, kurā apvienotas inovatīvas ražošanas tehnoloģijas, izsmalcināta estētika un labākās amatniecības tradīcijas. Mēs radām mēbeles un mājokļa dizaina elementus, kas nav tikai priekšmeti, bet gan telpas rakstura veidotāji.
-                    </>
-                  )}
-                </p>
-                <p>
-                  {lang === "ENG" ? (
-                    "Every detail we create is carefully thought out, using only the highest quality materials — from solid oak to innovative composite materials. Our goal is to create an environment that inspires and will serve for generations."
-                  ) : (
-                    "Katra mūsu radītā detaļa ir rūpīgi pārdomāta, izmantojot tikai augstvērtīgākos materiālus — sākot no masīva ozolkoka līdz inovatīviem kompozītmateriāliem. Mūsu mērķis ir radīt vidi, kas iedvesmo un kalpos daudzus gadus."
-                  )}
-                </p>
+              <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold block">{lang === "ENG" ? "Precision down to the millimetre" : "Kvalitāte bez kompromisiem"}</span>
+              <h2 className="text-3xl md:text-5xl font-serif leading-tight text-brand-brown-dark">{lang === "ENG" ? "Precision in every detail" : "Precizitāte katrā detaļā"}</h2>
+              <div className="space-y-6 text-brand-grey font-light text-sm md:text-base leading-relaxed">
+                <p><strong>AVANGART</strong> {lang === "ENG" 
+                  ? "is a design furniture studio where innovative production technologies, refined aesthetics, and the best craftsmanship traditions are combined. We create furniture and living design elements that are not just objects, but creators of space character."
+                  : "ir dizaina mēbeļu studija, kurā apvienotas inovatīvas ražošanas tehnoloģijas, izsmalcināta estētika un labākās amatniecības tradīcijas. Mēs radām mēbeles un mājokļa dizaina elementus, kas nav tikai priekšmeti, bet gan telpas rakstura veidotāji."}</p>
+                <p>{lang === "ENG" 
+                  ? "Every detail we create is carefully thought out, using only the highest quality materials — from solid oak to innovative composite materials. Our goal is to create an environment that inspires and will serve for generations."
+                  : "Katra mūsu radītā detaļa ir rūpīgi pārdomāta, izmantojot tikai augstvērtīgākos materiālus — sākot no masīva ozolkoka līdz inovatīviem kompozītmateriāliem. Mūsu mērķis ir radīt vidi, kas iedvesmo un kalpos daudzus gadus."}</p>
               </div>
               <div className="pt-4">
                 <div className="h-0.5 w-16 bg-brand-orange" />
@@ -874,7 +822,7 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               className="lg:col-span-6 relative aspect-[4/3] overflow-hidden shadow-2xl border border-zinc-200 bg-zinc-50"
             >
               <img 
-                src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=50&fm=webp" 
+                src="/images/kitchen1.webp" 
                 alt="Smalkas mēbeļu detaļas un telpas raksturs" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 referrerPolicy="no-referrer"
@@ -887,7 +835,7 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
       </section>
 
       {/* Par mums section */}
-      <section id="about" className="py-10 md:py-14 bg-brand-grey-light">
+      <section id="about" className="pt-6 pb-10 md:pt-8 md:pb-14 bg-brand-grey-light">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
@@ -896,36 +844,20 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.45 }}
             >
-              <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-                {lang === "ENG" ? "Exquisite artisanal craftsmanship" : "Izcila amatniecības māksla"}
-              </span>
-              <h2 className="text-2xl md:text-3xl font-serif leading-tight text-brand-brown-dark mb-6">
-                {lang === "ENG" ? "Staircases and furniture with lasting value" : "Kāpnes un mēbeles ar paliekošu vērtību"}
-              </h2>
-              <div className="space-y-5 text-brand-grey leading-relaxed text-xs md:text-sm font-light">
+              <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Exquisite joinery craftsmanship" : "Izcila amatniecības māksla"}</span>
+              <h2 className="text-3xl md:text-5xl font-serif leading-tight text-brand-brown-dark mb-6">{lang === "ENG" ? "Staircases and furniture with lasting value" : "Kāpnes un mēbeles ar paliekošu vērtību"}</h2>
+              <div className="space-y-5 text-brand-grey leading-relaxed text-sm md:text-base font-light">
                 {lang === "ENG" ? (
                   <>
-                    <p>
-                      We believe that a home is a mirror of your personality, the main structure of which consists of solid and lovingly crafted elements. Since day one, AVANGART has been creating solutions that serve both as a functional tool and as a unique design sculpture.
-                    </p>
-                    <p>
-                      Precise woodwork in our well-planned AVANGART workshop allows us to realize the most complex orders – from airy, modern wood and iron constructions to solid, minimalistic kitchen and living room furniture, completed with innovative technologies and elegant LED lighting.
-                    </p>
-                    <p className="font-semibold text-brand-brown text-sm">
-                      We design, manufacture, and install solutions from initial sketches down to the very last screw.
-                    </p>
+                    <p>We believe that a home is a mirror of your personality, the main structure of which consists of solid and lovingly crafted elements. Since day one, AVANGART has been creating solutions that serve both as a functional tool and as a unique design sculpture.</p>
+                    <p>Precise woodwork in our well-planned AVANGART workshop allows us to realize the most complex orders – from airy, modern wood and iron constructions to solid, minimalistic kitchen and living room furniture, completed with innovative technologies and elegant LED lighting.</p>
+                    <p className="font-semibold text-brand-brown text-sm">We design, manufacture, and install solutions from initial sketches down to the very last screw.</p>
                   </>
                 ) : (
                   <>
-                    <p>
-                      Mēs uzskatām, ka mājoklis ir personības spogulis, kura galvenā struktūra sastāv no pamatīgiem un mīlestībā radītiem elementiem. Kopš pirmās dienas AVANGART rada risinājumus, kuri kalpo gan kā funkcionāls rīks, gan kā unikāls dizaina elements.
-                    </p>
-                    <p>
-                      Kvalitatīva un precīza koka apstrāde ļauj realizēt tehniski sarežģītus risinājumus – no gaisīgām un modernām koka un metāla konstrukcijām līdz funkcionālām virtuves un viesistabas mēbelēm, kas aprīkotas ar mūsdienīgām tehnoloģijām un gaumīgu LED apgaismojumu.
-                    </p>
-                    <p className="font-semibold text-brand-brown text-sm">
-                      Mēs projektējam, ražojam un uzstādām risinājumus no idejas skices līdz pat pēdējai skrūvītei.
-                    </p>
+                    <p>Kopš pirmās dienas AVANGART rada risinājumus, kuri kalpo gan kā funkcionāls rīks, gan kā unikāls dizaina elements.</p>
+                    <p>Precīza koka apstrāde pārdomātajā AVANGART darbnīcā ļauj mums realizēt vissarežģītāko – no gaisīgām un modernām koka un dzelzs konstrukcijām līdz masīvām, lakoniskām virtuves un viesistabas mēbelēm, kas papildinātas ar inovatīvām tehnoloģijām un gaumīgu LED apgaismojumu.</p>
+                    <p className="font-semibold text-brand-brown text-sm">Mēs projektējam, ražojam un uzstādām risinājumus no idejas skices līdz pat pēdējai skrūvītei.</p>
                   </>
                 )}
               </div>
@@ -936,12 +868,12 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.45 }}
-              className="relative aspect-[16/11] lg:aspect-[4/3] overflow-hidden shadow-xl border border-zinc-200 bg-zinc-350"
+              className="relative aspect-[16/11] lg:aspect-[4/3] overflow-hidden shadow-xl border border-zinc-200 bg-zinc-300"
             >
               <img 
-                src={catStairsImg} 
-                alt="Avangart meistarības piemērs" 
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                src="/images/stair1.webp" 
+                alt="Modernas kāpnes dizaina mājā" 
+                className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
                 loading="lazy"
               />
@@ -961,82 +893,78 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
       {/* Portfolio Teaser Block */}
       <section className="pt-14 pb-8 md:pt-20 md:pb-10 bg-zinc-50 border-t border-b border-zinc-200/60">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
-          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-            {lang === "ENG" ? "Portfolio" : "Portfolio"}
-          </span>
-          <h2 className="text-2xl md:text-3xl font-serif text-brand-brown-dark mb-4 max-w-xl mx-auto leading-tight">
-            {lang === "ENG" ? "Our completed projects" : "Mūsu īstenotie projekti"}
-          </h2>
-          <p className="text-zinc-500 font-light text-xs md:text-sm max-w-2xl mx-auto leading-relaxed mb-8">
-            {lang === "ENG"
-              ? "We design and build exclusive stairs, built-in furniture and kitchen equipment, shelving, as well as design elements that will perfectly fit into the overall mood of your home."
-              : "Dizainējam un būvējam ekskluzīvas kāpnes, iebūvētās mēbeles un virtuves iekārtas, plauktus, kā arī dizaina elementus, kas lieliski iekļausies Jūsu mājokļa kopējā noskaņā."}
-          </p>
+          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">Portfolio</span>
+          <h2 className="text-3xl md:text-5xl font-serif text-brand-brown-dark mb-4 max-w-xl mx-auto leading-tight">{lang === "ENG" ? "Our implemented projects" : "Mūsu īstenotie projekti"}</h2>
+          <p className="text-zinc-500 font-light text-sm max-w-2xl mx-auto leading-relaxed mb-8">{lang === "ENG"
+            ? "We design and build exclusive stairs, built-in furniture and kitchen installations, shelves, as well as design elements that will perfectly fit into your home's overall mood."
+            : "Dizainējam un būvējam ekskluzīvas kāpnes, iebūvētās mēbeles un virtuves iekārtas, plauktus, kā arī dizaina elementus, kas lieliski iekļausies Jūsu mājokļa kopējā noskaņā."}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-6xl mx-auto mb-12 text-left">
             {[
               {
                 titleLV: "Koka kāpnes",
-                titleEN: "Wooden stairs",
+                titleEN: "Wooden Stairs",
+                img: "/images/stair1.webp",
                 hashLV: "#portfolio-kapnes",
-                hashEN: "#portfolio-stairs",
-                img: catStairsImg
+                hashEN: "#portfolio-stairs"
               },
               {
                 titleLV: "Virtuves iekārtas",
-                titleEN: "Kitchen units",
+                titleEN: "Kitchen Systems",
+                img: "/images/kitchen1.webp",
                 hashLV: "#portfolio-virtuve",
-                hashEN: "#portfolio-kitchen",
-                img: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=40&fm=webp"
+                hashEN: "#portfolio-kitchen"
               },
               {
-                titleLV: "Viesistabas mēbeles",
-                titleEN: "Living room furniture",
+                titleLV: "Iebūvētās mēbeles",
+                titleEN: "Living Room Furniture",
+                img: "/images/living1.webp",
                 hashLV: "#portfolio-viesistaba",
-                hashEN: "#portfolio-livingroom",
-                img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=40&fm=webp"
+                hashEN: "#portfolio-livingroom"
               },
               {
-                titleLV: "Guļamistabas mēbeles",
-                titleEN: "Bedroom furniture",
+                titleLV: "Guļamistaba",
+                titleEN: "Bedroom Suite",
+                img: "/images/bedroom1.webp",
                 hashLV: "#portfolio-gulamistaba",
-                hashEN: "#portfolio-bedroom",
-                img: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=400&q=40&fm=webp"
+                hashEN: "#portfolio-bedroom"
               },
               {
-                titleLV: "Vannas istabas mēbeles",
-                titleEN: "Bathroom furniture",
+                titleLV: "Vannas istaba",
+                titleEN: "Bathroom",
+                img: "/images/bathroom1.webp",
                 hashLV: "#portfolio-vannas-istaba",
-                hashEN: "#portfolio-bathroom",
-                img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=40&fm=webp"
+                hashEN: "#portfolio-bathroom"
               }
-            ].map((item, idx) => (
+            ].map((card, idx) => (
               <button
                 key={idx}
                 onClick={() => {
-                  window.location.hash = lang === "ENG" ? item.hashEN : item.hashLV;
+                  window.location.hash = lang === "ENG" ? card.hashEN : card.hashLV;
                   window.scrollTo({ top: 0, behavior: "instant" });
                 }}
-                className="group bg-white p-4 shadow-sm border border-zinc-200/70 hover:border-brand-orange/60 hover:shadow-md transition-all duration-300 text-center flex flex-col justify-between cursor-pointer w-full focus:outline-none"
+                className="group flex flex-col bg-white shadow-sm border border-zinc-200/70 overflow-hidden hover:border-brand-orange hover:shadow-md transition-all duration-300 w-full text-center cursor-pointer"
               >
-                <div className="w-full aspect-[4/3] overflow-hidden mb-4 border border-zinc-100 bg-zinc-50 relative">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-50">
                   <img
-                    src={item.img}
-                    alt={lang === "ENG" ? item.titleEN : item.titleLV}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
+                    src={card.img}
+                    alt={card.titleLV}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-brand-brown-dark/5 pointer-events-none" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
-                <h4 className="font-serif font-bold text-sm text-brand-brown group-hover:text-brand-orange transition-colors duration-300 leading-tight w-full text-center">
-                  {lang === "ENG" ? item.titleEN : item.titleLV}
-                </h4>
+                <div className="p-4 flex items-center justify-center min-h-[64px] border-t border-zinc-100">
+                  <h4 className="font-serif font-bold text-xs text-brand-brown-dark group-hover:text-brand-orange transition-colors duration-200 uppercase tracking-widest leading-snug">
+                    {lang === "ENG" ? card.titleEN : card.titleLV}
+                  </h4>
+                </div>
               </button>
             ))}
           </div>
           <button 
             onClick={() => { window.location.hash = lang === "ENG" ? "#portfolio-stairs" : "#portfolio-kapnes"; }}
-            className="inline-flex items-center justify-center space-x-3 bg-brand-brown text-white px-8 py-4 uppercase text-xs tracking-wider font-extrabold hover:bg-brand-orange hover:scale-102 transition-all duration-300 cursor-pointer"
+            className="inline-flex items-center justify-center space-x-3 btn-wood-oak text-white px-8 py-4 uppercase text-xs tracking-wider font-extrabold hover:scale-102 transition-all duration-300 cursor-pointer shadow-md"
           >
             <span>{lang === "ENG" ? "View portfolio" : "Apskatīt portfolio"}</span>
             <ArrowRight size={15} />
@@ -1047,19 +975,15 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
       {/* Sākuma BUJ Section (In design alignment with other blocks) */}
       <section id="sakums-buj" className="pt-8 pb-14 md:pt-10 md:pb-20 bg-white border-b border-zinc-200/60">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
-          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-            {lang === "ENG" ? "Frequently Asked Questions" : "Biežāk uzdotie jautājumi"}
-          </span>
-          <h2 className="text-xl md:text-3xl font-serif text-brand-brown-dark mb-10 max-w-xl mx-auto leading-tight">
-            {lang === "ENG" ? "Learn more about our work" : "Uzziniet vairāk par mūsu darbu"}
-          </h2>
+          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Frequently Asked Questions" : "Biežāk uzdotie jautājumi"}</span>
+          <h2 className="text-xl md:text-3xl font-serif text-brand-brown-dark mb-10 max-w-xl mx-auto leading-tight">{lang === "ENG" ? "Learn more about our work" : "Uzziniet vairāk par mūsu darbu"}</h2>
 
           <FAQAccordion items={FAQ_ITEMS.slice(0, 5)} lang={lang} />
 
           <div className="mt-12">
             <button 
               onClick={() => { window.location.hash = lang === "ENG" ? "#faq" : "#buj"; }}
-              className="inline-flex items-center justify-center space-x-3 bg-brand-brown text-white px-8 py-4 uppercase text-xs tracking-wider font-extrabold hover:bg-brand-orange hover:scale-102 transition-all duration-300 cursor-pointer border border-brand-brown hover:border-brand-orange"
+              className="inline-flex items-center justify-center space-x-3 btn-wood-oak text-white px-8 py-4 uppercase text-xs tracking-wider font-extrabold hover:scale-102 transition-all duration-300 cursor-pointer shadow-md"
             >
               <span>{lang === "ENG" ? "Read all FAQs" : "Lasīt visus BUJ"}</span>
               <ArrowRight size={15} />
@@ -1103,10 +1027,10 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
       {/* Banner instead of the contact form */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-brand-grey-light to-zinc-100 flex items-center justify-center border-t border-zinc-200">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
-          <h2 className="text-2xl md:text-3xl font-serif text-brand-brown-dark tracking-tight leading-tight">
+          <h2 className="text-3xl md:text-5xl font-serif text-brand-brown-dark tracking-tight leading-tight">
             {lang === "ENG" ? "Ready for a fresh transformation in your home?" : "Vai esat gatavs jaunām pārmaiņām savā mājoklī?"}
           </h2>
-          <p className="text-zinc-500 font-light text-xs md:text-sm max-w-xl mx-auto">
+          <p className="text-zinc-500 font-light text-sm max-w-xl mx-auto">
             {lang === "ENG"
               ? "AVANGART master craftsmen and designers are ready to turn your concept into a superb masterpiece."
               : "AVANGART amata meistari un dizaineri ir gatavi pārvērst Jūsu ideju izcilā meistardarbā."}
@@ -1114,7 +1038,7 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
           <div className="pt-2">
             <button 
               onClick={onNavigateToContact}
-              className="inline-flex items-center space-x-3 bg-brand-brown text-white px-8 py-4 uppercase text-xs tracking-widest font-extrabold hover:bg-brand-orange border border-brand-brown hover:border-brand-orange hover:scale-102 transition-all duration-300 cursor-pointer shadow-lg"
+              className="inline-flex items-center space-x-3 btn-wood-oak text-white px-8 py-4 uppercase text-xs tracking-widest font-extrabold hover:scale-102 transition-all duration-300 cursor-pointer shadow-lg"
             >
               <span>{lang === "ENG" ? "Contact us" : "Sazināties ar mums"}</span>
               <ArrowRight size={15} />
@@ -1124,12 +1048,12 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
       </section>
 
       {/* Bottom row back to top */}
-      <div className="bg-zinc-50 py-6 border-t border-zinc-200 flex justify-center">
+      <div className="bg-zinc-50 py-10 border-t border-zinc-200 flex justify-center">
         <button
           onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); }}
-          className="inline-flex items-center space-x-2 bg-brand-brown hover:bg-brand-orange text-white text-[10px] tracking-widest font-extrabold uppercase py-2.5 px-5 transition-colors cursor-pointer border border-brand-brown hover:border-brand-orange rounded-none shadow-sm"
+          className="inline-flex items-center justify-center space-x-3 bg-white text-zinc-900 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200 px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-sm"
         >
-          <ArrowUp size={13} className="mr-1" />
+          <ArrowUp size={15} />
           <span>{lang === "ENG" ? "To top" : "Uz augšu"}</span>
         </button>
       </div>
@@ -1207,12 +1131,8 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
     <section id="process" className="py-16 md:py-24 bg-[#111c2a] text-white border-t border-b border-zinc-900/40 font-sans">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="mb-14 text-center md:text-left">
-          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-            {lang === "ENG" ? "Work Process" : "Darba gaita"}
-          </span>
-          <h2 className="text-2xl md:text-3xl font-serif text-white tracking-tight leading-tight">
-            {lang === "ENG" ? "Work process from vision to result" : "Darba process no vīzijas līdz rezultātam"}
-          </h2>
+          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Our Approach" : "Darba gaita"}</span>
+          <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-tight">{lang === "ENG" ? "Work process from vision to perfection" : "Darba process no vīzijas līdz rezultātam"}</h2>
           <p className="text-zinc-400 font-light text-xs md:text-sm max-w-2xl mt-3 leading-relaxed">
             {lang === "ENG"
               ? "We treat each joinery piece as a unique work of art, ensuring the highest class of service and material execution at every milestone."
@@ -1308,9 +1228,9 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
             className="lg:col-span-6 space-y-6"
           >
             <div className="inline-flex items-center space-x-2 bg-zinc-100 text-brand-brown px-4 py-1 uppercase text-[9px] tracking-[0.25em] font-extrabold border-l-2 border-brand-orange">
-              <span>{lang === "ENG" ? "The Art of Collaboration & Co-creation" : "Sadarbības un koprades māksla"}</span>
+              <span>{lang === "ENG" ? "The Art of Collaboration and Co-creation" : "Sadarbības un koprades māksla"}</span>
             </div>
-            <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark leading-tight mt-1 mb-3">
+            <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark leading-tight mt-1 mb-3">
               {lang === "ENG" ? (
                 <>Our collaboration with <br />artists and designers</>
               ) : (
@@ -1318,7 +1238,7 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
               )}
             </h1>
             
-            <p className="text-brand-grey font-light leading-relaxed text-xs md:text-sm">
+            <p className="text-brand-grey font-light leading-relaxed text-sm md:text-base">
               {lang === "ENG"
                 ? "AVANGART collaborates with leading Latvian and international interior artists and designers. We understand the importance of every single line, material harmony, and precision in drawings, ensuring flawless project implementation."
                 : "AVANGART sadarbojas ar vadošajiem Latvijas un ārvalstu interjera māksliniekiem un dizaineriem. Mēs izprotam katras līnijas nozīmi, materiālu saspēli un augstu precizitāti rasējumos, nodrošinot nevainojamu projektu realizāciju."}
@@ -1346,20 +1266,19 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
                   {lang === "ENG" ? "Adaptive Problem Solving" : "Risinājumi nestandarta situācijās"}
                 </strong>
                 {lang === "ENG"
-                  ? "When site measurements reveal structural anomalies, we actively collaborate with the architect to supply smart solutions preserving design integrity."
+                  ? "If unexpected obstacles arise during the project, we work together to find the best technical and material solutions to preserve the author's vision."
                   : "Ja projekta gaitā parādās negaidīti šķēršļi, kopīgiem spēkiem rodam labākos tehniskos un materiālos risinājumus, lai saglabātu autora vīziju."}
               </p>
             </div>
- 
           </motion.div>
  
           <motion.div
             initial={{ opacity: 0, scale: 0.995 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-6 space-y-6"
+            className="lg:col-span-6 space-y-6 max-w-md mx-auto lg:ml-auto w-full"
           >
-            <div className="relative aspect-[4/3] overflow-hidden shadow-2xl border border-zinc-200 bg-zinc-200">
+            <div className="relative aspect-[3/2] overflow-hidden shadow-xl border border-zinc-200 bg-zinc-200">
               <img 
                 src={designerCollabImg} 
                 alt={lang === "ENG" ? "Collaboration with interior designers" : "Sadarbība ar dizaineriem"} 
@@ -1371,7 +1290,7 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
               <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-brand-orange/10 rounded-full blur-2xl" />
             </div>
 
-            <div className="relative aspect-[4/3] overflow-hidden shadow-2xl border border-zinc-200 bg-zinc-200">
+            <div className="relative aspect-[3/2] overflow-hidden shadow-xl border border-zinc-200 bg-zinc-200">
               <img 
                 src={catInteriorImg} 
                 alt={lang === "ENG" ? "Completed collaborative interior spaces" : "Īstenotie kopsadarbības dizaina interjeri"} 
@@ -1386,32 +1305,26 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
 
         </div>
 
-        {/* Centered Navigation Buttons below columns, partially under the image/text */}
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 md:mt-16 flex flex-wrap gap-4 justify-center items-center w-full"
-        >
+        {/* Action Buttons: side-by-side, centered below the columns */}
+        <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-5 border-t border-zinc-100 pt-12">
+          {/* Uz Augšu (To Top) Button on LEFT - Wood Oak style */}
           <button
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="inline-flex items-center space-x-2 bg-zinc-100 hover:bg-zinc-200 text-brand-brown text-xs uppercase tracking-wider font-extrabold py-4 px-6 transition-all duration-300 cursor-pointer border border-zinc-300 hover:border-zinc-400 font-sans shadow-sm"
+            onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            className="inline-flex items-center justify-center space-x-3 bg-white text-zinc-900 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200 px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-sm min-w-[220px]"
           >
-            <ArrowUp size={14} />
+            <ArrowUp size={15} />
             <span>{lang === "ENG" ? "To top" : "Uz augšu"}</span>
           </button>
 
+          {/* Pieteikties uz konsultāciju (Consultation) Button on RIGHT - Oak wood styled */}
           <button 
             onClick={onNavigateToContact}
-            className="inline-flex items-center space-x-3 bg-brand-brown text-white px-8 py-4 uppercase text-xs tracking-wider font-extrabold hover:bg-brand-orange hover:scale-102 transition-all duration-300 cursor-pointer shadow-md"
+            className="inline-flex items-center justify-center space-x-3 btn-wood-oak text-white px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-md min-w-[220px]"
           >
-            <span>{lang === "ENG" ? "Apply for cooperation" : "Pieteikties sadarbībai"}</span>
-            <ArrowRight size={15} />
+            <span>{lang === "ENG" ? "Apply for collaboration" : "Pieteikties sadarbībai"}</span>
+            <ArrowRight size={14} />
           </button>
-        </motion.div>
-
+        </div>
       </div>
     </div>
   );
@@ -1431,6 +1344,311 @@ const CAT_TRANSLATIONS: Record<string, { LV: string, EN: string }> = {
   "Vannas istaba": { LV: "Vannas istaba", EN: "Bathroom" }
 };
 
+// --- Custom Portfolio Card Component ---
+interface CustomPortfolioCardProps {
+  project: {
+    id: string | number;
+    title: string;
+    titleEN?: string;
+    category: string;
+    images: string[];
+    description: string;
+    descriptionEN?: string;
+    materials: string;
+    materialsEN?: string;
+    year: string;
+    isPlaceholder?: boolean;
+    placeholderNum?: number;
+  };
+  lang: "LV" | "ENG";
+  isDev: boolean;
+  onUpdateImages: (projectId: string | number, newImages: string[]) => void;
+}
+
+const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolioCardProps) => {
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  // Synchronise images count in case index goes out of bounds
+  useEffect(() => {
+    setCurrentImgIndex(0);
+  }, [project.id]);
+
+  const handlePrevImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setCurrentImgIndex((prev) => (prev === 0 ? project.images.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setCurrentImgIndex((prev) => (prev === project.images.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleDragStart = (e: React.DragEvent, index: number) => {
+    e.dataTransfer.setData("text/plain", index.toString());
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent, destIndex: number) => {
+    e.preventDefault();
+    const srcIndexStr = e.dataTransfer.getData("text/plain");
+    if (!srcIndexStr) return;
+    const srcIndex = parseInt(srcIndexStr, 10);
+    if (srcIndex === destIndex) return;
+
+    const newImages = [...project.images];
+    const [removed] = newImages.splice(srcIndex, 1);
+    newImages.splice(destIndex, 0, removed);
+    onUpdateImages(project.id, newImages);
+    setCurrentImgIndex(destIndex);
+  };
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 bg-white p-6 md:p-8 shadow-lg border border-zinc-200/50 min-h-[440px] items-center">
+      {/* Visual Section & Slider */}
+      <div className="lg:col-span-7 flex flex-col justify-between min-h-[360px] space-y-3 lg:space-y-0">
+        <div 
+          onClick={() => project.images.length > 0 && setIsLightboxOpen(true)}
+          className={cn(
+            "relative w-full h-[300px] sm:h-[320px] lg:flex-grow lg:h-0 overflow-hidden border border-zinc-200 bg-zinc-200 shadow-inner group lg:mb-2.5",
+            project.images.length > 0 ? "cursor-zoom-in" : "cursor-default"
+          )}
+        >
+          {project.images.length > 0 ? (
+            <img 
+              src={project.images[currentImgIndex]} 
+              alt={`${lang === "ENG" ? (project.titleEN || project.title) : project.title} - img ${currentImgIndex + 1}`} 
+              className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-700 select-none"
+              referrerPolicy="no-referrer"
+              loading="eager"
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 select-none">
+              <span className="text-[10px] uppercase tracking-widest font-extrabold text-zinc-400/80">
+                {lang === "ENG" ? "No images added yet" : "Pagaidām nav pievienotu attēlu"}
+              </span>
+            </div>
+          )}
+          
+          {/* Sliders Arrow Handlers */}
+          {project.images.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={handlePrevImage}
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2.5 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
+                aria-label={lang === "ENG" ? "Previous image" : "Iepriekšējais attēls"}
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <button
+                type="button"
+                onClick={handleNextImage}
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2.5 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
+                aria-label={lang === "ENG" ? "Next image" : "Nākamais attēls"}
+              >
+                <ChevronRight size={16} />
+              </button>
+            </>
+          )}
+
+          {/* Floating badge top-left styled with OAK wood grain */}
+          <div className="absolute top-3 left-3 btn-wood-oak border-none text-white py-1.5 px-3.5 text-[9px] uppercase tracking-widest font-extrabold select-none shadow-md">
+            {lang === "ENG" 
+              ? (project.isPlaceholder ? `Portfolio ${project.placeholderNum}` : (CAT_TRANSLATIONS[project.category]?.EN || project.category)) 
+              : (project.isPlaceholder ? `Portfolio ${project.placeholderNum}` : (CAT_TRANSLATIONS[project.category]?.LV || project.category))
+            }
+          </div>
+
+          {/* Floating Counter Badge bottom right */}
+          {project.images.length > 0 && (
+            <div className="absolute bottom-3 right-3 bg-black/55 backdrop-blur-sm text-white py-1 px-2.5 text-[10px] tracking-wider font-extrabold select-none">
+              {currentImgIndex + 1} / {project.images.length}
+            </div>
+          )}
+        </div>
+
+        {/* 7-Image Clickable Thumbnail Strip with Drag and Drop */}
+        {project.images.length > 0 && (
+          <div className="grid grid-cols-7 gap-1.5">
+          {project.images.map((imgUrl, idx) => {
+            const isFirst = idx === 0;
+            return (
+              <button
+                key={idx}
+                type="button"
+                draggable={isDev}
+                onDragStart={(e) => handleDragStart(e, idx)}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, idx)}
+                onClick={() => setCurrentImgIndex(idx)}
+                className={cn(
+                  "aspect-[4/3] w-full overflow-hidden border bg-zinc-100 transition-all duration-200 relative group cursor-pointer",
+                  currentImgIndex === idx 
+                    ? "border-brand-orange ring-1 ring-brand-orange scale-102 opacity-100" 
+                    : "border-zinc-200 opacity-60 hover:opacity-100 shadow-sm",
+                  isDev ? "cursor-grab active:cursor-grabbing border-zinc-300" : ""
+                )}
+                aria-label={lang === "ENG" ? `View image ${idx + 1}` : `Skatīt attēlu ${idx + 1}`}
+                title={isDev ? (lang === "ENG" ? "Drag and drop to rearrange. Drag to 1st position as Cover!" : "Velciet, lai mainītu secību. Pirmā pozīcija ir titulbilde!") : undefined}
+              >
+                <img 
+                  src={imgUrl} 
+                  alt="" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
+                  referrerPolicy="no-referrer"
+                  loading="lazy"
+                />
+
+              </button>
+            );
+          })}
+        </div>
+        )}
+      </div>
+
+      {/* Description Section */}
+      <div className="lg:col-span-5 flex flex-col justify-between min-h-[360px] lg:pl-4 space-y-4 lg:space-y-0">
+        <div className="space-y-2.5">
+          <h3 className="text-xl md:text-2xl font-serif text-brand-brown-dark leading-tight">
+            {lang === "ENG" ? (project.titleEN || project.title) : project.title}
+          </h3>
+          <div className="h-0.5 w-12 bg-brand-orange" />
+          
+          {project.isPlaceholder ? (
+            <div className="py-4 flex flex-col items-start space-y-3 opacity-60">
+              <div className="h-4 bg-zinc-100 rounded-sm w-3/4 animate-pulse"></div>
+              <div className="h-4 bg-zinc-100 rounded-sm w-1/2 animate-pulse"></div>
+              <p className="text-zinc-400 font-light text-xs italic">
+                {lang === "ENG" 
+                  ? "Project is currently under draft preparation..." 
+                  : "Projekta materiāli šobrīd tiek sagatavoti..."}
+              </p>
+            </div>
+          ) : (
+            <p className="text-zinc-650 font-normal text-xs md:text-sm leading-relaxed">
+              {lang === "ENG" ? (project.descriptionEN || project.description) : project.description}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-2.5 pt-4 border-t border-zinc-150">
+          <div className="flex justify-between text-[10px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-2">
+            <span className="text-zinc-400 font-medium shrink-0">{lang === "ENG" ? "Materials" : "Materiāli"}</span>
+            <span className="font-extrabold text-brand-grey-dark max-w-[200px] text-right truncate" title={project.isPlaceholder ? "—" : (lang === "ENG" ? (project.materialsEN || project.materials) : project.materials)}>
+              {project.isPlaceholder ? "—" : (lang === "ENG" ? (project.materialsEN || project.materials) : project.materials)}
+            </span>
+          </div>
+          <div className="flex justify-between text-[10px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-2">
+            <span className="text-zinc-400 font-medium">{lang === "ENG" ? "Year" : "Gads"}</span>
+            <span className="font-extrabold text-brand-grey-dark">{project.isPlaceholder ? "—" : project.year}</span>
+          </div>
+          <div className="flex justify-between text-[10px] uppercase tracking-widest leading-relaxed">
+            <span className="text-zinc-400 font-medium">{lang === "ENG" ? "Location" : "Izpildes Vieta"}</span>
+            <span className="font-extrabold text-brand-grey-dark font-sans">{project.isPlaceholder ? "—" : (lang === "ENG" ? "Riga / Latvia" : "Rīga / Latvija")}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Full-screen Lightbox overlay */}
+      <AnimatePresence>
+        {isLightboxOpen && project.images.length > 0 && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex flex-col justify-between p-6 select-none"
+            onClick={() => setIsLightboxOpen(false)}
+          >
+            {/* Header */}
+            <div className="flex justify-between items-center text-white text-xs tracking-wider border-b border-white/10 pb-4 h-12">
+              <div className="font-serif italic font-light truncate max-w-[80%] uppercase">
+                {lang === "ENG" ? (project.titleEN || project.title) : project.title} ({lang === "ENG" ? (CAT_TRANSLATIONS[project.category]?.EN || project.category) : (CAT_TRANSLATIONS[project.category]?.LV || project.category)})
+              </div>
+              <button 
+                type="button"
+                onClick={() => setIsLightboxOpen(false)}
+                className="bg-zinc-800 hover:bg-zinc-700 text-white p-2.5 rounded-full transition-transform duration-200 hover:scale-110 active:scale-90 cursor-pointer"
+                aria-label={lang === "ENG" ? "Close" : "Aizvērt"}
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Main Image content */}
+            <div className="flex-1 flex items-center justify-center relative my-6">
+              <img 
+                src={project.images[currentImgIndex]} 
+                alt={`${lang === "ENG" ? (project.titleEN || project.title) : project.title} - Zoom`} 
+                className="max-w-full max-h-[75vh] object-contain shadow-2xl transition-transform duration-300"
+                onClick={(e) => e.stopPropagation()}
+                referrerPolicy="no-referrer"
+              />
+
+              {project.images.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); handlePrevImage(); }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full p-4 backdrop-blur-md transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
+                    aria-label={lang === "ENG" ? "Previous image" : "Iepriekšējais attēls"}
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); handleNextImage(); }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full p-4 backdrop-blur-md transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
+                    aria-label={lang === "ENG" ? "Next image" : "Nākamais attēls"}
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Footer with thumb selection */}
+            <div className="border-t border-white/10 pt-4" onClick={(e) => e.stopPropagation()}>
+              <div className="max-w-xl mx-auto flex flex-col items-center space-y-4">
+                <div className="text-white text-[11px] tracking-widest uppercase font-extrabold opacity-75">
+                  {currentImgIndex + 1} / {project.images.length}
+                </div>
+                
+                <div className="flex justify-center flex-wrap gap-2 overflow-x-auto max-w-full pb-2">
+                  {project.images.map((imgUrl, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setCurrentImgIndex(idx)}
+                      className={cn(
+                        "w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",
+                        currentImgIndex === idx 
+                          ? "border-brand-orange ring-1 ring-brand-orange scale-105 opacity-100" 
+                          : "border-white/20 opacity-40 hover:opacity-100"
+                      )}
+                      aria-label={`Select page ${idx + 1}`}
+                    >
+                      <img 
+                        src={imgUrl} 
+                        alt="" 
+                        className="w-full h-full object-cover" 
+                        referrerPolicy="no-referrer"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
   const activeCategory = (() => {
     if (currentPath.startsWith("#portfolio-")) {
@@ -1440,29 +1658,71 @@ const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
     return "Kāpnes";
   })();
 
-  const [currentImgIndex, setCurrentImgIndex] = useState(0);
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [projectsList, setProjectsList] = useState<any[]>(PORTFOLIO_ITEMS);
+  const [placeholdersOrder, setPlaceholdersOrder] = useState<Record<string, string[]>>({});
 
-  // Reset index to first image of the project whenever section category shifts
-  useEffect(() => {
-    setCurrentImgIndex(0);
-  }, [activeCategory]);
-
-  const activeProject = PORTFOLIO_ITEMS.find(item => item.category === activeCategory) || PORTFOLIO_ITEMS[0];
-
-  const handlePrevImage = (e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    setCurrentImgIndex((prev) => (prev === 0 ? activeProject.images.length - 1 : prev - 1));
+  const handleUpdateImages = (projectId: string | number, newImages: string[]) => {
+    if (typeof projectId === 'string' && projectId.startsWith('placeholder-')) {
+      setPlaceholdersOrder(prev => ({
+        ...prev,
+        [projectId]: newImages
+      }));
+    } else {
+      setProjectsList(prev => prev.map(p => p.id === projectId ? { ...p, images: newImages } : p));
+    }
   };
 
-  const handleNextImage = (e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    setCurrentImgIndex((prev) => (prev === activeProject.images.length - 1 ? 0 : prev + 1));
-  };
+  const activeCategoryProject = projectsList.find(item => item.category === activeCategory) || projectsList[0];
+
+  // Dev mode detector (localhost and preview systems)
+  const isDev = typeof window !== "undefined" && (
+    window.location.hostname.includes("localhost") || 
+    window.location.hostname.includes("ais-dev") ||
+    window.location.hostname.includes("ais-pre")
+  );
 
   const handleCategoryChange = (cat: typeof PORTFOLIO_NAV_CATEGORIES[number]) => {
     window.location.hash = `#portfolio-${catParamMap[cat]}`;
   };
+
+  // Compile full set of 3 cards for this active category
+  const portfolio2Id = `placeholder-2-${activeCategory}`;
+  const portfolio2Images = placeholdersOrder[portfolio2Id] || [];
+
+  const portfolio3Id = `placeholder-3-${activeCategory}`;
+  const portfolio3Images = placeholdersOrder[portfolio3Id] || [];
+
+  const categoryProjects = [
+    { ...activeCategoryProject },
+    {
+      id: portfolio2Id,
+      isPlaceholder: true,
+      placeholderNum: 2,
+      title: "Portfolio 2",
+      titleEN: "Portfolio 2",
+      category: activeCategory,
+      images: portfolio2Images,
+      description: "",
+      descriptionEN: "",
+      materials: "",
+      materialsEN: "",
+      year: ""
+    },
+    {
+      id: portfolio3Id,
+      isPlaceholder: true,
+      placeholderNum: 3,
+      title: "Portfolio 3",
+      titleEN: "Portfolio 3",
+      category: activeCategory,
+      images: portfolio3Images,
+      description: "",
+      descriptionEN: "",
+      materials: "",
+      materialsEN: "",
+      year: ""
+    }
+  ];
 
   return (
     <div className="pt-24 min-h-screen bg-brand-grey-light">
@@ -1475,16 +1735,12 @@ const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
 
         {/* Header */}
         <div className="max-w-3xl mb-12">
-          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-            {lang === "ENG" ? "Projects catalog" : "Projektu katalogs"}
-          </span>
-          <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark mb-4">
-            {lang === "ENG" ? "Portfolio" : "Portfolio"}
-          </h1>
+          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Projects catalog" : "Projektu katalogs"}</span>
+          <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark mb-4">{lang === "ENG" ? "Portfolio" : "Portfolio"}</h1>
         </div>
 
         {/* Categories Tab Navigation */}
-        <div className="flex flex-wrap gap-2 md:gap-4 border-b border-zinc-200/80 pb-3 mb-12">
+        <div className="flex flex-wrap gap-2 md:gap-4 border-b border-zinc-200/80 pb-3 mb-10">
           {PORTFOLIO_NAV_CATEGORIES.map((cat) => (
             <button
               key={cat}
@@ -1492,8 +1748,8 @@ const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
               className={cn(
                 "px-5 py-2.5 uppercase text-[10px] tracking-wider font-extrabold transition-all duration-300 border cursor-pointer",
                 activeCategory === cat 
-                  ? "bg-brand-brown text-white border-brand-brown" 
-                  : "bg-white text-zinc-500 border-zinc-200 hover:text-brand-brown hover:border-brand-brown/50"
+                  ? "btn-wood-oak text-white border-transparent shadow-sm" 
+                  : "bg-white text-zinc-500 border-zinc-200 hover:text-brand-orange hover:border-brand-orange/50"
               )}
             >
               {lang === "ENG" ? (CAT_TRANSLATIONS[cat]?.EN || cat) : (CAT_TRANSLATIONS[cat]?.LV || cat)}
@@ -1501,183 +1757,29 @@ const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
           ))}
         </div>
 
-        {/* Selected Category Showcase */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCategory}
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.4 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 bg-white p-6 md:p-8 shadow-lg border border-zinc-200/50 min-h-[440px] items-center"
-          >
-            {/* Visual Section & Slider */}
-            <div className="lg:col-span-7 flex flex-col justify-between min-h-[360px] space-y-3 lg:space-y-0">
-              <div 
-                onClick={() => setIsLightboxOpen(true)}
-                className="relative w-full h-[300px] sm:h-[320px] lg:flex-grow lg:h-0 overflow-hidden border border-zinc-200 bg-zinc-200 shadow-inner group cursor-zoom-in lg:mb-2.5"
+
+
+        {/* Stack list of exactly 3 identical-sized cards/projects */}
+        <div className="space-y-12 md:space-y-16">
+          <AnimatePresence mode="popLayout">
+            {categoryProjects.map((proj) => (
+              <motion.div
+                key={proj.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.35 }}
               >
-                <img 
-                  src={activeProject.images[currentImgIndex]} 
-                  alt={`${lang === "ENG" ? (activeProject.titleEN || activeProject.title) : activeProject.title} - img ${currentImgIndex + 1}`} 
-                  className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-700 select-none"
-                  referrerPolicy="no-referrer"
-                  loading="eager"
+                <PortfolioCard 
+                  project={proj} 
+                  lang={lang} 
+                  isDev={isDev} 
+                  onUpdateImages={handleUpdateImages} 
                 />
-                
-                {/* Sliders Arrow Handlers */}
-                <button
-                  onClick={handlePrevImage}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2.5 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
-                  aria-label={lang === "ENG" ? "Previous image" : "Iepriekšējais attēls"}
-                >
-                  <ChevronLeft size={16} />
-                </button>
-                <button
-                  onClick={handleNextImage}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2.5 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
-                  aria-label={lang === "ENG" ? "Next image" : "Nākamais attēls"}
-                >
-                  <ChevronRight size={16} />
-                </button>
-
-                <div className="absolute top-3 left-3 bg-brand-orange text-white py-1 px-3.5 text-[9px] uppercase tracking-widest font-extrabold select-none">
-                  {lang === "ENG" ? (CAT_TRANSLATIONS[activeProject.category]?.EN || activeProject.category) : (CAT_TRANSLATIONS[activeProject.category]?.LV || activeProject.category)}
-                </div>
-
-
-                {/* Floating Counter Badge bottom right */}
-                <div className="absolute bottom-3 right-3 bg-black/55 backdrop-blur-sm text-white py-1 px-2.5 text-[10px] tracking-wider font-extrabold select-none">
-                  {currentImgIndex + 1} / {activeProject.images.length}
-                </div>
-              </div>
-
-              {/* 7-Image Clickable Thumbnail Strip */}
-              <div className="grid grid-cols-7 gap-1.5">
-                {activeProject.images.map((imgUrl, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentImgIndex(idx)}
-                    className={cn(
-                      "aspect-[4/3] w-full overflow-hidden border bg-zinc-100 transition-all duration-200 relative group cursor-pointer",
-                      currentImgIndex === idx 
-                        ? "border-brand-orange ring-1 ring-brand-orange scale-102 opacity-100" 
-                        : "border-zinc-200 opacity-60 hover:opacity-100 shadow-sm"
-                    )}
-                    aria-label={lang === "ENG" ? `View image ${idx + 1}` : `Skatīt attēlu ${idx + 1}`}
-                  >
-                    <img 
-                      src={imgUrl} 
-                      alt={`Miniatūra ${idx + 1}`} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
-                      referrerPolicy="no-referrer"
-                      loading="lazy"
-                    />
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Description Section */}
-            <div className="lg:col-span-5 flex flex-col justify-between min-h-[360px] lg:pl-4 space-y-4 lg:space-y-0">
-              <div className="space-y-2.5">
-                <h3 className="text-xl md:text-2xl font-serif text-brand-brown-dark leading-tight">
-                  {lang === "ENG" ? (activeProject.titleEN || activeProject.title) : activeProject.title}
-                </h3>
-                <div className="h-0.5 w-12 bg-brand-orange" />
-                <p className="text-zinc-650 font-normal text-xs md:text-sm leading-relaxed">
-                  {lang === "ENG" ? (activeProject.descriptionEN || activeProject.description) : activeProject.description}
-                </p>
-              </div>
-
-              <div className="space-y-2.5 pt-4 border-t border-zinc-150">
-                <div className="flex justify-between text-[10px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-2">
-                  <span className="text-zinc-400 font-medium shrink-0">{lang === "ENG" ? "Materials" : "Materiāli"}</span>
-                  <span className="font-extrabold text-brand-grey-dark max-w-[200px] text-right truncate" title={lang === "ENG" ? (activeProject.materialsEN || activeProject.materials) : activeProject.materials}>
-                    {lang === "ENG" ? (activeProject.materialsEN || activeProject.materials) : activeProject.materials}
-                  </span>
-                </div>
-                <div className="flex justify-between text-[10px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-2">
-                  <span className="text-zinc-400 font-medium">{lang === "ENG" ? "Year" : "Gads"}</span>
-                  <span className="font-extrabold text-brand-grey-dark">{activeProject.year}</span>
-                </div>
-                <div className="flex justify-between text-[10px] uppercase tracking-widest leading-relaxed">
-                  <span className="text-zinc-400 font-medium">{lang === "ENG" ? "Location" : "Izpildes Vieta"}</span>
-                  <span className="font-extrabold text-brand-grey-dark font-sans">{lang === "ENG" ? "Riga / Latvia" : "Rīga / Latvija"}</span>
-                </div>
-              </div>
-            </div>
-
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Full-screen Lightbox overlay */}
-        <AnimatePresence>
-          {isLightboxOpen && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex flex-col justify-between p-6 select-none"
-              onClick={() => setIsLightboxOpen(false)}
-            >
-              {/* Header */}
-              <div className="flex justify-between items-center text-white text-xs tracking-wider border-b border-white/10 pb-4 h-12">
-                <div className="font-serif italic font-light truncate max-w-[80%] uppercase">
-                  {lang === "ENG" ? (activeProject.titleEN || activeProject.title) : activeProject.title} ({lang === "ENG" ? (CAT_TRANSLATIONS[activeProject.category]?.EN || activeProject.category) : (CAT_TRANSLATIONS[activeProject.category]?.LV || activeProject.category)})
-                </div>
-                <button 
-                  onClick={() => setIsLightboxOpen(false)}
-                  className="bg-zinc-800 hover:bg-zinc-700 text-white p-2.5 rounded-full transition-transform duration-200 hover:scale-110 active:scale-90 cursor-pointer"
-                  aria-label={lang === "ENG" ? "Close" : "Aizvērt"}
-                >
-                  <X size={18} />
-                </button>
-              </div>
-
-              {/* Main Image content */}
-              <div className="flex-1 flex items-center justify-center relative my-6">
-                <button
-                  onClick={(e) => { e.stopPropagation(); handlePrevImage(); }}
-                  className="absolute left-2 sm:left-6 bg-zinc-800/80 hover:bg-zinc-700 text-white rounded-full p-3 sm:p-4 transition-transform duration-200 hover:scale-110 cursor-pointer z-10"
-                >
-                  <ChevronLeft size={22} />
-                </button>
-
-                <div 
-                  className="max-w-[90vw] max-h-[70vh] flex items-center justify-center overflow-hidden"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <motion.img 
-                    key={currentImgIndex}
-                    initial={{ opacity: 0, scale: 0.97 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.97 }}
-                    transition={{ duration: 0.3 }}
-                    src={activeProject.images[currentImgIndex]} 
-                    alt={activeProject.title}
-                    className="max-w-full max-h-[70vh] object-contain shadow-2xl border border-zinc-800"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-
-                <button
-                  onClick={(e) => { e.stopPropagation(); handleNextImage(); }}
-                  className="absolute right-2 sm:right-6 bg-zinc-800/80 hover:bg-zinc-700 text-white rounded-full p-3 sm:p-4 transition-transform duration-200 hover:scale-110 cursor-pointer z-10"
-                >
-                  <ChevronRight size={22} />
-                </button>
-              </div>
-
-              {/* Lightbox status bar */}
-              <div className="flex justify-center items-center text-white/50 text-xs font-semibold gap-4 h-12 pb-2">
-                <span>Attēls {currentImgIndex + 1} no {activeProject.images.length}</span>
-                <span className="text-zinc-700">|</span>
-                <span className="text-[10px] uppercase tracking-widest text-brand-orange font-extrabold">Nospiediet jebkur, lai aizvērtu</span>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
 
         <ScrollToTopButton />
       </div>
@@ -1751,12 +1853,8 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
           {/* General info & location details */}
           <div className="lg:col-span-5 space-y-8 lg:pr-4">
             <div>
-              <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-                {lang === "ENG" ? "Get in Touch" : "Saziņa un pieteikumi"}
-              </span>
-              <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark leading-tight mb-4">
-                {lang === "ENG" ? "Contact us" : "Sazinieties ar mums"}
-              </h1>
+              <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Get in Touch" : "Saziņa un pieteikumi"}</span>
+              <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark leading-tight mb-4">{lang === "ENG" ? "Contact us" : "Sazinieties ar mums"}</h1>
             </div>
 
             <div className="space-y-6">
@@ -1765,7 +1863,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                   <MapPin size={18} className="text-brand-orange" />
                 </div>
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest font-extrabold text-brand-grey">{lang === "ENG" ? "Address" : "Adrese"}</h4>
+                  <h4 className="text-[10px] uppercase tracking-widest font-extrabold text-brand-grey">{lang === "ENG" ? "Legal Address" : "Juridiskā adrese"}</h4>
                   <p className="text-brand-grey-dark font-light text-xs md:text-sm mt-0.5">Katlakalna iela 11, Rīga, LV-1073</p>
                 </div>
               </div>
@@ -1851,7 +1949,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                     <select className="w-full bg-transparent border-b border-zinc-350 py-2 focus:outline-none focus:border-brand-orange transition-colors font-light text-brand-grey-dark text-xs md:text-sm cursor-pointer">
                       {lang === "ENG" ? (
                         <>
-                          <option>Apply for cooperation</option>
+                          <option>Apply for collaboration</option>
                           <option>Staircase manufacturing</option>
                           <option>Kitchen system manufacturing</option>
                           <option>Living room furniture manufacturing</option>
@@ -1892,17 +1990,13 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                       onChange={(e) => setTermsAccepted(e.target.checked)}
                       className="mt-0.5 h-4.5 w-4.5 rounded border-zinc-300 text-brand-orange focus:ring-brand-orange-light cursor-pointer accent-brand-orange"
                     />
-                    <span className="text-xs text-zinc-550 font-light select-none leading-relaxed">
+                    <label htmlFor="data-consent" className="text-xs text-zinc-550 font-light select-none leading-relaxed">
                       {lang === "ENG" ? (
                         <>
                           I have read and agree to the{" "}
                           <button 
                             type="button" 
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              window.location.hash = '#privacy-policy';
-                            }}
+                            onClick={() => window.location.hash = '#privacy-policy'}
                             className="text-brand-orange hover:text-brand-brown underline font-normal cursor-pointer transition-colors"
                           >
                             privacy policy
@@ -1913,24 +2007,20 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                           Esmu iepazinies un piekrītu{" "}
                           <button 
                             type="button" 
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              window.location.hash = '#privatuma-politika';
-                            }}
+                            onClick={() => window.location.hash = '#privātuma-politika'}
                             className="text-brand-orange hover:text-brand-brown underline font-normal cursor-pointer transition-colors"
                           >
                             datu apstrādes noteikumiem
                           </button>
                         </>
                       )}
-                    </span>
+                    </label>
                   </div>
 
                   <button 
                     type="submit"
                     disabled={!termsAccepted}
-                    className="w-full bg-brand-grey-dark text-white py-4 md:py-5 uppercase text-[11px] tracking-[0.2em] font-extrabold hover:bg-brand-orange disabled:bg-zinc-300 disabled:text-zinc-500 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 cursor-pointer shadow-md"
+                    className="w-full btn-wood-oak text-white py-4 md:py-5 uppercase text-xs tracking-wider font-extrabold hover:scale-102 active:scale-95 transition-all duration-300 cursor-pointer shadow-md disabled:opacity-100 disabled:brightness-100 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
                     {lang === "ENG" ? "Send inquiry" : "Nosūtīt pieteikumu"}
                   </button>
@@ -1989,14 +2079,14 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start mb-3">
           
           {/* Brand Col - Left */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-4 space-y-3">
             <div className="flex items-center select-none py-1 h-auto">
               <LogoImage 
                 isDarkBackground={true} 
-                className="h-[72px] sm:h-[85px] md:h-[94px] w-auto" 
+                className="w-auto h-[61px] sm:h-[74px] md:h-[88px]" 
               />
             </div>
-            <div className="relative">
+            <div className="relative -translate-y-1 md:-translate-y-3">
               <p className="text-xs text-zinc-400 uppercase tracking-widest font-bold mb-1">
                 {lang === "ENG" ? "Bespoke design and craftsmanship" : "Individuāls dizains un roku darbs"}
               </p>
@@ -2009,7 +2099,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
           </div>
 
           {/* Social Networks Center Col */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-start text-center space-y-4 pt-4 lg:pt-6">
+          <div className="lg:col-span-4 flex flex-col items-center justify-start text-center space-y-4 pt-10 lg:pt-12">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-brand-orange-light">
               {lang === "ENG" ? "Social Networks" : "Sociālie tīkli"}
             </h4>
@@ -2027,7 +2117,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
           </div>
 
           {/* Contacts Col - Right */}
-          <div className="lg:col-span-4 flex flex-col space-y-3 pt-4 lg:pt-6 lg:items-start lg:text-left lg:pl-16">
+          <div className="lg:col-span-4 flex flex-col space-y-3 pt-10 lg:pt-12 lg:items-start lg:text-left lg:pl-16">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-brand-orange-light">
               {lang === "ENG" ? "Contacts" : "Kontakti"}
             </h4>
@@ -2170,13 +2260,7 @@ export default function App() {
   useEffect(() => {
     // Synchronize unique page-routing on state load/shift
     const handleHashChange = () => {
-      let rawHash = window.location.hash || '#sakums';
-      let currentHash = rawHash;
-      try {
-        currentHash = decodeURIComponent(rawHash);
-      } catch (e) {
-        // Fallback
-      }
+      let currentHash = window.location.hash || '#sakums';
       if (currentHash === '#portfolio') {
         window.location.hash = lang === 'ENG' ? '#portfolio-stairs' : '#portfolio-kapnes';
         return;
@@ -2406,7 +2490,7 @@ export default function App() {
                     localStorage.setItem('avangart-cookie-consent', 'accepted');
                     setShowCookieBanner(false);
                   }}
-                  className="bg-brand-brown hover:bg-brand-orange text-white py-2 px-6 uppercase text-[10px] tracking-wider font-extrabold cursor-pointer transition-colors border border-brand-brown hover:border-brand-orange w-1/2 lg:w-auto text-center"
+                  className="btn-wood-oak text-white py-2 px-6 uppercase text-[10px] tracking-wider font-extrabold cursor-pointer w-1/2 lg:w-auto text-center"
                 >
                   {lang === "ENG" ? "Accept All" : "Apstiprināt visas"}
                 </button>

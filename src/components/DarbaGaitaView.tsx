@@ -4,10 +4,10 @@ import { ArrowLeft, ArrowRight, ArrowUp } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 // Image Imports
-import step1Img from '../assets/images/consultation_meeting_1779372587565.png';
-import step2Img from '../assets/images/staircase_design_1779372522048.png';
-import step3Img from '../assets/images/furniture_crafting_1779372547170.png';
-import step4Img from '../assets/images/staircase_installation_1779372567010.png';
+const step1Img = "/images/consultation_meeting.webp";
+const step2Img = "/images/staircase_design.webp";
+const step3Img = "/images/furniture_crafting.webp";
+const step4Img = "/images/staircase_installation.webp";
 
 const BackToHomeButton = ({ lang }: { lang: "LV" | "ENG" }) => {
   return (
@@ -16,7 +16,7 @@ const BackToHomeButton = ({ lang }: { lang: "LV" | "ENG" }) => {
         window.location.hash = lang === "ENG" ? "#home" : "#sakums";
         window.scrollTo({ top: 0, behavior: "instant" });
       }}
-      className="inline-flex items-center space-x-2 bg-brand-brown hover:bg-brand-orange text-white text-[10px] tracking-widest font-extrabold uppercase py-2.5 px-5 transition-colors cursor-pointer border border-brand-brown hover:border-brand-orange rounded-none shadow-sm"
+      className="inline-flex items-center space-x-2 btn-wood-oak text-white text-[10px] tracking-widest font-extrabold uppercase py-2.5 px-5 cursor-pointer rounded-none shadow-sm"
     >
       <ArrowLeft size={13} className="mr-1" />
       <span>{lang === "ENG" ? "Back to Home" : "Atpakaļ uz sākumu"}</span>
@@ -31,10 +31,10 @@ const ScrollToTopButton = ({ lang }: { lang: "LV" | "ENG" }) => {
         onClick={() => {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
-        className="inline-flex items-center space-x-2 bg-brand-brown hover:bg-brand-orange text-white text-[10px] tracking-widest font-extrabold uppercase py-2.5 px-5 transition-colors cursor-pointer border border-brand-brown hover:border-brand-orange rounded-none shadow-sm"
+        className="inline-flex items-center justify-center space-x-3 bg-white text-zinc-900 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200 px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-sm"
       >
-        <ArrowUp size={13} className="mr-1" />
-        <span>{lang === "ENG" ? "Scroll Up" : "Uz augšu"}</span>
+        <ArrowUp size={15} />
+        <span>{lang === "ENG" ? "To top" : "Uz augšu"}</span>
       </button>
     </div>
   );
@@ -117,12 +117,8 @@ export const DarbaGaitaView = ({ lang = "LV" }: { lang?: "LV" | "ENG" }) => {
 
         {/* Header */}
         <div className="max-w-3xl mb-16 md:mb-24">
-          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">
-            {lang === "ENG" ? "Work Process" : "Darba gaita"}
-          </span>
-          <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark mb-4 leading-tight">
-            {lang === "ENG" ? "Work process from vision to result" : "Darba process no vīzijas līdz rezultātam"}
-          </h1>
+          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Work Process" : "Darba gaita"}</span>
+          <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark mb-4 leading-tight">{lang === "ENG" ? "Work process from vision to result" : "Darba process no vīzijas līdz rezultātam"}</h1>
           <p className="text-zinc-500 font-light text-xs md:text-sm leading-relaxed">
             {lang === "ENG" 
               ? "Every AVANGART project flows in a coordinated, organized, and transparent manner. We do not look for easy workarounds, but focus on the durability and aesthetics of bold, elegant, and uncompromising structures."
@@ -193,7 +189,7 @@ export const DarbaGaitaView = ({ lang = "LV" }: { lang?: "LV" | "ENG" }) => {
           <div className="pt-2">
             <a 
               href={lang === "ENG" ? "#contact" : "#kontakti"}
-              className="inline-flex items-center space-x-3 bg-brand-brown text-white px-8 py-4 uppercase text-xs tracking-widest font-extrabold hover:bg-brand-orange border border-brand-brown hover:border-brand-orange transition-all duration-300 shadow-lg cursor-pointer"
+              className="inline-flex items-center space-x-3 btn-wood-oak text-white px-8 py-4 uppercase text-xs tracking-widest font-extrabold transition-all duration-300 shadow-lg cursor-pointer"
             >
               <span>{lang === "ENG" ? "Get in Touch" : "Aizpildīt pieteikumu"}</span>
               <ArrowRight size={15} />
