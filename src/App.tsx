@@ -2168,7 +2168,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
-            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved." : "SIA AVANGART © 2026 Visas tiesības aizsargātas."}
+            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved.." : "SIA AVANGART © 2026 Visas tiesības aizsargātas.."}
           </div>
 
           {/* Right policy links (one font size larger: text-[11px] md:text-[12px]) */}
