@@ -36,16 +36,40 @@ import { DarbaGaitaView } from './components/DarbaGaitaView';
 import { CookiePolicyView, PrivacyPolicyView } from './components/PolicyViews';
 
 // --- Image Imports ---
-const staircaseHeroImg = "/images/staircase_hero.webp";
-const step1Img = "/images/consultation_meeting.webp";
-const step2Img = "/images/staircase_design.webp";
-const step3Img = "/images/furniture_crafting.webp";
-const step4Img = "/images/staircase_installation.webp";
-const catStairsImg = "/images/bespoke_staircase.webp";
-const catFurnitureImg = "/images/bespoke_furniture.webp";
-const catInteriorImg = "/images/bespoke_interior.webp";
-const designerCollabImg = "/images/designer_collaboration.webp";
-const logoCleanImg = "/images/logo.webp";
+import staircaseHeroImg from './assets/images/staircase_hero.webp';
+import step1Img from './assets/images/consultation_meeting.webp';
+import step2Img from './assets/images/staircase_design.webp';
+import step3Img from './assets/images/furniture_crafting.webp';
+import step4Img from './assets/images/staircase_installation.webp';
+import catStairsImg from './assets/images/bespoke_staircase.webp';
+import catFurnitureImg from './assets/images/bespoke_furniture.webp';
+import catInteriorImg from './assets/images/bespoke_interior.webp';
+import designerCollabImg from './assets/images/designer_collaboration.webp';
+import logoCleanImg from './assets/images/logo.webp';
+
+// --- Portfolio WebP Images ---
+import stair1 from './assets/images/stair1.webp';
+import stair2 from './assets/images/stair2.webp';
+import stair3 from './assets/images/stair3.webp';
+
+import kitchen1 from './assets/images/kitchen1.webp';
+import kitchen2 from './assets/images/kitchen2.webp';
+import kitchen3 from './assets/images/kitchen3.webp';
+
+import living1 from './assets/images/living1.webp';
+import living2 from './assets/images/living2.webp';
+
+import bedroom1 from './assets/images/bedroom1.webp';
+import bedroom2 from './assets/images/bedroom2.webp';
+import bedroom3 from './assets/images/bedroom3.webp';
+import bedroom4 from './assets/images/bedroom4.webp';
+import bedroom5 from './assets/images/bedroom5.webp';
+import bedroom6 from './assets/images/bedroom6.webp';
+
+import bathroom1 from './assets/images/bathroom1.webp';
+import bathroom2 from './assets/images/bathroom2.webp';
+import bathroom3 from './assets/images/bathroom3.webp';
+import bathroom4 from './assets/images/bathroom4.webp';
 
 // --- Types ---
 interface PortfolioItem {
@@ -67,7 +91,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Individuālas masīvkoka kāpnes privātmājā",
     titleEN: "Bespoke solid oak stairs in a private home",
     category: "Kāpnes",
-    images: ["/images/stair1.webp", "/images/stair2.webp", "/images/stair3.webp"],
+    images: [stair1, stair2, stair3],
     description: "Projektētas un uzstādītas modernas masīvkoka kāpnes privātmājā Mārupē. Tās ir izgatavotas no atlasīta, augstas kvalitātes ozola, kas apstrādāts ar nodilumizturīgu dabīgo aizsargeļļu. Konstrukcija ir rūpīgi izstrādāta, lai nodrošinātu maksimālu izturību un drošību, lieliski iekļaujoties mājas koptēlā.",
     descriptionEN: "Designed and installed modern solid wood stairs in a private home in Mārupe. Crafted from select, high-quality oak treated with a durable protective natural oil. The structure is carefully designed to ensure maximum durability and safety, fitting perfectly into the overall home design.",
     materials: "Masīvs ozols",
@@ -79,7 +103,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Pēc mēra iebūvēta premium ozolkoka virtuve",
     titleEN: "Custom premium oak fitted kitchen",
     category: "Virtuve",
-    images: ["/images/kitchen1.webp", "/images/kitchen2.webp", "/images/kitchen3.webp"],
+    images: [kitchen1, kitchen2, kitchen3],
     description: "Iebūvētā virtuves iekārta izstrādāta divstāvu privātmājā Babītē. Tajā izmantotas dabīgā ozola fasādes ar saskaņotu koksnes tekstūru un eleganta akmens darba virsma. Koka detaļas ir tonētas siltā smilšu tonī un lakotas ar ekoloģisku, ūdens bāzes matēto laku. Aprīkota ar pilnībā integrētu Blum klusās aizvēršanas furnitūru un slēpto LED apgaismojumu darba virsmām.",
     descriptionEN: "A built-in kitchen set designed for a two-story private home in Babīte. It features natural oak facades with matched wood grain and an elegant stone worktop. Wooden details are tinted in a warm sand tone and varnished with an eco-friendly water-based matte lacquer. Equipped with integrated Blum soft-close hardware and hidden countertop LED lighting.",
     materials: "Ozols, akmens virsma",
@@ -91,7 +115,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "TV apdare un mediju siena viesistabā",
     titleEN: "TV wall wood cladding and media unit in living room",
     category: "Viesistaba",
-    images: ["/images/living1.webp", "/images/living2.webp"],
+    images: [living1, living2],
     description: "Mūsdienīga TV apdare, kas izgatavota dzīvoklim Rīgas centrā. Korpuss izstrādāts no premium ozola finierējuma, bet fasādes veidotas no smalki rievota masīvkoka profilējuma, kas tonēts ar pelēko eļļas vasku. Mēbelē iestrādāti slēptie kabeļu kanāli un integrēta silta, dimmējama LED fona gaisma izsmalcinātam un mājīgam interjera akcentam.",
     descriptionEN: "A modern TV wall wood cladding and media unit crafted for an apartment in the center of Rīga. The body is built with premium oak veneer, while the facades feature finely ribbed solid wood profiles treated with grey oil wax. Features integrated cable routing channels and warm, dimmable LED backlight accents.",
     materials: "Masīvs ozols, LED",
@@ -103,8 +127,8 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Ozolkoka guļamistabas mēbeļu komplekts",
     titleEN: "Oak bedroom furniture set",
     category: "Guļamistaba",
-    images: ["/images/bedroom1.webp", "/images/bedroom2.webp", "/images/bedroom3.webp", "/images/bedroom4.webp", "/images/bedroom5.webp", "/images/bedroom6.webp"],
-    description: "Guļamistabas mēbeļu komplekts privātmājai Ādažos. Gultas rāmis un pie sienas montētie naktsskapīši izgatavoti no īpaši atlasītiem ozolkoka dēļiem, kas pulēti ar dabīgo vasku. Galvgalis apvilkts ar nodilumizturīgu dabisko lina maisauduma tekstilu. Pie sienas montētie naktsskapīši rada gaisīgu un modernu efektu telpā.",
+    images: [bedroom1, bedroom2, bedroom3, bedroom4, bedroom5, bedroom6],
+    description: "Guļamistabas mēbeļu komplekts privātmājai Ādažos. Gultas rāmis un pie sienas montētie naktsskapīši izgatavoti von īpaši atlasītiem ozolkoka dēļiem, kas pulēti ar dabīgo vasku. Galvgalis apvilkts ar nodilumizturīgu dabisko lina maisauduma tekstilu. Pie sienas montētie naktsskapīši rada gaisīgu un modernu efektu telpā.",
     descriptionEN: "A bedroom furniture collection for a private house in Ādaži. The bed frame and wall-mounted bedside tables are made of specially selected oak planks polished with natural wax. The headboard is upholstered in highly durable natural linen textile. The wall-mounted bedside tables create a light and modern feel in the space.",
     materials: "Ozols, tekstils",
     materialsEN: "Oak, textile",
@@ -115,7 +139,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: "Ekskluzīvas mitrumizturīgas ozolkoka mēbeles vannas istabai",
     titleEN: "Premium humidity-resistant solid oak bathroom vanity system",
     category: "Vannas istaba",
-    images: ["/images/bathroom1.webp", "/images/bathroom2.webp", "/images/bathroom3.webp", "/images/bathroom4.webp"],
+    images: [bathroom1, bathroom2, bathroom3, bathroom4],
     description: "Izsmalcināts vannas istabas mēbeļu komplekts, kas izgatavots no speciāli apstrādāta mitrumizturīga masīvā ozolkoka, kas aizsargāts ar speciālu eļļu. Komplektā ietilpst atvilktņu un durvju konsoles komplekts ar izlietni un spoguli, kurā iestrādāts slēpts LED aizmugures apgaismojums.",
     descriptionEN: "A sophisticated master bathroom furniture set crafted from custom-treated humidity-resistant solid oak, sealed with premium protective oil. The set features a drawer and door vanity console with a sink and a matching mirror with integrated hidden LED backlighting.",
     materials: "Mitrumizturīgs ozols, LED",
@@ -822,7 +846,7 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               className="lg:col-span-6 relative aspect-[4/3] overflow-hidden shadow-2xl border border-zinc-200 bg-zinc-50"
             >
               <img 
-                src="/images/kitchen1.webp" 
+                src={kitchen1} 
                 alt="Smalkas mēbeļu detaļas un telpas raksturs" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 referrerPolicy="no-referrer"
@@ -871,7 +895,7 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               className="relative aspect-[16/11] lg:aspect-[4/3] overflow-hidden shadow-xl border border-zinc-200 bg-zinc-300"
             >
               <img 
-                src="/images/stair1.webp" 
+                src={stair1} 
                 alt="Modernas kāpnes dizaina mājā" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -903,35 +927,35 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               {
                 titleLV: "Koka kāpnes",
                 titleEN: "Wooden Stairs",
-                img: "/images/stair1.webp",
+                img: stair1,
                 hashLV: "#portfolio-kapnes",
                 hashEN: "#portfolio-stairs"
               },
               {
                 titleLV: "Virtuves iekārtas",
                 titleEN: "Kitchen Systems",
-                img: "/images/kitchen1.webp",
+                img: kitchen1,
                 hashLV: "#portfolio-virtuve",
                 hashEN: "#portfolio-kitchen"
               },
               {
                 titleLV: "Iebūvētās mēbeles",
                 titleEN: "Living Room Furniture",
-                img: "/images/living1.webp",
+                img: living1,
                 hashLV: "#portfolio-viesistaba",
                 hashEN: "#portfolio-livingroom"
               },
               {
                 titleLV: "Guļamistaba",
                 titleEN: "Bedroom Suite",
-                img: "/images/bedroom1.webp",
+                img: bedroom1,
                 hashLV: "#portfolio-gulamistaba",
                 hashEN: "#portfolio-bedroom"
               },
               {
                 titleLV: "Vannas istaba",
                 titleEN: "Bathroom",
-                img: "/images/bathroom1.webp",
+                img: bathroom1,
                 hashLV: "#portfolio-vannas-istaba",
                 hashEN: "#portfolio-bathroom"
               }
@@ -2144,7 +2168,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
-            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved" : "SIA AVANGART © 2026 Visas tiesības aizsargātas"}
+            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved." : "SIA AVANGART © 2026 Visas tiesības aizsargātas."}
           </div>
 
           {/* Right policy links (one font size larger: text-[11px] md:text-[12px]) */}
@@ -2407,27 +2431,34 @@ export default function App() {
       <AnimatePresence>
         {showCookieBanner && (
           <motion.div
-            initial={{ y: 120, opacity: 0 }}
+            initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 120, opacity: 0 }}
+            exit={{ y: 50, opacity: 0 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed bottom-0 left-0 right-0 z-[120] p-4 md:p-6 bg-[#111c2a] text-white border-t border-brand-brown/40 shadow-[0_-10px_35px_rgba(0,0,0,0.5)]"
+            className="fixed bottom-4 right-4 left-4 md:left-auto md:max-w-md w-auto z-[120] bg-white text-zinc-800 border-l-4 border-brand-orange border-t border-r border-b border-zinc-200/80 shadow-[0_10px_40px_rgba(0,0,0,0.12)] p-5 md:p-6"
           >
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 md:gap-6 relative pr-8 lg:pr-0">
+            <div className="relative">
               {/* Close 'X' Button on top-right */}
               <button
                 onClick={() => {
                   localStorage.setItem('avangart-cookie-consent', 'dismissed');
                   setShowCookieBanner(false);
                 }}
-                className="absolute -top-1 md:top-auto -right-2 p-1.5 text-zinc-400 hover:text-brand-orange transition-colors cursor-pointer"
+                className="absolute top-0 right-0 p-1 text-zinc-400 hover:text-zinc-650 transition-colors cursor-pointer"
                 aria-label="Aizvērt"
               >
-                <X size={18} />
+                <X size={16} />
               </button>
 
+              <div className="flex items-center space-x-2 mb-3">
+                <Cookie className="text-brand-orange animate-pulse" size={18} />
+                <h4 className="text-sm font-serif font-bold text-brand-brown-dark">
+                  {lang === "ENG" ? "Cookie Settings" : "Sīkdatņu uzstādījumi"}
+                </h4>
+              </div>
+
               {/* Text content with converted policy links */}
-              <div className="flex-1 text-xs md:text-[13px] leading-relaxed text-zinc-300 font-sans tracking-wide pr-4">
+              <div className="text-[11px] md:text-xs leading-relaxed text-zinc-500 font-sans tracking-wide mb-5 pr-6">
                 {lang === "ENG" ? (
                   <>
                     We use our own and third-party cookies to ensure and improve the performance of our website, personalize information about our products and services, and analyze website traffic. By clicking "Accept All", you agree to the use of all cookies. Closing the cookie window with "X" does not activate cookies. Read more about the{' '}
@@ -2435,7 +2466,7 @@ export default function App() {
                       onClick={() => {
                         window.location.hash = '#cookie-policy';
                       }}
-                      className="text-brand-orange-light font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-xs md:text-[13px]"
+                      className="text-brand-orange font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-xs"
                     >
                       Cookie Policy
                     </button>{' '}
@@ -2444,20 +2475,19 @@ export default function App() {
                       onClick={() => {
                         window.location.hash = '#privacy-policy';
                       }}
-                      className="text-brand-orange-light font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-xs md:text-[13px]"
+                      className="text-brand-orange font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-xs"
                     >
                       Privacy Policy
-                    </button>{' '}
-                    in the bottom corner.
+                    </button>.
                   </>
                 ) : (
                   <>
-                    Mēs izmantojam savas un trešo pušu sīkdatnes, lai nodrošinātu un uzlabotu tīmekļa vietnes darbību, pielāgotu informāciju mūsu produktiem un pakalpojumiem, kā arī analizētu vietnes apmeklējumu. Spiežot "Apstiprināt visas", jūs piekrītat visu sīkdatņu izmantošanai. Sīkdatņu loga aizvēršana ar "X" neaktivizē sīkdatnes. Lapas apakšējā stūrī lasiet vairāk par{' '}
+                    Mēs izmantojam savas un trešo pušu sīkdatnes, lai nodrošinātu un uzlabotu tīmekļa vietnes darbību, pielāgotu informāciju mūsu produktiem un pakalpojumiem, kā arī analizētu vietnes apmeklējumu. Spiežot "Apstiprināt visas", jūs piekrītat visu sīkdatņu izmantošanai. Sīkdatņu loga aizvēršana ar "X" neaktivizē sīkdatnes. Lasiet vairāk par{' '}
                     <button
                       onClick={() => {
                         window.location.hash = '#sikdatnu-politika';
                       }}
-                      className="text-brand-orange-light font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-xs md:text-[13px]"
+                      className="text-brand-orange font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-xs"
                     >
                       Sīkdatņu politiku
                     </button>{' '}
@@ -2466,7 +2496,7 @@ export default function App() {
                       onClick={() => {
                         window.location.hash = '#privatuma-politika';
                       }}
-                      className="text-brand-orange-light font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-xs md:text-[13px]"
+                      className="text-brand-orange font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer inline-block align-baseline font-sans text-[11px] md:text-xs"
                     >
                       Privātuma politiku
                     </button>.
@@ -2475,13 +2505,13 @@ export default function App() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-3 shrink-0 w-full lg:w-auto mt-2 lg:mt-0 justify-end md:justify-start">
+              <div className="flex items-center gap-2.5 justify-end">
                 <button
                   onClick={() => {
                     localStorage.setItem('avangart-cookie-consent', 'rejected');
                     setShowCookieBanner(false);
                   }}
-                  className="bg-transparent border border-zinc-500 hover:border-white text-zinc-350 hover:text-white py-2 px-5 uppercase text-[10px] tracking-wider font-extrabold cursor-pointer transition-colors w-1/2 lg:w-auto text-center"
+                  className="bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-zinc-655 hover:text-zinc-800 py-2.5 px-4 uppercase text-[9px] tracking-widest font-extrabold cursor-pointer transition-colors text-center"
                 >
                   {lang === "ENG" ? "Decline" : "Noraidīt"}
                 </button>
@@ -2490,7 +2520,7 @@ export default function App() {
                     localStorage.setItem('avangart-cookie-consent', 'accepted');
                     setShowCookieBanner(false);
                   }}
-                  className="btn-wood-oak text-white py-2 px-6 uppercase text-[10px] tracking-wider font-extrabold cursor-pointer w-1/2 lg:w-auto text-center"
+                  className="bg-zinc-900 hover:bg-zinc-850 border border-zinc-900 text-white py-2.5 px-5 uppercase text-[9px] tracking-widest font-extrabold cursor-pointer transition-colors text-center"
                 >
                   {lang === "ENG" ? "Accept All" : "Apstiprināt visas"}
                 </button>
