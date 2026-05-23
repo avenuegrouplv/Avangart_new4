@@ -1046,7 +1046,7 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
             <div className="px-4">
               <div className="text-3xl md:text-4xl font-serif text-brand-orange-light font-bold mb-1">A+</div>
               <div className="text-[9px] uppercase tracking-widest text-zinc-400 font-extrabold">
-                {lang === "ENG" ? "Quality timber" : "Kvalitātes Koksne"}
+                {lang === "ENG" ? "Quality timber" : "Koksnes kvalitāte"}
               </div>
             </div>
           </div>
@@ -2105,21 +2105,21 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
   return (
     <footer className="bg-brand-grey-dark text-white pt-4 pb-4 border-t border-white/5 font-sans">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start mb-3">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start mb-3">
           
           {/* Brand Col - Left */}
-          <div className="lg:col-span-4 space-y-3">
-            <div className="flex items-center select-none py-1 h-auto">
+          <div className="lg:col-span-4 space-y-3 order-1 lg:order-1">
+            <div className="flex justify-center lg:justify-start items-center select-none py-1 h-auto">
               <LogoImage 
                 isDarkBackground={true} 
                 className="w-auto h-[61px] sm:h-[74px] md:h-[88px]" 
               />
             </div>
-            <div className="relative -translate-y-1 md:-translate-y-3">
+            <div className="relative -translate-y-1 md:-translate-y-3 text-center lg:text-left flex flex-col items-center lg:items-start">
               <p className="text-xs text-zinc-400 uppercase tracking-widest font-bold mb-1">
                 {lang === "ENG" ? "Bespoke design and craftsmanship" : "Individuāls dizains un roku darbs"}
               </p>
-              <p className="text-xs text-zinc-500 max-w-sm leading-relaxed">
+              <p className="text-xs text-zinc-500 max-w-sm leading-relaxed mx-auto lg:mx-0">
                 {lang === "ENG"
                   ? "Every step in your home is a unique sculpture. We develop designs from the first sketch of an idea to the very last screw."
                   : "Katrs mājokļa solis ir unikāla skulptūra. Mēs izstrādājam dizainus no pirmās idejas skices līdz pēdējai skrūvītei."}
@@ -2128,11 +2128,11 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
           </div>
 
           {/* Social Networks Center Col */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-start text-center space-y-4 pt-10 lg:pt-12">
+          <div className="lg:col-span-4 flex flex-col items-start lg:items-center justify-start text-left lg:text-center space-y-3 lg:space-y-4 pt-1 lg:pt-12 order-3 lg:order-2">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-brand-orange-light">
               {lang === "ENG" ? "Social Networks" : "Sociālie tīkli"}
             </h4>
-            <div className="flex items-center space-x-6 text-zinc-400 py-1 justify-center">
+            <div className="flex items-center space-x-6 text-zinc-400 py-1 justify-start lg:justify-center">
               <a href="#" className="hover:text-brand-orange transition-colors duration-200" aria-label="Instagram">
                 <Instagram size={28} />
               </a>
@@ -2146,11 +2146,11 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
           </div>
 
           {/* Contacts Col - Right */}
-          <div className="lg:col-span-4 flex flex-col space-y-3 pt-10 lg:pt-12 lg:items-start lg:text-left lg:pl-16">
+          <div className="lg:col-span-4 flex flex-col space-y-3 pt-1 lg:pt-12 items-start text-left lg:pl-16 order-2 lg:order-3">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-brand-orange-light">
               {lang === "ENG" ? "Contacts" : "Kontakti"}
             </h4>
-            <div className="space-y-2 text-xs text-zinc-300 font-light font-sans flex flex-col lg:items-start">
+            <div className="space-y-2 text-xs text-zinc-300 font-light font-sans flex flex-col items-start">
               <p className="font-extrabold text-white tracking-wider uppercase">SIA "AVANGART"</p>
               <p className="flex items-center space-x-2.5">
                 <MapPin size={13} className="text-brand-orange shrink-0" />
@@ -2170,7 +2170,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         </div>
 
         {/* Bottom Line */}
-        <div className="pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="mt-8 lg:mt-3 pt-5 lg:pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
             {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved." : "SIA AVANGART © 2026 Visas tiesības aizsargātas."}
