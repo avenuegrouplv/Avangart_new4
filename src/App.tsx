@@ -45,7 +45,7 @@ const catStairsImg = '/images/bespoke_staircase.webp';
 const catFurnitureImg = '/images/bespoke_furniture.webp';
 const catInteriorImg = '/images/bespoke_interior.webp';
 const designerCollabImg = '/images/designer_collaboration.webp';
-const logoCleanImg = '/images/logo.webp';
+const logoCleanImg = '/images/logo_clean_processed.png';
 
 // --- Portfolio WebP Images ---
 const stair1 = '/images/stair1.webp';
@@ -179,15 +179,19 @@ const paramCatMap: Record<string, "Kāpnes" | "Virtuve" | "Viesistaba" | "Guļam
 
 // --- LogoImage Component ---
 const LogoImage = ({ className, isDarkBackground = false }: { className?: string; isDarkBackground?: boolean }) => {
+  const filterStyle = isDarkBackground
+    ? { filter: "brightness(0) invert(1)" }
+    : { filter: "none" };
+
   return (
     <img
       src={logoCleanImg}
       alt="AVANGART logo"
       loading="eager"
       referrerPolicy="no-referrer"
+      style={filterStyle}
       className={cn(
         "object-contain select-none transition-all duration-300",
-        isDarkBackground ? "brightness-0 invert opacity-95" : "brightness-100",
         className
       )}
     />
@@ -2168,7 +2172,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
-            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved...." : "SIA AVANGART © 2026 Visas tiesības aizsargātas...."}
+            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved" : "SIA AVANGART © 2026 Visas tiesības aizsargātas"}
           </div>
 
           {/* Right policy links (one font size larger: text-[11px] md:text-[12px]) */}
