@@ -2168,7 +2168,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
-            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved..." : "SIA AVANGART © 2026 Visas tiesības aizsargātas..."}
+            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved....." : "SIA AVANGART © 2026 Visas tiesības aizsargātas....."}
           </div>
 
           {/* Right policy links (one font size larger: text-[11px] md:text-[12px]) */}
@@ -2435,7 +2435,7 @@ export default function App() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="fixed bottom-6 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 w-auto md:w-full md:max-w-4xl z-[120] bg-white/95 backdrop-blur-md text-zinc-900 border-l-[6px] border-brand-orange border-t border-r border-b border-zinc-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-2xl p-6 md:p-8"
+            className="fixed bottom-6 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:right-auto w-auto md:w-[calc(100%-3rem)] md:max-w-5xl z-[120] bg-white/98 backdrop-blur-md text-zinc-900 border-l-[6px] border-brand-orange border-t border-r border-b border-zinc-200 shadow-[0_25px_60px_rgba(0,0,0,0.18)] rounded-2xl p-6 md:p-8"
           >
             <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
               {/* Close 'X' Button on top-right */}
