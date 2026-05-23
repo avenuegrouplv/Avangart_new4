@@ -36,40 +36,40 @@ import { DarbaGaitaView } from './components/DarbaGaitaView';
 import { CookiePolicyView, PrivacyPolicyView } from './components/PolicyViews';
 
 // --- Image Imports ---
-import staircaseHeroImg from './assets/images/staircase_hero.webp';
-import step1Img from './assets/images/consultation_meeting.webp';
-import step2Img from './assets/images/staircase_design.webp';
-import step3Img from './assets/images/furniture_crafting.webp';
-import step4Img from './assets/images/staircase_installation.webp';
-import catStairsImg from './assets/images/bespoke_staircase.webp';
-import catFurnitureImg from './assets/images/bespoke_furniture.webp';
-import catInteriorImg from './assets/images/bespoke_interior.webp';
-import designerCollabImg from './assets/images/designer_collaboration.webp';
-import logoCleanImg from './assets/images/logo.webp';
+const staircaseHeroImg = '/images/staircase_hero.webp';
+const step1Img = '/images/consultation_meeting.webp';
+const step2Img = '/images/staircase_design.webp';
+const step3Img = '/images/furniture_crafting.webp';
+const step4Img = '/images/staircase_installation.webp';
+const catStairsImg = '/images/bespoke_staircase.webp';
+const catFurnitureImg = '/images/bespoke_furniture.webp';
+const catInteriorImg = '/images/bespoke_interior.webp';
+const designerCollabImg = '/images/designer_collaboration.webp';
+const logoCleanImg = '/images/logo.webp';
 
 // --- Portfolio WebP Images ---
-import stair1 from './assets/images/stair1.webp';
-import stair2 from './assets/images/stair2.webp';
-import stair3 from './assets/images/stair3.webp';
+const stair1 = '/images/stair1.webp';
+const stair2 = '/images/stair2.webp';
+const stair3 = '/images/stair3.webp';
 
-import kitchen1 from './assets/images/kitchen1.webp';
-import kitchen2 from './assets/images/kitchen2.webp';
-import kitchen3 from './assets/images/kitchen3.webp';
+const kitchen1 = '/images/kitchen1.webp';
+const kitchen2 = '/images/kitchen2.webp';
+const kitchen3 = '/images/kitchen3.webp';
 
-import living1 from './assets/images/living1.webp';
-import living2 from './assets/images/living2.webp';
+const living1 = '/images/living1.webp';
+const living2 = '/images/living2.webp';
 
-import bedroom1 from './assets/images/bedroom1.webp';
-import bedroom2 from './assets/images/bedroom2.webp';
-import bedroom3 from './assets/images/bedroom3.webp';
-import bedroom4 from './assets/images/bedroom4.webp';
-import bedroom5 from './assets/images/bedroom5.webp';
-import bedroom6 from './assets/images/bedroom6.webp';
+const bedroom1 = '/images/bedroom1.webp';
+const bedroom2 = '/images/bedroom2.webp';
+const bedroom3 = '/images/bedroom3.webp';
+const bedroom4 = '/images/bedroom4.webp';
+const bedroom5 = '/images/bedroom5.webp';
+const bedroom6 = '/images/bedroom6.webp';
 
-import bathroom1 from './assets/images/bathroom1.webp';
-import bathroom2 from './assets/images/bathroom2.webp';
-import bathroom3 from './assets/images/bathroom3.webp';
-import bathroom4 from './assets/images/bathroom4.webp';
+const bathroom1 = '/images/bathroom1.webp';
+const bathroom2 = '/images/bathroom2.webp';
+const bathroom3 = '/images/bathroom3.webp';
+const bathroom4 = '/images/bathroom4.webp';
 
 // --- Types ---
 interface PortfolioItem {
@@ -2168,7 +2168,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
-            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved....." : "SIA AVANGART © 2026 Visas tiesības aizsargātas....."}
+            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved...." : "SIA AVANGART © 2026 Visas tiesības aizsargātas...."}
           </div>
 
           {/* Right policy links (one font size larger: text-[11px] md:text-[12px]) */}
