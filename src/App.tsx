@@ -1365,13 +1365,13 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 bg-white p-4 md:p-5 shadow-md border border-zinc-200/50 min-h-[350px] items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 bg-white p-3.5 md:p-4.5 shadow-md border border-zinc-200/50 min-h-[310px] items-center">
       {/* Visual Section & Slider */}
-      <div className="lg:col-span-7 flex flex-col justify-between min-h-[290px] space-y-2.5 lg:space-y-0">
+      <div className="lg:col-span-7 flex flex-col justify-between min-h-[260px] space-y-2 lg:space-y-0">
         <div 
           onClick={() => project.images.length > 0 && setIsLightboxOpen(true)}
           className={cn(
-            "relative w-full h-[220px] sm:h-[240px] lg:flex-grow lg:h-0 overflow-hidden border border-zinc-200 bg-zinc-200 shadow-inner group lg:mb-2",
+            "relative w-full h-[200px] sm:h-[210px] lg:flex-grow lg:h-0 overflow-hidden border border-zinc-200 bg-zinc-200 shadow-inner group lg:mb-2",
             project.images.length > 0 ? "cursor-zoom-in" : "cursor-default"
           )}
         >
@@ -1411,6 +1411,25 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
                 <ChevronRight size={14} />
               </button>
             </>
+          )}
+
+          {/* Floating Set as Cover button for Admin */}
+          {isDev && project.images.length > 1 && currentImgIndex !== 0 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                const newImages = [...project.images];
+                const [removed] = newImages.splice(currentImgIndex, 1);
+                newImages.unshift(removed);
+                onUpdateImages(project.id, newImages);
+                setCurrentImgIndex(0);
+              }}
+              className="absolute top-2.5 right-2.5 bg-brand-orange hover:bg-brand-orange/90 text-white px-2.5 py-1 text-[8.5px] uppercase tracking-widest font-extrabold select-none shadow-md cursor-pointer transition-all duration-200 hover:scale-105 active:scale-95 flex items-center space-x-1"
+              title={lang === "ENG" ? "Set as cover image" : "Iestatīt kā titulbildi"}
+            >
+              <span>{lang === "ENG" ? "Set as Cover" : "Titulbilde"}</span>
+            </button>
           )}
 
           {/* Floating badge top-left styled with OAK wood grain */}
@@ -1622,7 +1641,9 @@ const PortfolioView = ({ currentPath, lang, projectsList, placeholdersOrder, onU
   const isDev = typeof window !== "undefined" && (
     window.location.hostname.includes("localhost") || 
     window.location.hostname.includes("ais-dev") ||
-    window.location.hostname.includes("ais-pre")
+    window.location.hostname.includes("ais-pre") ||
+    window.location.search.includes("admin=true") ||
+    localStorage.getItem("avangart-admin") === 'true'
   );
 
   const handleCategoryChange = (cat: typeof PORTFOLIO_NAV_CATEGORIES[number]) => {
@@ -1704,7 +1725,7 @@ const PortfolioView = ({ currentPath, lang, projectsList, placeholdersOrder, onU
 
 
         {/* Stack list of exactly 3 identical-sized cards/projects */}
-        <div className="max-w-5xl mx-auto space-y-8 md:space-y-10">
+        <div className="max-w-4xl mx-auto space-y-6 md:space-y-7">
           <AnimatePresence mode="popLayout">
             {categoryProjects.map((proj) => (
               <motion.div
@@ -2047,7 +2068,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="mt-8 lg:mt-3 pt-5 lg:pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
-            {lang === "ENG" ? "SIA AVANGART (C) 2026 I All rights reserved" : "SIA AVANGART (C) 2026 I Visas tiesības aizsargātas"}
+            {lang === "ENG" ? "SIA AVANGART (C) 2026 I All rights reserved." : "SIA AVANGART (C) 2026 I Visas tiesības aizsargātas."}
           </div>
 
           {/* Right policy links (one font size larger: text-[11px] md:text-[12px]) */}
@@ -2197,6 +2218,10 @@ export default function App() {
     // Initial redirect from bare #portfolio matching current language
     if (window.location.hash === '#portfolio') {
       window.location.hash = lang === 'ENG' ? '#portfolio-stairs' : '#portfolio-kapnes';
+    }
+
+    if (typeof window !== 'undefined' && window.location.search.includes('admin=true')) {
+      localStorage.setItem('avangart-admin', 'true');
     }
 
     const consent = localStorage.getItem('avangart-cookie-consent');
