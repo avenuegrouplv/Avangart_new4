@@ -45,62 +45,62 @@ export const DarbaGaitaView = ({ lang = "LV" }: { lang?: "LV" | "ENG" }) => {
   const stepsLV = [
     {
       num: "01",
-      title: "Konsultācija un telpas dizaina koncepts",
-      desc: "Mūsu sadarbība vienmēr sākas ar sarunu, kurā mēs izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam piemērotāko kokmateriālu un citu materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra mūsu izgatavotās mēbeles šķautne un līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Tādā veidā mēs veicam rūpīgu Jūsu ideju izpēti un sagatavojam ieteikumus augstākai ergonomikai.",
+      title: "Konsultācija un pirmā skice",
+      desc: "Mūsu sadarbība sākas ar tikšanos, kurā mēs klātienē vai attālināti uzklausām Jūsu vēlmes, vajadzības, kā arī piefiksējam telpas parametrus un izmērus. Mēs piedāvājam piemērotāko materiālu un tehnisko risinājumu Jūsu idejas realizācijai, kā arī uzzīmējam skici, kas kalpo kā pamats projekta tālākai izstrādei.",
       img: step1Img,
-      badge: "Sākotnējā plānošana"
+      badge: "Tikšanās un skice"
     },
     {
       num: "02",
       title: "3D modelēšana un tehnisks projekts",
-      desc: "Šajā posmā tiek izstrādāts precīzs projekta tehniskais risinājums. Mūsu inženieri un dizaineri sagatavo detalizētus trīsdimensiju (3D) rasējumus, modeļus un veic nepieciešamos mezglu aprēķinus. Mēs piemeklējam projektam atbilstošas koksnes sugas (ozols, osis, riekstkoks) un saskaņojam apdares toņu paraugus. Tikai tad, kad katrs stiprinājums un konstrukcijas līnija saņem Jūsu apstiprinājumu, projekts tiek nodots ražošanā.",
+      desc: "Nākošajā posmā mēs izstrādājam precīzu 3D digitālo modeli un rasējumus. Mēs piemērojam izvēlētos materiālus Jūsu telpai, saskaņojam konkrētus toņu paraugus, materiālu tekstūras un sagatavojam pilnu tehnisko projektu pirms ražošanas uzsākšanas. Tikai tad, kad katrs konstrukcijas elements un stiprinājums ir saņēmis Jūsu apstiprinājumu, projekts tiek nodots ražošanā.",
       img: step2Img,
-      badge: "Projekta inženierija"
+      badge: "3D un projekts"
     },
     {
       num: "03",
-      title: "Ražošana AVANGART darbnīcā",
-      desc: "Ražošanas process norisinās AVANGART galdniecības darbnīcā, kurā pieredzējuši meistari apstrādā katru detaļu. Izmantojot profesionālas iekārtas un tradicionālas galdniecības metodes, mēs nodrošinām izcilu apstrādes kvalitāti, virsmu gludumu un konstrukciju izturību. Katra detaļa pirms nosūtīšanas tiek rūpīgi pārbaudīta, lai garantētu tās atbilstību tehniskajām prasībām.",
+      title: "Ražošana darbnīcā",
+      desc: "Ražošanas process norisinās AVANGART darbnīcā, kurā mūsu pieredzējušie meistari iepriekš saskaņotās skices un tehniskos rasējumus pārvērš reālos izstrādājumos. Apvienojot modernās iekārtas ar tradicionālām amatniecības metodēm, mēs garantējam izcilu precizitāti un darba kvalitāti. Katra detaļa pirms nosūtīšanas tiek rūpīgi pārbaudīta, lai garantētu tās atbilstību tehniskajām prasībām.",
       img: step3Img,
-      badge: "Amatnieku darbs"
+      badge: "Ražošana"
     },
     {
       num: "04",
-      title: "Piegāde, uzstādīšana un garantija",
-      desc: "Svarīgs posms ir profesionāla un droša konstrukciju montāža. Mūsu speciālisti veic ātru un precīzu uzstādīšanu Jūsu mājoklī, nodrošinot mezglu stiprību, neredzamus stiprinājumus un ilgmūžību. Pēc darbu pabeigšanas mēs sniedzam rekomendācijas par tālāku koka izstrādājumu kopšanu un noformējam garantiju.",
+      title: "Piegāde, montāža un garantija",
+      desc: "Pēdējā posmā mūsu speciālisti nogādā un veic izgatavoto mēbeļu vai kāpņu montāžu Jūsu mājoklī. Mēs garantējam precīzu uzstādīšanu, savienojumu vietu hermētiskumu, kas nodrošinās to ilgmūžību. Pēc izgatavoto mēbeļu vai citu detaļu montāžas nodrošinām to garantiju, kā arī rekomendācijas to pareizai kopšanai.",
       img: step4Img,
-      badge: "Montāža un garantija"
+      badge: "Montāža"
     }
   ];
 
   const stepsEN = [
     {
       num: "01",
-      title: "Consultation & Space Design Concept",
-      desc: "Our communication always begins with a nuanced conversation. Upon contacting you, we thoroughly learn your desires, needs, and the character of the space, as well as offer a preliminary concept combining wood and metal. The first meeting is the cornerstone to making every stair edge or furniture line a precise reflection of your home's identity.",
+      title: "Consultation & Initial Sketch",
+      desc: "Our collaboration starts with a meeting where we discuss your wishes and requirements either in person or remotely, and record the room's parameters and dimensions. We suggest the best materials and technical solutions for implementing your ideas, and draw a sketch that serves as the basis for further project development.",
       img: step1Img,
-      badge: "Initial Planning"
+      badge: "Discovery & Sketch"
     },
     {
       num: "02",
-      title: "3D Modeling & Technical Design",
-      desc: "At this stage, the future work of art gains engineering precision. Our technical designers construct detailed three-dimensional (3D) diagrams, models, and run structural calculations. We select wood grains (oak, ash, walnut) specifically for your project and align finishing colors. Only when every joint and line receives your approval is the design sent to production.",
+      title: "3D Modeling & Technical Blueprint",
+      desc: "In the next stage, we develop a precise 3D digital model and technical drawings. We adapt the selected materials to your space, match sample tones and physical textures, and prepare a complete technical layout before production begins. Only when each structural element and fastener receives your approval is the project sent to manufacturing.",
       img: step2Img,
-      badge: "Engineering & Design"
+      badge: "3D & Blueprint"
     },
     {
       num: "03",
-      title: "Manufacturing in AVANGART Workshop",
-      desc: "The real magic and fine craftsmanship take place in our specialized AVANGART joinery workshop. Experienced artisans process every wood grain with jeweler's precision and devotion. Uniting top-tier German and Italian machinery with traditional woodworking secrets, we ensure flawless curves, superb smoothness, and durability. Every component undergoes strict quality checks before shipping.",
+      title: "Manufacturing in Workshop",
+      desc: "The manufacturing takes place in the AVANGART workshop, where our experienced joinery masters transform the pre-approved drafts into tangible items. Uniting modern machinery with traditional artisan techniques, we guarantee absolute precision and work quality. Each component is thoroughly checked before shipping to ensure compliance with technical requirements.",
       img: step3Img,
-      badge: "Craft & Quality Control"
+      badge: "Manufacturing"
     },
     {
       num: "04",
       title: "Delivery, Mounting & Warranty",
-      desc: "The crowning of any exceptional joinery work is accurate and safe installation. Our assembly specialists perform quick, tidy, and acoustically insulated mounting in your home. We guarantee stairs won't squeak, fasteners are invisible, and structural integrity endures for generations. Upon completion, we provide care instructions and a comprehensive, long-term warranty.",
+      desc: "In the final step, our professional installers deliver and set up the completed furniture or stairs in your home. We guarantee highly accurate, precise mounting and tight node-seals, which will ensure their longevity. After assembly of the furniture or other parts, we provide a direct warranty alongside custom surface care guidelines.",
       img: step4Img,
-      badge: "Installation & Warranty"
+      badge: "Installation"
     }
   ];
 

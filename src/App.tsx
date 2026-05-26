@@ -1024,60 +1024,60 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
   const steps = lang === "ENG" ? [
     {
       num: "01",
-      title: "Consultation & Design Concept",
-      desc: "Our collaboration begins with an in-depth conversation. We explore your wishes, needs, and space constraints to offer a custom sketch of premium wood and metal pairings, ensuring the design reflects your personal taste.",
+      title: "Consultation & Initial Sketch",
+      desc: "Our collaboration begins with a meeting where we listen to your wishes and needs, record the room parameters, and suggest the most suitable materials for your idea. After that, we draw a sketch which serves as the basis for further project development.",
       img: step1Img,
-      badge: "Initial Discovery"
+      badge: "Discovery & Sketch"
     },
     {
       num: "02",
-      title: "3D Modeling & Technical CAD",
-      desc: "We develop high-precision 3D digital models to visualize structure and form. Our team prepares full technical worksheets, selects appropriate timber species, and prepares custom finish samples for your approval.",
+      title: "3D Modeling & Technical Blueprint",
+      desc: "At the next stage, we develop a precise 3D digital model and drafts. We apply the chosen materials, align the trim color options, and prepare the technical project blueprint.",
       img: step2Img,
-      badge: "Engineering & Design"
+      badge: "3D & Blueprint"
     },
     {
       num: "03",
-      title: "Fabrication in AVANGART Workshop",
-      desc: "The fabrication happens within our specialized AVANGART workshop. Our exceptional team of master craftsmen shape every wood grain, combining German machinery with joinery secrets to achieve flawless quality.",
+      title: "Manufacturing in Workshop",
+      desc: "The next step is the production process in our workshop, where our craftsmen turn the sketched outlines into real physical objects. Merging modern machinery with traditional joinery trade methods, we target exceptional work quality.",
       img: step3Img,
-      badge: "Handicraft & Quality Control"
+      badge: "Realization"
     },
     {
       num: "04",
-      title: "Delivery, Professional Installation & Warranty",
-      desc: "Our specialists execute clean, prompt, and stable installation in your home with invisible structural anchors. We provide long-term warranty and guidelines for the care of premium wood surfaces.",
+      title: "Delivery & Installation",
+      desc: "In the final phase, our team mounts the finalized furniture or stairs in your home. After assembly, we provide a warranty and provide care recommendations.",
       img: step4Img,
-      badge: "Installation & Warranty"
+      badge: "Installation"
     }
   ] : [
     {
       num: "01",
-      title: "Konsultācija un telpas dizaina koncepts",
-      desc: "Mūsu sadarbība sākas ar sarunu, kurā mēs izzinām Jūsu vēlmes, vajadzības un telpas raksturu, piedāvājot piemērotāko materiālu dizaina skici. Tā ir pamats mēbeļu un kāpņu izstrādei, kas atbilst Jūsu personīgajai gaumei.",
+      title: "Konsultācija un pirmā skice",
+      desc: "Mūsu sadarbība sākas ar tikšanos, kurā mēs uzklausām Jūsu vēlmes, vajadzības, piefiksējam telpas parametrus un piedāvājam piemērotāko materiālu Jūsu idejas realizācijai. Un pēc tam uzzīmējam skici, kas ir pamats projekta tālākai izstrādei.",
       img: step1Img,
-      badge: "Sākotnējā plānošana"
+      badge: "Tikšanās un skice"
     },
     {
       num: "02",
       title: "3D modelēšana un tehnisks projekts",
-      desc: "Mēs izstrādājam precīzus 3D digitālos modeļus un rasējumus vizualizācijai. Piemērojam atbilstošas koksnes sugas, saskaņojam toņu paraugus un gatavojam tehnisko projektu, garantējot visaugstāko precizitāti.",
+      desc: "Nākošajā posmā mēs izstrādājam precīzu 3D digitālo modeli un rasējumus. Piemērojam izvēlētos materiālus, saskaņojam toņu paraugus un gatavojam tehnisko projektu.",
       img: step2Img,
-      badge: "Projekta inženierija"
+      badge: "3D un projekts"
     },
     {
       num: "03",
-      title: "Ražošana AVANGART darbnīcā",
-      desc: "Ražošanas process norisinās mūsu specializētajā darbnīcā, kur meistari detaļas apstrādā ar juveliera precizitāti. Apvienojot modernās iekārtas ar tradicionālām metodēm, mēs sasniedzam izcilu apstrādes kvalitāti.",
+      title: "Ražošana darbnīcā",
+      desc: "Nākošais posms ir ražošanas process norisinās darbnīcā, kurā mūsu meistari iepriekš uzzīmētās skices pārvērš reālās lietās. Apvienojot modernās iekārtas ar tradicionālām amatniecības metodēm, mēs tiecamies sasniegt izcilu darba kvalitāti.",
       img: step3Img,
-      badge: "Amatnieku darbs"
+      badge: "Meistaru darbs"
     },
     {
       num: "04",
-      title: "Piegāde, uzstādīšana un garantija",
-      desc: "Mūsu speciālisti veic ātru, precīzu un drošu montāžu Jūsu mājoklī, nodrošinot augstu izturību un neredzamus stiprinājumus. Pēc uzstādīšanas mēs nodrošinām garantiju un sniedzam rekomendācijas par kopšanu.",
+      title: "Piegāde, montāža un garantija",
+      desc: "Pēdējā posmā mūsu speciālisti veic izgatavoto mēbeļu vai trepju montāžu Jūsu mājoklī. Pēc uzstādīšanas mēs nodrošinām garantiju un sniedzam rekomendācijas to kopšanai.",
       img: step4Img,
-      badge: "Montāža un garantija"
+      badge: "Montāža"
     }
   ];
 
