@@ -15,7 +15,6 @@ import {
   ChevronUp, 
   Instagram, 
   Facebook, 
-  Linkedin,
   Mail, 
   Phone,
   MapPin,
@@ -561,14 +560,12 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
     { name: "Work process", href: "#work-process" },
     { name: "Portfolio", href: "#portfolio-stairs" },
     { name: "Cooperation", href: "#cooperation" },
-    { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
   ] : [
     { name: "Sākums", href: "#sakums" },
     { name: "Darba gaita", href: "#darba-gaita" },
     { name: "Portfolio", href: "#portfolio-kapnes" },
     { name: "Sadarbība ar dizaineriem", href: "#sadarbiba-dizaineriem" },
-    { name: "BUJ", href: "#buj" },
     { name: "Kontakti", href: "#kontakti" },
   ];
 
@@ -736,9 +733,10 @@ const Navbar = ({ currentPath, lang, onLanguageChange }: NavbarProps) => {
 interface HomeViewProps {
   onNavigateToContact: () => void;
   lang: "LV" | "ENG";
+  projectsList: any[];
 }
 
-const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
+const HomeView = ({ onNavigateToContact, lang, projectsList }: HomeViewProps) => {
   return (
     <div>
       {/* Hero Section */}
@@ -863,59 +861,6 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
         </div>
       </section>
 
-      {/* Par mums section */}
-      <section id="about" className="pt-6 pb-10 md:pt-8 md:pb-14 bg-brand-grey-light">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 4 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.45 }}
-            >
-              <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Exquisite joinery craftsmanship" : "Izcila amatniecības māksla"}</span>
-              <h2 className="text-3xl md:text-5xl font-serif leading-tight text-brand-brown-dark mb-6">{lang === "ENG" ? "Staircases and furniture with lasting value" : "Kāpnes un mēbeles ar paliekošu vērtību"}</h2>
-              <div className="space-y-5 text-brand-grey leading-relaxed text-sm md:text-base font-light">
-                {lang === "ENG" ? (
-                  <>
-                    <p>We believe that a home is a mirror of your personality, the main structure of which consists of solid and lovingly crafted elements. Since day one, AVANGART has been creating solutions that serve both as a functional tool and as a unique design sculpture.</p>
-                    <p>Precise woodwork in our well-planned AVANGART workshop allows us to realize the most complex orders – from airy, modern wood and iron constructions to solid, minimalistic kitchen and living room furniture, completed with innovative technologies and elegant LED lighting.</p>
-                    <p className="font-semibold text-brand-brown text-sm">We design, manufacture, and install solutions from initial sketches down to the very last screw.</p>
-                  </>
-                ) : (
-                  <>
-                    <p>Kopš pirmās dienas AVANGART rada risinājumus, kuri kalpo gan kā funkcionāls rīks, gan kā unikāls dizaina elements.</p>
-                    <p>Precīza koka apstrāde pārdomātajā AVANGART darbnīcā ļauj mums realizēt vissarežģītāko – no gaisīgām un modernām koka un dzelzs konstrukcijām līdz masīvām, lakoniskām virtuves un viesistabas mēbelēm, kas papildinātas ar inovatīvām tehnoloģijām un gaumīgu LED apgaismojumu.</p>
-                    <p className="font-semibold text-brand-brown text-sm">Mēs projektējam, ražojam un uzstādām risinājumus no idejas skices līdz pat pēdējai skrūvītei.</p>
-                  </>
-                )}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 4 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.45 }}
-              className="relative aspect-[16/11] lg:aspect-[4/3] overflow-hidden shadow-xl border border-zinc-200 bg-zinc-300"
-            >
-              <img 
-                src={stair1} 
-                alt="Modernas kāpnes dizaina mājā" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-brand-brown/5 hover:bg-transparent transition-all duration-300" />
-              <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm py-3 px-5 shadow-lg border-l-4 border-brand-orange">
-                <p className="text-[9px] uppercase tracking-[0.2em] text-brand-grey font-extrabold">{lang === "ENG" ? "Made in Latvia" : "Ražots Latvijā"}</p>
-                <p className="text-xs font-serif font-bold text-brand-brown-dark">{lang === "ENG" ? "100% Bespoke Craft" : "100% individuāls darbs"}</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Kā notiek darbs (Process) Section */}
       <ProcessPr lang={lang} />
 
@@ -932,35 +877,35 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
               {
                 titleLV: "Koka kāpnes",
                 titleEN: "Wooden Stairs",
-                img: stair1,
+                img: projectsList.find(item => item.category === "Kāpnes")?.images[0] || stair1,
                 hashLV: "#portfolio-kapnes",
                 hashEN: "#portfolio-stairs"
               },
               {
                 titleLV: "Virtuves iekārtas",
                 titleEN: "Kitchen Systems",
-                img: kitchen1,
+                img: projectsList.find(item => item.category === "Virtuve")?.images[0] || kitchen1,
                 hashLV: "#portfolio-virtuve",
                 hashEN: "#portfolio-kitchen"
               },
               {
                 titleLV: "Iebūvētās mēbeles",
                 titleEN: "Living Room Furniture",
-                img: living1,
+                img: projectsList.find(item => item.category === "Viesistaba")?.images[0] || living1,
                 hashLV: "#portfolio-viesistaba",
                 hashEN: "#portfolio-livingroom"
               },
               {
                 titleLV: "Guļamistaba",
                 titleEN: "Bedroom Suite",
-                img: bedroom1,
+                img: projectsList.find(item => item.category === "Guļamistaba")?.images[0] || bedroom1,
                 hashLV: "#portfolio-gulamistaba",
                 hashEN: "#portfolio-bedroom"
               },
               {
                 titleLV: "Vannas istaba",
                 titleEN: "Bathroom",
-                img: bathroom1,
+                img: projectsList.find(item => item.category === "Vannas istaba")?.images[0] || bathroom1,
                 hashLV: "#portfolio-vannas-istaba",
                 hashEN: "#portfolio-bathroom"
               }
@@ -998,26 +943,6 @@ const HomeView = ({ onNavigateToContact, lang }: HomeViewProps) => {
             <span>{lang === "ENG" ? "View portfolio" : "Apskatīt portfolio"}</span>
             <ArrowRight size={15} />
           </button>
-        </div>
-      </section>
-
-      {/* Sākuma BUJ Section (In design alignment with other blocks) */}
-      <section id="sakums-buj" className="pt-8 pb-14 md:pt-10 md:pb-20 bg-white border-b border-zinc-200/60">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
-          <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Frequently Asked Questions" : "Biežāk uzdotie jautājumi"}</span>
-          <h2 className="text-xl md:text-3xl font-serif text-brand-brown-dark mb-10 max-w-xl mx-auto leading-tight">{lang === "ENG" ? "Learn more about our work" : "Uzziniet vairāk par mūsu darbu"}</h2>
-
-          <FAQAccordion items={FAQ_ITEMS.slice(0, 5)} lang={lang} />
-
-          <div className="mt-12">
-            <button 
-              onClick={() => { window.location.hash = lang === "ENG" ? "#faq" : "#buj"; }}
-              className="inline-flex items-center justify-center space-x-3 btn-wood-oak text-white px-8 py-4 uppercase text-xs tracking-wider font-extrabold hover:scale-102 transition-all duration-300 cursor-pointer shadow-md"
-            >
-              <span>{lang === "ENG" ? "Read all FAQs" : "Lasīt visus BUJ"}</span>
-              <ArrowRight size={15} />
-            </button>
-          </div>
         </div>
       </section>
 
@@ -1100,28 +1025,28 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
     {
       num: "01",
       title: "Consultation & Design Concept",
-      desc: "Our collaboration always begins with an in-depth conversation. We carefully explore your wishes, needs, and space constraints, offering a custom sketch of premium wood and metal pairings. This initial phase ensures every edge of your staircase or custom furniture reflects your personal taste. We conduct an on-site evaluation and prepare recommendation schemas for ergonomics.",
+      desc: "Our collaboration begins with an in-depth conversation. We explore your wishes, needs, and space constraints to offer a custom sketch of premium wood and metal pairings, ensuring the design reflects your personal taste.",
       img: step1Img,
       badge: "Initial Discovery"
     },
     {
       num: "02",
       title: "3D Modeling & Technical CAD",
-      desc: "Next, we develop high-precision 3D digital models to visualize structure and form. Our engineering team prepares full technical worksheets and structural stress calculations. We hand-select appropriate timber species (oak, ash, walnut) matching your project requirements and prepare custom finish samples. Only when every mounting bracket and aesthetic line complies with your exact approval is the folder released for fabrication.",
+      desc: "We develop high-precision 3D digital models to visualize structure and form. Our team prepares full technical worksheets, selects appropriate timber species, and prepares custom finish samples for your approval.",
       img: step2Img,
       badge: "Engineering & Design"
     },
     {
       num: "03",
       title: "Fabrication in AVANGART Workshop",
-      desc: "The real magic and exquisite hand detailing happens within our specialized AVANGART workshop. Our exceptional team of master craftsmen shape every wood grain with jeweler-like precision. Combining first-class Italian and German machinery with time-honored joinery secrets, we achieve pristine bends, flawless finishes, and incredible strength. Each component undergoes strict quality checks before dispatch.",
+      desc: "The fabrication happens within our specialized AVANGART workshop. Our exceptional team of master craftsmen shape every wood grain, combining German machinery with joinery secrets to achieve flawless quality.",
       img: step3Img,
       badge: "Handicraft & Quality Control"
     },
     {
       num: "04",
       title: "Delivery, Professional Installation & Warranty",
-      desc: "The crowning piece of any superb architectural joinery is professional and safe installation. Our skilled specialists execute clean, prompt, and acoustically isolated mounting within your residence. We guarantee zero squeaks, invisible structural anchors, and stability that spans generations. Upon completion, we provide detailed preservation guidelines for premium wood surfaces and issue a long-term warranty.",
+      desc: "Our specialists execute clean, prompt, and stable installation in your home with invisible structural anchors. We provide long-term warranty and guidelines for the care of premium wood surfaces.",
       img: step4Img,
       badge: "Installation & Warranty"
     }
@@ -1129,28 +1054,28 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
     {
       num: "01",
       title: "Konsultācija un telpas dizaina koncepts",
-      desc: "Mūsu sadarbība vienmēr sākas ar sarunu, kurā mēs izzinām Jūsu vēlmes, vajadzības un telpas raksturu, kā arī piedāvājam piemērotāko kokmateriālu un citu materiālu kombināciju skici. Pirmā tikšanās un ideju apspriešana ir pamats tam, lai katra mūsu izgatavotās mēbeles šķautne un līnija būtu precīzs Jūsu mājokļa identitātes spogulis. Tādā veidā mēs veicam rūpīgu Jūsu ideju izpēti un sagatavojam ieteikumus augstākai ergonomikai.",
+      desc: "Mūsu sadarbība sākas ar sarunu, kurā mēs izzinām Jūsu vēlmes, vajadzības un telpas raksturu, piedāvājot piemērotāko materiālu dizaina skici. Tā ir pamats mēbeļu un kāpņu izstrādei, kas atbilst Jūsu personīgajai gaumei.",
       img: step1Img,
       badge: "Sākotnējā plānošana"
     },
     {
       num: "02",
       title: "3D modelēšana un tehnisks projekts",
-      desc: "Šajā posmā tiek izstrādāts precīzs projekta tehniskais risinājums. Mūsu inženieri un dizaineri sagatavo detalizētus trīsdimensiju (3D) rasējumus, modeļus un veic nepieciešamos mezglu aprēķinus. Mēs piemeklējam projektam atbilstošas koksnes sugas (ozols, osis, riekstkoks) un saskaņojam apdares toņu paraugus. Tikai tad, kad katrs stiprinājums un konstrukcijas līnija saņem Jūsu apstiprinājumu, projekts tiek nodots ražošanā.",
+      desc: "Mēs izstrādājam precīzus 3D digitālos modeļus un rasējumus vizualizācijai. Piemērojam atbilstošas koksnes sugas, saskaņojam toņu paraugus un gatavojam tehnisko projektu, garantējot visaugstāko precizitāti.",
       img: step2Img,
       badge: "Projekta inženierija"
     },
     {
       num: "03",
       title: "Ražošana AVANGART darbnīcā",
-      desc: "Ražošanas process norisinās AVANGART galdniecības darbnīcā, kurā pieredzējuši meistari apstrādā katru detaļu. Izmantojot profesionālas iekārtas un tradicionālas galdniecības metodes, mēs nodrošinām izcilu apstrādes kvalitāti, virsmu gludumu un konstrukciju izturību. Katra detaļa pirms nosūtīšanas tiek rūpīgi pārbaudīta, lai garantētu tās atbilstību tehniskajām prasībām.",
+      desc: "Ražošanas process norisinās mūsu specializētajā darbnīcā, kur meistari detaļas apstrādā ar juveliera precizitāti. Apvienojot modernās iekārtas ar tradicionālām metodēm, mēs sasniedzam izcilu apstrādes kvalitāti.",
       img: step3Img,
       badge: "Amatnieku darbs"
     },
     {
       num: "04",
       title: "Piegāde, uzstādīšana un garantija",
-      desc: "Svarīgs posms ir profesionāla un droša konstrukciju montāža. Mūsu speciālisti veic ātru un precīzu uzstādīšanu Jūsu mājoklī, nodrošinot mezglu stiprību, neredzamus stiprinājumus un ilgmūžību. Pēc darbu pabeigšanas mēs sniedzam rekomendācijas par tālāku koka izstrādājumu kopšanu un noformējam garantiju.",
+      desc: "Mūsu speciālisti veic ātru, precīzu un drošu montāžu Jūsu mājoklī, nodrošinot augstu izturību un neredzamus stiprinājumus. Pēc uzstādīšanas mēs nodrošinām garantiju un sniedzam rekomendācijas par kopšanu.",
       img: step4Img,
       badge: "Montāža un garantija"
     }
@@ -1170,7 +1095,7 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
         </div>
 
         {/* Alternating Zig-zag layout on Home Page */}
-        <div className="space-y-12 md:space-y-18 lg:space-y-22">
+        <div className="space-y-6 md:space-y-8 lg:space-y-10">
           {steps.map((step, idx) => {
             const isWordEven = idx % 2 === 1; // Alternating layout (Solis 1 Left, Solis 2 Right, Solis 3 Left, Solis 4 Right)
             return (
@@ -1187,22 +1112,23 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
               >
                 {/* Image side */}
                 <div className={cn(
-                  "lg:col-span-6 relative aspect-[16/10] overflow-hidden shadow-2xl border border-zinc-800 bg-zinc-900",
+                  "lg:col-span-6 flex justify-center items-center py-2",
                   isWordEven ? "lg:order-last" : ""
                 )}>
-                  <img 
-                    src={step.img} 
-                    alt={step.title} 
-                    className="w-full h-full object-cover select-none pointer-events-none hover:scale-102 transition-transform duration-700 opacity-90" 
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-brand-brown/10 pointer-events-none" />
-                  <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm py-1.5 px-3 text-[9px] tracking-widest font-extrabold uppercase text-white border-l-2 border-brand-orange">
-                    {step.badge}
+                  <div className="relative w-[80%] aspect-[16/10] overflow-hidden shadow-2xl border border-zinc-800 bg-zinc-900">
+                    <img 
+                      src={step.img} 
+                      alt={step.title} 
+                      className="w-full h-full object-cover select-none pointer-events-none hover:scale-102 transition-transform duration-700 opacity-90" 
+                      referrerPolicy="no-referrer"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-brand-brown/10 pointer-events-none" />
+                    <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm py-1.5 px-3 text-[9px] tracking-widest font-extrabold uppercase text-white border-l-2 border-brand-orange">
+                      {step.badge}
+                    </div>
                   </div>
                 </div>
-
                 {/* Text side */}
                 <div className="lg:col-span-6 space-y-4">
                   <h3 className="text-2xl md:text-3xl font-serif text-white tracking-tight leading-tight">
@@ -1363,6 +1289,9 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
 interface PortfolioViewProps {
   currentPath: string;
   lang: "LV" | "ENG";
+  projectsList: any[];
+  placeholdersOrder: Record<string, string[]>;
+  onUpdateImages: (projectId: string | number, newImages: string[]) => void;
 }
 
 const CAT_TRANSLATIONS: Record<string, { LV: string, EN: string }> = {
@@ -1436,13 +1365,13 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 bg-white p-6 md:p-8 shadow-lg border border-zinc-200/50 min-h-[440px] items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 bg-white p-4 md:p-5 shadow-md border border-zinc-200/50 min-h-[350px] items-center">
       {/* Visual Section & Slider */}
-      <div className="lg:col-span-7 flex flex-col justify-between min-h-[360px] space-y-3 lg:space-y-0">
+      <div className="lg:col-span-7 flex flex-col justify-between min-h-[290px] space-y-2.5 lg:space-y-0">
         <div 
           onClick={() => project.images.length > 0 && setIsLightboxOpen(true)}
           className={cn(
-            "relative w-full h-[300px] sm:h-[320px] lg:flex-grow lg:h-0 overflow-hidden border border-zinc-200 bg-zinc-200 shadow-inner group lg:mb-2.5",
+            "relative w-full h-[220px] sm:h-[240px] lg:flex-grow lg:h-0 overflow-hidden border border-zinc-200 bg-zinc-200 shadow-inner group lg:mb-2",
             project.images.length > 0 ? "cursor-zoom-in" : "cursor-default"
           )}
         >
@@ -1468,24 +1397,24 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
               <button
                 type="button"
                 onClick={handlePrevImage}
-                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2.5 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
                 aria-label={lang === "ENG" ? "Previous image" : "Iepriekšējais attēls"}
               >
-                <ChevronLeft size={16} />
+                <ChevronLeft size={14} />
               </button>
               <button
                 type="button"
                 onClick={handleNextImage}
-                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2.5 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10"
                 aria-label={lang === "ENG" ? "Next image" : "Nākamais attēls"}
               >
-                <ChevronRight size={16} />
+                <ChevronRight size={14} />
               </button>
             </>
           )}
 
           {/* Floating badge top-left styled with OAK wood grain */}
-          <div className="absolute top-3 left-3 btn-wood-oak border-none text-white py-1.5 px-3.5 text-[9px] uppercase tracking-widest font-extrabold select-none shadow-md">
+          <div className="absolute top-2.5 left-2.5 btn-wood-oak border-none text-white py-1 px-2.5 text-[8.5px] uppercase tracking-widest font-extrabold select-none shadow-md">
             {lang === "ENG" 
               ? (project.isPlaceholder ? `Portfolio ${project.placeholderNum}` : (CAT_TRANSLATIONS[project.category]?.EN || project.category)) 
               : (project.isPlaceholder ? `Portfolio ${project.placeholderNum}` : (CAT_TRANSLATIONS[project.category]?.LV || project.category))
@@ -1494,7 +1423,7 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
 
           {/* Floating Counter Badge bottom right */}
           {project.images.length > 0 && (
-            <div className="absolute bottom-3 right-3 bg-black/55 backdrop-blur-sm text-white py-1 px-2.5 text-[10px] tracking-wider font-extrabold select-none">
+            <div className="absolute bottom-2.5 right-2.5 bg-black/55 backdrop-blur-sm text-white py-0.5 px-2 text-[9px] tracking-wider font-extrabold select-none">
               {currentImgIndex + 1} / {project.images.length}
             </div>
           )}
@@ -1502,7 +1431,7 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
 
         {/* 7-Image Clickable Thumbnail Strip with Drag and Drop */}
         {project.images.length > 0 && (
-          <div className="grid grid-cols-7 gap-1.5">
+          <div className="grid grid-cols-7 gap-1">
           {project.images.map((imgUrl, idx) => {
             const isFirst = idx === 0;
             return (
@@ -1540,17 +1469,17 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
       </div>
 
       {/* Description Section */}
-      <div className="lg:col-span-5 flex flex-col justify-between min-h-[360px] lg:pl-4 space-y-4 lg:space-y-0">
-        <div className="space-y-2.5">
-          <h3 className="text-xl md:text-2xl font-serif text-brand-brown-dark leading-tight">
+      <div className="lg:col-span-5 flex flex-col justify-between min-h-[290px] lg:pl-3 space-y-3 lg:space-y-0">
+        <div className="space-y-2">
+          <h3 className="text-lg md:text-xl font-serif text-brand-brown-dark leading-tight">
             {lang === "ENG" ? (project.titleEN || project.title) : project.title}
           </h3>
-          <div className="h-0.5 w-12 bg-brand-orange" />
+          <div className="h-0.5 w-10 bg-brand-orange" />
           
           {project.isPlaceholder ? (
-            <div className="py-4 flex flex-col items-start space-y-3 opacity-60">
-              <div className="h-4 bg-zinc-100 rounded-sm w-3/4 animate-pulse"></div>
-              <div className="h-4 bg-zinc-100 rounded-sm w-1/2 animate-pulse"></div>
+            <div className="py-3 flex flex-col items-start space-y-2 opacity-60">
+              <div className="h-3.5 bg-zinc-100 rounded-sm w-3/4 animate-pulse"></div>
+              <div className="h-3.5 bg-zinc-100 rounded-sm w-1/2 animate-pulse"></div>
               <p className="text-zinc-400 font-light text-xs italic">
                 {lang === "ENG" 
                   ? "Project is currently under draft preparation..." 
@@ -1558,24 +1487,24 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
               </p>
             </div>
           ) : (
-            <p className="text-zinc-650 font-normal text-xs md:text-sm leading-relaxed">
+            <p className="text-zinc-650 font-normal text-xs md:text-[13px] leading-relaxed">
               {lang === "ENG" ? (project.descriptionEN || project.description) : project.description}
             </p>
           )}
         </div>
 
-        <div className="space-y-2.5 pt-4 border-t border-zinc-150">
-          <div className="flex justify-between text-[10px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-2">
+        <div className="space-y-1.5 pt-3 border-t border-zinc-150">
+          <div className="flex justify-between text-[9.5px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-1.5">
             <span className="text-zinc-400 font-medium shrink-0">{lang === "ENG" ? "Materials" : "Materiāli"}</span>
-            <span className="font-extrabold text-brand-grey-dark max-w-[200px] text-right truncate" title={project.isPlaceholder ? "—" : (lang === "ENG" ? (project.materialsEN || project.materials) : project.materials)}>
+            <span className="font-extrabold text-brand-grey-dark max-w-[180px] text-right truncate" title={project.isPlaceholder ? "—" : (lang === "ENG" ? (project.materialsEN || project.materials) : project.materials)}>
               {project.isPlaceholder ? "—" : (lang === "ENG" ? (project.materialsEN || project.materials) : project.materials)}
             </span>
           </div>
-          <div className="flex justify-between text-[10px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-2">
+          <div className="flex justify-between text-[9.5px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-1.5">
             <span className="text-zinc-400 font-medium">{lang === "ENG" ? "Year" : "Gads"}</span>
             <span className="font-extrabold text-brand-grey-dark">{project.isPlaceholder ? "—" : project.year}</span>
           </div>
-          <div className="flex justify-between text-[10px] uppercase tracking-widest leading-relaxed">
+          <div className="flex justify-between text-[9.5px] uppercase tracking-widest leading-relaxed">
             <span className="text-zinc-400 font-medium">{lang === "ENG" ? "Location" : "Izpildes Vieta"}</span>
             <span className="font-extrabold text-brand-grey-dark font-sans">{project.isPlaceholder ? "—" : (lang === "ENG" ? "Riga / Latvia" : "Rīga / Latvija")}</span>
           </div>
@@ -1678,7 +1607,7 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
   );
 };
 
-const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
+const PortfolioView = ({ currentPath, lang, projectsList, placeholdersOrder, onUpdateImages }: PortfolioViewProps) => {
   const activeCategory = (() => {
     if (currentPath.startsWith("#portfolio-")) {
       const param = currentPath.substring("#portfolio-".length);
@@ -1686,20 +1615,6 @@ const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
     }
     return "Kāpnes";
   })();
-
-  const [projectsList, setProjectsList] = useState<any[]>(PORTFOLIO_ITEMS);
-  const [placeholdersOrder, setPlaceholdersOrder] = useState<Record<string, string[]>>({});
-
-  const handleUpdateImages = (projectId: string | number, newImages: string[]) => {
-    if (typeof projectId === 'string' && projectId.startsWith('placeholder-')) {
-      setPlaceholdersOrder(prev => ({
-        ...prev,
-        [projectId]: newImages
-      }));
-    } else {
-      setProjectsList(prev => prev.map(p => p.id === projectId ? { ...p, images: newImages } : p));
-    }
-  };
 
   const activeCategoryProject = projectsList.find(item => item.category === activeCategory) || projectsList[0];
 
@@ -1789,7 +1704,7 @@ const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
 
 
         {/* Stack list of exactly 3 identical-sized cards/projects */}
-        <div className="space-y-12 md:space-y-16">
+        <div className="max-w-5xl mx-auto space-y-8 md:space-y-10">
           <AnimatePresence mode="popLayout">
             {categoryProjects.map((proj) => (
               <motion.div
@@ -1803,7 +1718,7 @@ const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
                   project={proj} 
                   lang={lang} 
                   isDev={isDev} 
-                  onUpdateImages={handleUpdateImages} 
+                  onUpdateImages={onUpdateImages} 
                 />
               </motion.div>
             ))}
@@ -1811,39 +1726,6 @@ const PortfolioView = ({ currentPath, lang }: PortfolioViewProps) => {
         </div>
 
         <ScrollToTopButton />
-      </div>
-    </div>
-  );
-};
-
-// --- BUJ (Biežāk uzdotie jautājumi) Page Component ---
-interface BUJViewProps {
-  lang: "LV" | "ENG";
-}
-
-const BUJView = ({ lang }: BUJViewProps) => {
-  return (
-    <div className="pt-24 min-h-screen bg-brand-grey-light">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 md:py-16">
-        
-        {/* Top navigation row */}
-        <div className="mb-8 flex justify-start">
-          <BackToHomeButton lang={lang} />
-        </div>
-
-        {/* Header */}
-        <div className="max-w-3xl mb-12">
-          <h1 className="text-2xl md:text-3xl font-serif text-brand-brown-dark mb-4">
-            {lang === "ENG" ? "Frequently Asked Questions" : "Biežāk uzdotie jautājumi"}
-          </h1>
-        </div>
-
-        {/* Accordion with all 10 FAQ items */}
-        <FAQAccordion items={FAQ_ITEMS} lang={lang} />
-
-        {/* Bottom Scroll To Top Button */}
-        <ScrollToTopButton lang={lang} />
-
       </div>
     </div>
   );
@@ -1893,7 +1775,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                 </div>
                 <div>
                   <h4 className="text-[10px] uppercase tracking-widest font-extrabold text-brand-grey">{lang === "ENG" ? "Legal Address" : "Juridiskā adrese"}</h4>
-                  <p className="text-brand-grey-dark font-light text-xs md:text-sm mt-0.5">Katlakalna iela 11, Rīga, LV-1073</p>
+                  <p className="text-brand-grey-dark font-light text-xs md:text-sm mt-0.5">Zemgales iela 13, Brankas, Cenu pagasts, Jelgavas novads, LV-3042</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -1902,7 +1784,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                 </div>
                 <div>
                   <h4 className="text-[10px] uppercase tracking-widest font-extrabold text-brand-grey">{lang === "ENG" ? "Email" : "E-pasts"}</h4>
-                  <p className="text-brand-grey-dark font-light text-xs md:text-sm mt-0.5">info@avangart.lv</p>
+                  <p className="text-brand-grey-dark font-light text-xs md:text-sm mt-0.5">aivars.avangart@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -1911,7 +1793,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                 </div>
                 <div>
                   <h4 className="text-[10px] uppercase tracking-widest font-extrabold text-brand-grey">{lang === "ENG" ? "Phone" : "Tālrunis"}</h4>
-                  <p className="text-brand-grey-dark font-light text-xs md:text-sm mt-0.5">+371 29 883 456</p>
+                  <p className="text-brand-grey-dark font-light text-xs md:text-sm mt-0.5">+371 29495043</p>
                 </div>
               </div>
             </div>
@@ -1966,7 +1848,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
                         required
                         type="tel" 
                         className="w-full bg-transparent border-b border-zinc-350 py-2 focus:outline-none focus:border-brand-orange transition-colors font-light text-brand-grey-dark placeholder-zinc-300 text-xs md:text-sm"
-                        placeholder="+371 29 883 456"
+                        placeholder="+371 29495043"
                       />
                     </div>
                   </div>
@@ -2115,32 +1997,24 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
                 className="w-auto h-[61px] sm:h-[74px] md:h-[88px]" 
               />
             </div>
-            <div className="relative -translate-y-1 md:-translate-y-3 text-center lg:text-left flex flex-col items-center lg:items-start">
-              <p className="text-xs text-zinc-400 uppercase tracking-widest font-bold mb-1">
-                {lang === "ENG" ? "Bespoke design and craftsmanship" : "Individuāls dizains un roku darbs"}
-              </p>
-              <p className="text-xs text-zinc-500 max-w-sm leading-relaxed mx-auto lg:mx-0">
-                {lang === "ENG"
-                  ? "Every step in your home is a unique sculpture. We develop designs from the first sketch of an idea to the very last screw."
-                  : "Katrs mājokļa solis ir unikāla skulptūra. Mēs izstrādājam dizainus no pirmās idejas skices līdz pēdējai skrūvītei."}
+            <div className="relative -translate-y-1 md:-translate-y-3 text-center lg:text-left flex flex-col items-center lg:items-start pt-1 md:pt-3">
+              <p className="text-xs text-zinc-400 tracking-widest font-bold font-sans">
+                {lang === "ENG" ? "Handmade. Made in Latvia." : "Roku darbs. Ražots Latvijā."}
               </p>
             </div>
           </div>
 
           {/* Social Networks Center Col */}
-          <div className="lg:col-span-4 flex flex-col items-start lg:items-center justify-start text-left lg:text-center space-y-3 lg:space-y-4 pt-1 lg:pt-12 order-3 lg:order-2">
+          <div className="lg:col-span-4 flex flex-col items-start lg:items-center justify-start text-left lg:text-center space-y-2 lg:space-y-4 pt-1 lg:pt-12 order-3 lg:order-2">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-brand-orange-light">
               {lang === "ENG" ? "Social Networks" : "Sociālie tīkli"}
             </h4>
-            <div className="flex items-center space-x-6 text-zinc-400 py-1 justify-start lg:justify-center">
-              <a href="#" className="hover:text-brand-orange transition-colors duration-200" aria-label="Instagram">
+            <div className="flex items-center space-x-6 text-zinc-400 justify-start lg:justify-center">
+              <a href="https://www.instagram.com/avangart_furniture" target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors duration-200" aria-label="Instagram">
                 <Instagram size={28} />
               </a>
               <a href="#" className="hover:text-brand-orange transition-colors duration-200" aria-label="Facebook">
                 <Facebook size={28} />
-              </a>
-              <a href="#" className="hover:text-brand-orange transition-colors duration-200" aria-label="LinkedIn">
-                <Linkedin size={28} />
               </a>
             </div>
           </div>
@@ -2154,15 +2028,15 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
               <p className="font-extrabold text-white tracking-wider uppercase">SIA "AVANGART"</p>
               <p className="flex items-center space-x-2.5">
                 <MapPin size={13} className="text-brand-orange shrink-0" />
-                <span>Katlakalna iela 11, Rīga, LV-1073</span>
+                <span>Zemgales iela 13, Brankas, Cenu pagasts, Jelgavas novads, LV-3042</span>
               </p>
               <p className="flex items-center space-x-2.5">
                 <Mail size={13} className="text-brand-orange shrink-0" />
-                <span>info@avangart.lv</span>
+                <span>aivars.avangart@gmail.com</span>
               </p>
               <p className="flex items-center space-x-2.5">
                 <Phone size={13} className="text-brand-orange shrink-0" />
-                <span>+371 29 883 456</span>
+                <span>+371 29495043</span>
               </p>
             </div>
           </div>
@@ -2170,10 +2044,10 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         </div>
 
         {/* Bottom Line */}
-        <div className="mt-8 lg:mt-3 pt-5 lg:pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-6">
+        <div className="mt-8 lg:mt-3 pt-5 lg:pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
-            {lang === "ENG" ? "SIA AVANGART © 2026 All rights reserved." : "SIA AVANGART © 2026 Visas tiesības aizsargātas."}
+            {lang === "ENG" ? "SIA AVANGART (C) 2026 I All rights reserved" : "SIA AVANGART (C) 2026 I Visas tiesības aizsargātas"}
           </div>
 
           {/* Right policy links (one font size larger: text-[11px] md:text-[12px]) */}
@@ -2209,7 +2083,6 @@ const HASH_LV_TO_ENG: Record<string, string> = {
   '#portfolio-gulamistaba': '#portfolio-bedroom',
   '#portfolio-vannas-istaba': '#portfolio-bathroom',
   '#sadarbiba-dizaineriem': '#cooperation',
-  '#buj': '#faq',
   '#kontakti': '#contact',
   '#sikdatnu-politika': '#cookie-policy',
   '#privatuma-politika': '#privacy-policy',
@@ -2226,7 +2099,6 @@ const HASH_ENG_TO_LV: Record<string, string> = {
   '#portfolio-bedroom': '#portfolio-gulamistaba',
   '#portfolio-bathroom': '#portfolio-vannas-istaba',
   '#cooperation': '#sadarbiba-dizaineriem',
-  '#faq': '#buj',
   '#contact': '#kontakti',
   '#cookie-policy': '#sikdatnu-politika',
   '#privacy-policy': '#privatuma-politika'
@@ -2242,6 +2114,53 @@ export default function App() {
     }
     return 'LV';
   });
+
+  const [projectsList, setProjectsList] = useState<any[]>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('avangart-projects-list');
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+    return PORTFOLIO_ITEMS;
+  });
+
+  const [placeholdersOrder, setPlaceholdersOrder] = useState<Record<string, string[]>>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('avangart-placeholders-order');
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+    return {};
+  });
+
+  const handleUpdateImages = (projectId: string | number, newImages: string[]) => {
+    if (typeof projectId === 'string' && projectId.startsWith('placeholder-')) {
+      const updatedPlaceholders = {
+        ...placeholdersOrder,
+        [projectId]: newImages
+      };
+      setPlaceholdersOrder(updatedPlaceholders);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('avangart-placeholders-order', JSON.stringify(updatedPlaceholders));
+      }
+    } else {
+      const updatedProjects = projectsList.map(p => p.id === projectId ? { ...p, images: newImages } : p);
+      setProjectsList(updatedProjects);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('avangart-projects-list', JSON.stringify(updatedProjects));
+      }
+    }
+  };
 
   const [currentPath, setCurrentPath] = useState(() => {
     const initialHash = window.location.hash || '#sakums';
@@ -2333,7 +2252,7 @@ export default function App() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <HomeView onNavigateToContact={navigateToContact} lang={lang} />
+              <HomeView onNavigateToContact={navigateToContact} lang={lang} projectsList={projectsList} />
             </motion.div>
           )}
 
@@ -2369,7 +2288,13 @@ export default function App() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <PortfolioView currentPath={currentPath} lang={lang} />
+              <PortfolioView 
+                currentPath={currentPath} 
+                lang={lang} 
+                projectsList={projectsList}
+                placeholdersOrder={placeholdersOrder}
+                onUpdateImages={handleUpdateImages}
+              />
             </motion.div>
           )}
 
@@ -2382,18 +2307,6 @@ export default function App() {
               transition={{ duration: 0.3 }}
             >
               <ContactsView lang={lang} />
-            </motion.div>
-          )}
-
-          {(currentPath === '#buj' || currentPath === '#faq') && (
-            <motion.div 
-              key="buj"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <BUJView lang={lang} />
             </motion.div>
           )}
 

@@ -129,7 +129,7 @@ export const CookiePolicyView = ({ lang }: PolicyViewProps) => {
                     Ievērojiet: Ja Jūs bloķēsiet sīkdatnes, dažas mūsu tīmekļa vietnes funkcijas var nebūt pieejamas vai darboties nepilnīgi.
                   </p>
                   <p className="font-semibold text-brand-brown-dark mt-4 border-t border-zinc-100 pt-4">
-                    Ja Jums ir jautājumi par mūsu sīkdatņu politiku, lūdzu, sazinieties ar mums, rakstot uz: <a href="mailto:info@avangart.lv" className="text-brand-orange hover:underline">info@avangart.lv</a>
+                    Ja Jums ir jautājumi par mūsu sīkdatņu politiku, lūdzu, sazinieties ar mums, rakstot uz: <a href="mailto:aivars.avangart@gmail.com" className="text-brand-orange hover:underline">aivars.avangart@gmail.com</a>
                   </p>
                 </section>
               </>
@@ -223,7 +223,7 @@ export const CookiePolicyView = ({ lang }: PolicyViewProps) => {
                     Please note: If you block cookies, some features of our website may not be fully functional.
                   </p>
                   <p className="font-semibold text-brand-brown-dark mt-4 border-t border-zinc-100 pt-4">
-                    If you have any questions, feel free to contact us at: <a href="mailto:info@avangart.lv" className="text-brand-orange hover:underline">info@avangart.lv</a>
+                    If you have any questions, feel free to contact us at: <a href="mailto:aivars.avangart@gmail.com" className="text-brand-orange hover:underline">aivars.avangart@gmail.com</a>
                   </p>
                 </section>
               </>
@@ -296,11 +296,11 @@ export const PrivacyPolicyView = ({ lang }: PolicyViewProps) => {
                   <h2 className="font-serif font-bold text-lg md:text-xl text-zinc-800">2. Datu pārzinis</h2>
                   <div className="bg-zinc-50 p-6 border border-zinc-200/50 font-sans text-sm space-y-1.5 text-zinc-700">
                     <p><strong>Uzņēmums:</strong> SIA "AVANGART"</p>
-                    <p><strong>Reģistrācijas numurs:</strong> 40203598561</p>
-                    <p><strong>PVN Reģ.Nr.:</strong> LV40203598561</p>
-                    <p className="pt-2"><strong>Juridiskā adrese:</strong> Katlakalna iela 11, Rīga, LV-1073</p>
-                    <p><strong>E-pasts:</strong> <a href="mailto:info@avangart.lv" className="text-brand-orange hover:underline">info@avangart.lv</a></p>
-                    <p><strong>Tālrunis:</strong> <a href="tel:+37129883456" className="text-brand-orange hover:underline">+371 29 883 456</a></p>
+                    <p><strong>Reģistrācijas numurs:</strong> 53603071021</p>
+                    <p><strong>PVN Reģ.Nr.:</strong> LV53603071021</p>
+                    <p className="pt-2"><strong>Juridiskā adrese:</strong> Zemgales iela 13, Brankas, Cenu pagasts, Jelgavas novads, LV-3042</p>
+                    <p><strong>E-pasts:</strong> <a href="mailto:aivars.avangart@gmail.com" className="text-brand-orange hover:underline">aivars.avangart@gmail.com</a></p>
+                    <p><strong>Tālrunis:</strong> <a href="tel:+37129495043" className="text-brand-orange hover:underline">+371 29495043</a></p>
                   </div>
                 </section>
 
@@ -364,7 +364,7 @@ export const PrivacyPolicyView = ({ lang }: PolicyViewProps) => {
                     <li><strong>Atsaukt piekrišanu</strong> – jebkurā laikā atsaukt Savu piekrišanu datu apstrādei, neietekmējot līdz tam veiktās apstrādes likumību.</li>
                   </ul>
                   <p className="pt-2 text-zinc-700">
-                    Lai izmantotu Savas tiesības, lūdzu, sazinieties ar mums, rakstot uz e-pastu: <a href="mailto:info@avangart.lv" className="text-brand-orange hover:underline font-medium">info@avangart.lv</a>.
+                    Lai izmantotu Savas tiesības, lūdzu, sazinieties ar mums, rakstot uz e-pastu: <a href="mailto:aivars.avangart@gmail.com" className="text-brand-orange hover:underline font-medium">aivars.avangart@gmail.com</a>.
                   </p>
                 </section>
 
@@ -419,11 +419,11 @@ export const PrivacyPolicyView = ({ lang }: PolicyViewProps) => {
                   <h2 className="font-serif font-bold text-lg md:text-xl text-zinc-800">2. Data Controller</h2>
                   <div className="bg-zinc-50 p-6 border border-zinc-200/50 font-sans text-sm space-y-1.5 text-zinc-700">
                     <p><strong>Company:</strong> SIA "AVANGART"</p>
-                    <p><strong>Registration Number:</strong> 40203598561</p>
-                    <p><strong>VAT Reg.No:</strong> LV40203598561</p>
-                    <p className="pt-2"><strong>Registered Address:</strong> Katlakalna iela 11, Riga, LV-1073</p>
-                    <p><strong>E-mail:</strong> info@avangart.lv</p>
-                    <p><strong>Phone:</strong> +371 29 883 456</p>
+                    <p><strong>Registration Number:</strong> 53603071021</p>
+                    <p><strong>VAT Reg.No:</strong> LV53603071021</p>
+                    <p className="pt-2"><strong>Registered Address:</strong> Zemgales iela 13, Brankas, Cenu pagasts, Jelgavas novads, LV-3042</p>
+                    <p><strong>E-mail:</strong> aivars.avangart@gmail.com</p>
+                    <p><strong>Phone:</strong> +371 29495043</p>
                   </div>
                 </section>
 
@@ -481,7 +481,7 @@ export const PrivacyPolicyView = ({ lang }: PolicyViewProps) => {
                     <li>The right to withdraw consent at any time without affecting prior legitimacy.</li>
                   </ul>
                   <p className="pt-2 text-zinc-700">
-                    To exercise your rights, please reach out via email to <a href="mailto:info@avangart.lv" className="text-brand-orange hover:underline font-medium">info@avangart.lv</a>.
+                    To exercise your rights, please reach out via email to <a href="mailto:aivars.avangart@gmail.com" className="text-brand-orange hover:underline font-medium">aivars.avangart@gmail.com</a>.
                   </p>
                 </section>
 
