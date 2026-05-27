@@ -35,7 +35,7 @@ import { DarbaGaitaView } from './components/DarbaGaitaView';
 import { CookiePolicyView, PrivacyPolicyView } from './components/PolicyViews';
 
 // --- Image Imports ---
-const staircaseHeroImg = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/ChatGPT%20Image%20May%2027%2C%202026%2C%2001_16_28%20PM.webp';
+const staircaseHeroImg = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/ChatGPT%20Image%20May%2027%2C%202026%2C%2009_44_57%20PM.webp';
 const step1Img = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/consultation_meeting.webp';
 const step2Img = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/staircase_design.webp';
 const step3Img = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/furniture_crafting.webp';
@@ -58,7 +58,8 @@ const kitchen1 = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/photo_5798
 const kitchen2 = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/photo_5798425477507649259_y.webp';
 const kitchen3 = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/photo_5798425477507649263_y.webp';
 
-const livingCover = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/photo_5816580725174636206_y.webp';
+const livingCover = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/ChatGPT%20Image%20May%2027%2C%202026%2C%2010_14_54%20PM.webp';
+const precisionSectionImg = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/ChatGPT%20Image%20May%2027%2C%202026%2C%2010_14_54%20PM.webp';
 const living1 = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/photo_5798425477507649258_y.webp';
 const living2 = 'https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/photo_5798425477507649262_y.webp';
 
@@ -761,12 +762,7 @@ const HomeView = ({ onNavigateToContact, lang, projectsList }: HomeViewProps) =>
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="max-w-2xl text-white font-sans"
           >
-            <div className="inline-flex items-center space-x-2 bg-brand-orange/25 text-brand-orange px-4 py-1.5 uppercase text-[10px] tracking-[0.3em] font-extrabold mb-6 border border-brand-orange/40">
-              <span className="w-1.5 h-1.5 bg-brand-orange rounded-full animate-pulse"></span>
-              <span>{lang === "ENG" ? "Bespoke projects and design solutions" : "Individuāli projekti un dizaina risinājumi"}</span>
-            </div>
-
-            <h1 className="text-xl sm:text-3xl md:text-[36px] lg:text-[40px] font-serif leading-tight mb-6 tracking-tight">
+            <h1 className="text-xl sm:text-3xl md:text-[36px] lg:text-[40px] font-serif leading-tight mb-8 tracking-tight">
               {lang === "ENG" ? (
                 <>
                   Modern design and modern <br className="hidden md:inline" />
@@ -782,34 +778,13 @@ const HomeView = ({ onNavigateToContact, lang, projectsList }: HomeViewProps) =>
               )}
             </h1>
 
-            <p className="text-xs sm:text-sm md:text-base font-light mb-8 opacity-95 tracking-wide max-w-xl leading-relaxed text-zinc-200 border-l-2 border-brand-orange pl-6">{lang === "ENG"
-              ? "AVANGART specializes in manufacturing custom stairs, premium furniture, and other bespoke interior items. Our work combines bold design with uncompromising quality."
-              : "AVANGART nodarbojas ar kāpņu, ekskluzīvu mēbeļu un citu mājas interjera priekšmetu izgatavošanu pēc individuāla pasūtījuma. Mūsu darbs apvieno mūsdienīgu dizainu ar bezkompromisa kvalitāti."}</p>
-
-            <div className="flex flex-col sm:flex-row gap-5 mb-10">
-              <button 
-                onClick={() => {
-                  window.location.hash = lang === 'ENG' ? '#portfolio-stairs' : '#portfolio-kapnes';
-                  window.scrollTo({ top: 0, behavior: 'instant' });
-                }}
-                className="inline-flex items-center justify-center bg-white text-zinc-900 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200 px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-sm"
-              >
-                <span>{lang === "ENG" ? "Implemented projects" : "Īstenotie projekti"}</span>
-              </button>
+            <div className="flex flex-col sm:flex-row gap-5">
               <button 
                 onClick={onNavigateToContact}
                 className="inline-flex items-center justify-center space-x-4 btn-wood-oak text-white px-8 py-4 uppercase text-xs tracking-[0.2em] font-bold hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer shadow-md"
               >
                 <span>{lang === "ENG" ? "Contact us" : "Sazināties ar mums"}</span>
               </button>
-            </div>
-
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-zinc-350 text-[10px] uppercase tracking-[0.3em] font-bold opacity-80">
-              <span>{lang === "ENG" ? "Premium stairs" : "Premium kāpnes"}</span>
-              <span className="text-brand-orange">•</span>
-              <span>{lang === "ENG" ? "Design furniture" : "Dizaina mēbeles"}</span>
-              <span className="text-brand-orange">•</span>
-              <span>{lang === "ENG" ? "Interior design" : "Interjera dizains"}</span>
             </div>
           </motion.div>
         </div>
@@ -851,7 +826,7 @@ const HomeView = ({ onNavigateToContact, lang, projectsList }: HomeViewProps) =>
               className="lg:col-span-6 relative aspect-[4/3] overflow-hidden shadow-2xl border border-zinc-200 bg-zinc-50"
             >
               <img 
-                src={kitchen1} 
+                src={precisionSectionImg} 
                 alt="Smalkas mēbeļu detaļas un telpas raksturs" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 referrerPolicy="no-referrer"
@@ -2140,7 +2115,7 @@ export default function App() {
 
   const [projectsList, setProjectsList] = useState<any[]>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('avangart-projects-list-v4');
+      const saved = localStorage.getItem('avangart-projects-list-v5');
       if (saved) {
         try {
           return JSON.parse(saved);
@@ -2180,7 +2155,7 @@ export default function App() {
       const updatedProjects = projectsList.map(p => p.id === projectId ? { ...p, images: newImages } : p);
       setProjectsList(updatedProjects);
       if (typeof window !== 'undefined') {
-        localStorage.setItem('avangart-projects-list-v4', JSON.stringify(updatedProjects));
+        localStorage.setItem('avangart-projects-list-v5', JSON.stringify(updatedProjects));
       }
     }
   };
