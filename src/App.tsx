@@ -1163,13 +1163,13 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
             <div className="inline-flex items-center space-x-2 bg-zinc-100 text-brand-brown px-4 py-1 uppercase text-[9px] tracking-[0.25em] font-extrabold border-l-2 border-brand-orange">
               <span>{lang === "ENG" ? "The Art of Collaboration and Co-creation" : "Sadarbības un koprades māksla"}</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark leading-tight mt-1 mb-3">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-brown-dark leading-tight mt-1 mb-3">
               {lang === "ENG" ? (
                 <>Our collaboration with <br />artists and designers</>
               ) : (
                 <>Mūsu sadarbība ar <br />māksliniekiem un dizaineriem</>
               )}
-            </h1>
+            </h2>
             
             <p className="text-brand-grey font-light leading-relaxed text-sm md:text-base">
               {lang === "ENG"
@@ -1452,7 +1452,7 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
               >
                 <img 
                   src={imgUrl} 
-                  alt="" 
+                  alt={lang === "ENG" ? `Thumbnail ${idx + 1}` : `Sīktēls ${idx + 1}`} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
                   referrerPolicy="no-referrer"
                   loading="lazy"
@@ -1572,7 +1572,7 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
                     >
                       <img 
                         src={imgUrl} 
-                        alt="" 
+                        alt={lang === "ENG" ? `Lightbox thumbnail ${idx + 1}` : `Palielinātais sīktēls ${idx + 1}`} 
                         className="w-full h-full object-cover" 
                         referrerPolicy="no-referrer"
                       />
@@ -1663,7 +1663,7 @@ const PortfolioView = ({ currentPath, lang, projectsList, placeholdersOrder, onU
         {/* Header */}
         <div className="max-w-3xl mb-12">
           <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Projects catalog" : "Projektu katalogs"}</span>
-          <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark mb-4">{lang === "ENG" ? "Portfolio" : "Portfolio"}</h1>
+          <h2 className="text-3xl md:text-5xl font-serif text-brand-brown-dark mb-4">{lang === "ENG" ? "Portfolio" : "Portfolio"}</h2>
         </div>
 
         {/* Categories Tab Navigation */}
@@ -1748,7 +1748,7 @@ const ContactsView = ({ lang }: ContactsViewProps) => {
           <div className="lg:col-span-5 space-y-8 lg:pr-4">
             <div>
               <span className="text-brand-orange uppercase tracking-[0.3em] text-[10px] font-extrabold mb-3 block">{lang === "ENG" ? "Get in Touch" : "Saziņa un pieteikumi"}</span>
-              <h1 className="text-3xl md:text-5xl font-serif text-brand-brown-dark leading-tight mb-4">{lang === "ENG" ? "Contact us" : "Sazinieties ar mums"}</h1>
+              <h2 className="text-3xl md:text-5xl font-serif text-brand-brown-dark leading-tight mb-4">{lang === "ENG" ? "Contact us" : "Sazinieties ar mums"}</h2>
             </div>
 
             <div className="space-y-6">
@@ -2217,6 +2217,54 @@ export default function App() {
     handleHashChange();
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [lang]);
+
+  useEffect(() => {
+    // Dynamic document.title and meta description updates (SEO optimization)
+    let titleStr = "Avangart I Premium dizaina mēbeles un kāpnes";
+    let descStr = lang === "ENG" 
+      ? "AVANGART is a highly exclusive design furniture studio in Latvia. We manufacture premium bespoke wooden stairs, kitchens, and architectural woodwork."
+      : "AVANGART ir ekskluzīva mēbeļu dizaina studija Latvijā. Izgatavojam premium masīvkoka kāpnes, iebūvējamās virtuves iekārtas un individuālus dizaina mēbeļu risinājumus.";
+
+    const isEng = lang === "ENG";
+
+    if (currentPath.startsWith("#portfolio")) {
+      titleStr = isEng 
+        ? "Mūsu izpildītie darbi | Avangart I Premium dizaina mēbeles un kāpnes" 
+        : "Mūsu izpildītie darbi | Avangart I Premium dizaina mēbeles un kāpnes";
+      descStr = isEng
+        ? "Explore the portfolio of bespoke projects, staircases, furniture by AVANGART."
+        : "Apskatiet AVANGART koka kāpņu, dizaina virtuvju un ekskluzīvu mēbeļu realizētos projektus.";
+    } else if (currentPath === "#kontakti" || currentPath === "#contact") {
+      titleStr = isEng 
+        ? "Sazinieties ar mums | Avangart I Premium dizaina mēbeles un kāpnes" 
+        : "Sazinieties ar mums | Avangart I Premium dizaina mēbeles un kāpnes";
+      descStr = isEng
+        ? "Get in touch with AVANGART for premium custom wooden stairs or fitted kitchens and furniture designs."
+        : "Sazinieties ar AVANGART, lai pieteiktu individuālu mēbeļu, virtuvju vai koka kāpņu projektu.";
+    } else if (currentPath === "#darba-gaita" || currentPath === "#work-process") {
+      titleStr = isEng 
+        ? "Mūsu darba gaita | Avangart I Premium dizaina mēbeles un kāpnes" 
+        : "Mūsu darba gaita | Avangart I Premium dizaina mēbeles un kāpnes";
+      descStr = isEng
+        ? "Learn how AVANGART converts architectural concepts to reality, from consultation to premium install."
+        : "Uzziniet par AVANGART darba gaitu no sākotnējās līdzdarbības un skices līdz premium montāžai.";
+    } else if (currentPath === "#sadarbiba-dizaineriem" || currentPath === "#cooperation") {
+      titleStr = isEng 
+        ? "Sadarbība dizaineriem | Avangart I Premium dizaina mēbeles un kāpnes" 
+        : "Sadarbība dizaineriem | Avangart I Premium dizaina mēbeles un kāpnes";
+    }
+
+    // Keep the core requested title verbatim, but dynamically update if route demands it
+    if (currentPath === '#sakums' || currentPath === '#home' || currentPath === '' || currentPath === '#') {
+      titleStr = "Avangart I Premium dizaina mēbeles un kāpnes";
+    }
+
+    document.title = titleStr;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", descStr);
+    }
+  }, [currentPath, lang]);
 
   const navigateToContact = () => {
     window.location.hash = lang === 'ENG' ? "#contact" : "#kontakti";
