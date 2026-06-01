@@ -832,6 +832,7 @@ const HomeView = ({ onNavigateToContact, lang, projectsList }: HomeViewProps) =>
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 referrerPolicy="no-referrer"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-brand-brown-dark/5" />
             </motion.div>
@@ -902,6 +903,7 @@ const HomeView = ({ onNavigateToContact, lang, projectsList }: HomeViewProps) =>
                     alt={card.titleLV}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
@@ -1100,6 +1102,7 @@ const ProcessPr = ({ lang }: ProcessPrProps) => {
                       className="w-full h-full object-cover select-none pointer-events-none hover:scale-102 transition-transform duration-700 opacity-90" 
                       referrerPolicy="no-referrer"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-brand-brown/10 pointer-events-none" />
                     <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm py-1.5 px-3 text-[9px] tracking-widest font-extrabold uppercase text-white border-l-2 border-brand-orange">
@@ -1230,6 +1233,7 @@ const CollaborationView = ({ onNavigateToContact, lang }: CollaborationViewProps
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-brand-brown/5 pointer-events-none" />
               <div className="absolute top-4 -right-6 w-24 h-24 bg-brand-orange/5 rounded-full blur-2xl" />
@@ -1456,6 +1460,7 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
                   referrerPolicy="no-referrer"
                   loading="lazy"
+                  decoding="async"
                 />
 
               </button>
@@ -1575,6 +1580,8 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
                         alt={lang === "ENG" ? `Lightbox thumbnail ${idx + 1}` : `Palielinātais sīktēls ${idx + 1}`} 
                         className="w-full h-full object-cover" 
                         referrerPolicy="no-referrer"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </button>
                   ))}
@@ -2030,7 +2037,7 @@ const Footer = ({ onOpenPolicy, lang }: FooterProps) => {
         <div className="mt-8 lg:mt-3 pt-5 lg:pt-2 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
           {/* Left copyright (one font size larger: text-[11px] md:text-[12px]) */}
           <div className="text-[11px] md:text-[12px] text-zinc-500 font-medium select-none text-center md:text-left tracking-wide">
-            {lang === "ENG" ? "SIA AVANGART © 2026 I All rights reserved." : "SIA AVANGART © 2026 I Visas tiesības aizsargātas."}
+            {lang === "ENG" ? "SIA AVANGART © 2026 I All rights reserved" : "SIA AVANGART © 2026 I Visas tiesības aizsargātas"}
           </div>
 
           {/* Right policy links (one font size larger: text-[11px] md:text-[12px]) */}
