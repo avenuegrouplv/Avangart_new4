@@ -1343,13 +1343,13 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 bg-white p-3.5 md:p-4.5 shadow-md border border-zinc-200/50 min-h-[310px] items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 bg-white p-4 md:p-6 shadow-md border border-zinc-200/50 items-center">
       {/* Visual Section & Slider */}
-      <div className="lg:col-span-7 flex flex-col justify-between min-h-[260px] space-y-2 lg:space-y-0">
+      <div className="lg:col-span-7 flex flex-col justify-between space-y-2.5">
         <div 
           onClick={() => project.images.length > 0 && setIsLightboxOpen(true)}
           className={cn(
-            "relative w-full h-[200px] sm:h-[210px] lg:flex-grow lg:h-0 overflow-hidden border border-zinc-200 bg-zinc-200 shadow-inner group lg:mb-2",
+            "relative w-full h-[180px] sm:h-[220px] lg:h-[240px] overflow-hidden border border-zinc-200 bg-zinc-200 shadow-inner group",
             project.images.length > 0 ? "cursor-zoom-in" : "cursor-default"
           )}
         >
@@ -1466,45 +1466,29 @@ const PortfolioCard = ({ project, lang, isDev, onUpdateImages }: CustomPortfolio
       </div>
 
       {/* Description Section */}
-      <div className="lg:col-span-5 flex flex-col justify-between min-h-[290px] lg:pl-3 space-y-3 lg:space-y-0">
-        <div className="space-y-2">
-          <h3 className="text-lg md:text-xl font-serif text-brand-brown-dark leading-tight">
+      <div className="lg:col-span-5 flex flex-col justify-between py-2 lg:pl-4 space-y-6 lg:space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-lg md:text-xl font-serif text-brand-brown-dark leading-snug">
             {lang === "ENG" ? (project.titleEN || project.title) : project.title}
           </h3>
           <div className="h-0.5 w-10 bg-brand-orange" />
-          
-          {project.isPlaceholder ? (
-            <div className="py-3 flex flex-col items-start space-y-2 opacity-60">
-              <div className="h-3.5 bg-zinc-100 rounded-sm w-3/4 animate-pulse"></div>
-              <div className="h-3.5 bg-zinc-100 rounded-sm w-1/2 animate-pulse"></div>
-              <p className="text-zinc-400 font-light text-xs italic">
-                {lang === "ENG" 
-                  ? "Project is currently under draft preparation..." 
-                  : "Projekta materiāli šobrīd tiek sagatavoti..."}
-              </p>
-            </div>
-          ) : (
-            <p className="text-zinc-650 font-normal text-xs md:text-[13px] leading-relaxed">
-              {lang === "ENG" ? (project.descriptionEN || project.description) : project.description}
-            </p>
-          )}
         </div>
 
-        <div className="space-y-1.5 pt-3 border-t border-zinc-150">
-          <div className="flex justify-between text-[9.5px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-1.5">
-            <span className="text-zinc-400 font-medium shrink-0">{lang === "ENG" ? "Materials" : "Materiāli"}</span>
-            <span className="font-extrabold text-brand-grey-dark max-w-[180px] text-right truncate" title={project.isPlaceholder ? "—" : (lang === "ENG" ? (project.materialsEN || project.materials) : project.materials)}>
-              {project.isPlaceholder ? "—" : (lang === "ENG" ? (project.materialsEN || project.materials) : project.materials)}
+        <div className="flex items-center space-x-2 text-[10px] uppercase font-bold text-zinc-400 tracking-wider pt-4 border-t border-zinc-150">
+          <MapPin size={14} className="text-brand-orange shrink-0" />
+          <span>
+            {lang === "ENG" ? "Location" : "Vieta"}: {" "}
+            <span className="font-extrabold text-brand-grey-dark uppercase font-sans ml-1 text-xs">
+              {project.isPlaceholder ? (lang === "ENG" ? "Riga, Latvia" : "Rīga, Latvija") : (
+                project.id === 1 ? (lang === "ENG" ? "Marupe, Latvia" : "Mārupe, Latvija") :
+                project.id === 2 ? (lang === "ENG" ? "Babite, Latvia" : "Babīte, Latvija") :
+                project.id === 3 ? (lang === "ENG" ? "Riga, Latvia" : "Rīga, Latvija") :
+                project.id === 4 ? (lang === "ENG" ? "Adazi, Latvia" : "Ādaži, Latvija") :
+                project.id === 5 ? (lang === "ENG" ? "Riga, Latvia" : "Rīga, Latvija") :
+                (lang === "ENG" ? "Riga, Latvia" : "Rīga, Latvija")
+              )}
             </span>
-          </div>
-          <div className="flex justify-between text-[9.5px] uppercase tracking-widest leading-relaxed border-b border-zinc-100 pb-1.5">
-            <span className="text-zinc-400 font-medium">{lang === "ENG" ? "Year" : "Gads"}</span>
-            <span className="font-extrabold text-brand-grey-dark">{project.isPlaceholder ? "—" : project.year}</span>
-          </div>
-          <div className="flex justify-between text-[9.5px] uppercase tracking-widest leading-relaxed">
-            <span className="text-zinc-400 font-medium">{lang === "ENG" ? "Location" : "Izpildes Vieta"}</span>
-            <span className="font-extrabold text-brand-grey-dark font-sans">{project.isPlaceholder ? "—" : (lang === "ENG" ? "Riga / Latvia" : "Rīga / Latvija")}</span>
-          </div>
+          </span>
         </div>
       </div>
 
