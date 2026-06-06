@@ -172,7 +172,7 @@ Error generating stack: `+s.message+`
     k=M?"AVANGART personal data security, processing, and privacy protection terms of service.":"AVANGART personu datu apstrādes, drošības un privātuma aizsardzības noteikumi.";
   } else {
     z=M?"Avangart | Premium Bespoke Furniture & Exclusive Wooden Stairs":"Avangart | Premium dizaina mēbeles un ekskluzīvas koka kāpnes";
-    k=M?"Bespoke manufacturing of premium wooden stairs and exclusive custom furniture. We combine modern design with traditional craftsmanship. Contact us!":"Premium koka kāpņu un ekskluzīvu mēbeļu izgatavošana pēc pasūtījuma. Apvienojam modernu dizainu ar labākajām amatniecības tradīcijām. Sazinieties ar mums!";
+    k=M?"Bespoke premium wooden stairs & exclusive custom furniture. Modern design meets traditional craftsmanship.":"Ekskluzīvas koka kāpnes & dizaina mēbeles pēc pasūtījuma. Apvienojam modernu stilu ar labākajām tradīcijām!";
   }
   document.title=z;
   const B=document.querySelector('meta[name="description"]');
