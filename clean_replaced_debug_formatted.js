@@ -1,0 +1,269 @@
+(ok=({
+  project:a,lang:i,isDev:r,onUpdateImages:l
+})=>{
+  var z,k,M,B;
+  const[
+    d,h
+  ]=Z.useState(0),[
+    f,p
+  ]=Z.useState(!1),[
+    errSrcs,setErrSrcs
+  ]=Z.useState({
+    
+  }),[
+    loadingSrcs,setLoadingSrcs
+  ]=Z.useState({
+    
+  });
+  Z.useEffect(()=>{
+    if(a.images&&a.images.length>0){
+      const indices=[
+        d,(d+1)%a.images.length,(d+2)%a.images.length,(d-1+a.images.length)%a.images.length
+      ];
+      indices.forEach(idx=>{
+        const src=a.images[
+          idx
+        ];
+        if(src&&!loadingSrcs[
+          src
+        ]){
+          setLoadingSrcs(prev=>({
+            ...prev,[
+              src
+            ]:"loading"
+          }));
+          const img=new Image();
+          img.src=src;
+          img.onload=()=>{
+            setLoadingSrcs(prev=>({
+              ...prev,[
+                src
+              ]:"loaded"
+            }))
+          };
+          img.onerror=()=>{
+            setLoadingSrcs(prev=>({
+              ...prev,[
+                src
+              ]:"loaded"
+            }));
+            setErrSrcs(prev=>({
+              ...prev,[
+                src
+              ]:true
+            }))
+          }
+        })
+      })
+    }
+  },[
+    d,a.images
+  ]);
+  Z.useEffect(()=>{
+    h(0)
+  },[
+    a.id
+  ]);
+  const b=V=>{
+    V&&V.stopPropagation(),h(H=>H===0?a.images.length-1:H-1)
+  },g=V=>{
+    V&&V.stopPropagation(),h(H=>H===a.images.length-1?0:H+1)
+  },v=(V,H)=>{
+    V.dataTransfer.setData("text/plain",H.toString())
+  },x=V=>{
+    V.preventDefault()
+  },j=(V,H)=>{
+    V.preventDefault();
+    const Y=V.dataTransfer.getData("text/plain");
+    if(!Y)return;
+    const X=parseInt(Y,10);
+    if(X===H)return;
+    const J=[
+      ...a.images
+    ],[
+      rt
+    ]=J.splice(X,1);
+    J.splice(H,0,rt),l(a.id,J),h(H)
+  };
+  return u.jsxs("div",{
+    className:"grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 bg-white p-4 md:p-6 shadow-md border border-zinc-200/50 items-center",children:[
+      u.jsxs("div",{
+        className:"lg:col-span-7 flex flex-col justify-between space-y-2.5",children:[
+          u.jsxs("div",{
+            onClick:()=>a.images.length>0&&p(!0),className:ie("relative w-full h-[180px] sm:h-[220px] lg:h-[240px] overflow-hidden border border-zinc-200 bg-zinc-200 shadow-inner group",a.images.length>0?"cursor-zoom-in":"cursor-default"),children:[
+              a.images.length>0?u.jsxs("div",{
+                className:"relative w-full h-full",children:[
+                  u.jsx("img",{
+                    src:errSrcs[
+                      a.images[
+                        d
+                      ]
+                    ]?"/images/logo_clean_v4.png":a.images[
+                      d
+                    ],alt:`${i==="ENG"&&a.titleEN||a.title} - img ${d+1}`,className:ie("w-full h-full object-cover object-center group-hover:scale-[1.015] transition-all duration-750 select-none",loadingSrcs[
+                      a.images[
+                        d
+                      ]
+                    ]==="loading"?"blur-md scale-95 opacity-50":"blur-0 scale-100 opacity-100"),referrerPolicy:"no-referrer",loading:"lazy",decoding:"async",onError:()=>{
+                      setErrSrcs(prev=>({
+                        ...prev,[
+                          a.images[
+                            d
+                          ]
+                        ]:true
+                      }))
+                    }
+                  }),loadingSrcs[
+                    a.images[
+                      d
+                    ]
+                  ]==="loading"&&u.jsx("div",{
+                    className:"absolute inset-0 bg-zinc-100/90 backdrop-blur-sm flex items-center justify-center animate-pulse",children:u.jsx("p",{
+                      className:"text-[10px] text-zinc-500 font-bold tracking-widest uppercase",children:i==="ENG"?"Refining premium grain...":"Kraujas smalkas detaļas..."
+                    })
+                  }),errSrcs[
+                    a.images[
+                      d
+                    ]
+                  ]&&u.jsxs("div",{
+                    className:"absolute inset-0 bg-neutral-900 border border-brand-orange/30 flex flex-col items-center justify-center text-center p-4",children:[
+                      u.jsx("p",{
+                        className:"text-amber-500 font-serif text-sm font-extrabold mb-1",children:i==="ENG"?"Premium woodcrafting":"Ekskluzīvs kokapstrādes darbs"
+                      }),u.jsx("p",{
+                        className:"text-[9px] text-zinc-400 uppercase tracking-widest",children:i==="ENG"?"Visual assets loading securely":"Attēli tiek droši sagatavoti"
+                      })
+                    ]
+                  })
+                ]
+              }):u.jsx("div",{
+                className:"w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 select-none",children:u.jsx("span",{
+                  className:"text-[10px] uppercase tracking-widest font-extrabold text-zinc-400/80",children:i==="ENG"?"No images added yet":"Pagaidām nav pievienotu attēlu"
+                })
+              }),a.images.length>1&&u.jsxs(u.Fragment,{
+                children:[
+                  u.jsx("button",{
+                    type:"button",onClick:b,className:"absolute left-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10","aria-label":i==="ENG"?"Previous image":"Iepriekšējais attēls",children:u.jsx(Mr,{
+                      size:14
+                    })
+                  }),u.jsx("button",{
+                    type:"button",onClick:g,className:"absolute right-3 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white rounded-full p-2 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10","aria-label":i==="ENG"?"Next image":"Nākamais attēls",children:u.jsx(r0,{
+                      size:14
+                    })
+                  })
+                ]
+              }),u.jsx("div",{
+                className:"absolute top-2.5 left-2.5 btn-wood-oak border-none text-white py-1 px-2.5 text-[8.5px] uppercase tracking-widest font-extrabold select-none shadow-md",children:i==="ENG"?a.isPlaceholder?`Portfolio ${a.placeholderNum}`:((z=Ni[
+                  a.category
+                ])==null?void 0:z.EN)||a.category:a.isPlaceholder?`Portfolio ${a.placeholderNum}`:((k=Ni[
+                  a.category
+                ])==null?void 0:k.LV)||a.category
+              }),a.images.length>0&&u.jsxs("div",{
+                className:"absolute bottom-2.5 right-2.5 bg-black/70 text-white py-1 px-2.5 text-[10px] tracking-widest font-extrabold select-none rounded-md shadow-sm border border-white/10",children:[
+                  d+1,"/",a.images.length
+                ]
+              })
+            ]
+          }),a.images.length>0&&u.jsx("div",{
+            className:"grid grid-cols-7 gap-1",children:a.images.slice(0,7).map((V,H)=>u.jsx("button",{
+              type:"button",draggable:r,onDragStart:Y=>v(Y,H),onDragOver:x,onDrop:Y=>j(Y,H),onClick:()=>h(H),className:ie("aspect-[4/3] w-full overflow-hidden border bg-zinc-100 transition-all duration-200 relative group cursor-pointer",d===H?"border-brand-orange ring-1 ring-brand-orange scale-102 opacity-100":"border-zinc-200 opacity-60 hover:opacity-100 shadow-sm",r?"cursor-grab active:cursor-grabbing border-zinc-300":""),"aria-label":i==="ENG"?`View image ${H+1}`:`Skatīt attēlu ${H+1}`,title:r?i==="ENG"?"Drag and drop to rearrange.":"Velciet, lai mainītu secību.":void 0,children:u.jsx("img",{
+                src:V,alt:i==="ENG"?`Thumbnail ${H+1}`:`Sīktēls ${H+1}`,className:"w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 select-none",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"
+              })
+            },H))
+          })
+        ]
+      }),u.jsxs("div",{
+        className:"lg:col-span-5 flex flex-col justify-between py-2 lg:pl-4 space-y-6 lg:space-y-8",children:[
+          u.jsxs("div",{
+            className:"space-y-4",children:[
+              u.jsx("h3",{
+                className:"text-lg md:text-xl font-serif text-brand-brown-dark leading-snug",children:i==="ENG"&&a.titleEN||a.title
+              }),u.jsx("div",{
+                className:"h-0.5 w-10 bg-brand-orange"
+              })
+            ]
+          }),u.jsxs("div",{
+            className:"flex items-center space-x-2 text-[10px] uppercase font-bold text-zinc-400 tracking-wider pt-4 border-t border-zinc-150",children:[
+              u.jsx(Ad,{
+                size:14,className:"text-brand-orange shrink-0"
+              }),u.jsxs("span",{
+                children:[
+                  i==="ENG"?"Location":"Vieta",": "," ",u.jsx("span",{
+                    className:"font-extrabold text-brand-grey-dark uppercase font-sans ml-1 text-xs",children:a.location?i==="ENG"?(a.locationEN||a.location):a.location:a.isPlaceholder?i==="ENG"?"Riga, Latvia":"Rīga, Latvija":a.id===1?i==="ENG"?"Marupe, Latvia":"Mārupe, Latvija":a.id===2?i==="ENG"?"Babite, Latvia":"Babīte, Latvija":a.id===3?i==="ENG"?"Riga, Latvia":"Rīga, Latvija":a.id===4?i==="ENG"?"Adazi, Latvia":"Ādaži, Latvija":i==="ENG"?"Riga, Latvia":"Rīga, Latvija"
+                  })
+                ]
+              })
+            ]
+          })
+        ]
+      }),u.jsx(Ci,{
+        children:f&&a.images.length>0&&u.jsxs(Ft.div,{
+          initial:{
+            opacity:0
+          },animate:{
+            opacity:1
+          },exit:{
+            opacity:0
+          },className:"fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex flex-col justify-between p-6 select-none",onClick:()=>p(!1),children:[
+            u.jsxs("div",{
+              className:"flex justify-between items-center text-white text-xs tracking-wider border-b border-white/10 pb-4 h-12",children:[
+                u.jsxs("div",{
+                  className:"font-serif italic font-light truncate max-w-[80%] uppercase",children:[
+                    i==="ENG"&&a.titleEN||a.title," (",i==="ENG"?((M=Ni[
+                      a.category
+                    ])==null?void 0:M.EN)||a.category:((B=Ni[
+                      a.category
+                    ])==null?void 0:B.LV)||a.category,")"
+                  ]
+                }),u.jsx("button",{
+                  type:"button",onClick:()=>p(!1),className:"bg-zinc-800 hover:bg-zinc-700 text-white p-2.5 rounded-full transition-transform duration-200 hover:scale-110 active:scale-90 cursor-pointer","aria-label":i==="ENG"?"Close":"Aizvērt",children:u.jsx(Ed,{
+                    size:18
+                  })
+                })
+              ]
+            }),u.jsxs("div",{
+              className:"flex-1 flex items-center justify-center relative my-6",children:[
+                u.jsx("img",{
+                  src:a.images[
+                    d
+                  ],alt:`${i==="ENG"&&a.titleEN||a.title} - Zoom`,className:"max-w-full max-h-[75vh] object-contain shadow-2xl transition-transform duration-300",onClick:V=>V.stopPropagation(),referrerPolicy:"no-referrer"
+                }),a.images.length>1&&u.jsxs(u.Fragment,{
+                  children:[
+                    u.jsx("button",{
+                      type:"button",onClick:V=>{
+                        V.stopPropagation(),b()
+                      },className:"absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full p-4 backdrop-blur-md transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10","aria-label":i==="ENG"?"Previous image":"Iepriekšējais attēls",children:u.jsx(Mr,{
+                        size:24
+                      })
+                    }),u.jsx("button",{
+                      type:"button",onClick:V=>{
+                        V.stopPropagation(),g()
+                      },className:"absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full p-4 backdrop-blur-md transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer z-10","aria-label":i==="ENG"?"Next image":"Nākamais attēls",children:u.jsx(r0,{
+                        size:24
+                      })
+                    })
+                  ]
+                })
+              ]
+            }),u.jsx("div",{
+              className:"border-t border-white/10 pt-4",onClick:V=>V.stopPropagation(),children:u.jsxs("div",{
+                className:"max-w-xl mx-auto flex flex-col items-center space-y-4",children:[
+                  u.jsxs("div",{
+                    className:"text-white text-[11px] tracking-widest uppercase font-extrabold opacity-75",children:[
+                      d+1," / ",a.images.length
+                    ]
+                  }),u.jsx("div",{
+                    className:"flex justify-center flex-wrap gap-2 overflow-x-auto max-w-full pb-2",children:a.images.map((V,H)=>u.jsx("button",{
+                      type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-brand-orange ring-1 ring-brand-orange scale-105 opacity-100":"border-white/20 opacity-40 hover:opacity-100"),"aria-label":`Select page ${H+1}`,children:u.jsx("img",{
+                        src:V,alt:i==="ENG"?`Lightbox thumbnail ${H+1}`:`Palielinātais sīktēls ${H+1}`,className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"
+                      })
+                    },H))
+                  })
+                ]
+              })
+            })
+          ]
+        })
+      })
+    ]
+  })
+})

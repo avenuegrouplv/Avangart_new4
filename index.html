@@ -59,6 +59,22 @@
         ]
       }
     </script>
+    <script>
+      try {
+        const listKey = "avangart-projects-list-v13";
+        const orderKey = "avangart-placeholders-order";
+        const saved = localStorage.getItem(listKey);
+        if (saved) {
+          if (saved.includes("dog") || saved.includes("placeholder") || saved.includes("placeholder-2") || saved.includes("placeholder-3") || saved.includes("pub-259b6281ac664ea885ac1af3a4df6551")) {
+            console.warn("Resetting corrupted local storage cache...");
+            localStorage.removeItem(listKey);
+            localStorage.removeItem(orderKey);
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    </script>
     <script type="module" crossorigin src="/assets/index-CbV5ml0j-v5.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-KXNzc3bB.css">
   </head>
