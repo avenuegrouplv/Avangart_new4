@@ -1,19 +1,20 @@
 {
-  "name": "react-example",
+  "name": "avangart-|-dizaina-mēbeļu-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist/assets && cp -r public/* dist/ && cp index.html dist/",
-    "dev": "vite --port 3000",
-    "lint": "echo 'No linting needed'"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "jimp": "^1.6.1",
-    "sharp": "^0.35.1",
-    "vite": "^5.0.0"
+
   },
   "devDependencies": {
-    "acorn": "^8.17.0"
+    "@types/node": "^22.14.0",
+    
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
   }
 }
