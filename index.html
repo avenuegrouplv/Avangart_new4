@@ -54,6 +54,25 @@
           max-width: 1200px !important;
         }
       }
+    
+      /* Generous gaps between galleries (both horizontally and vertically) */
+      .custom-gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+        gap: 3.44rem !important; /* Mobile gap */
+      }
+      @media (min-width: 640px) {
+        .custom-gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 3.825rem !important; /* Tablet/Desktop gap */
+        }
+      }
+      @media (min-width: 1024px) {
+        .custom-gallery-grid {
+          gap: 4.97rem !important; /* Large desktop gap */
+        }
+      }
+    
     </style>
   </head>
   <body class="bg-white text-zinc-900 font-sans antialiased">
@@ -185,6 +204,6 @@
         }, 1000);
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-CbV5ml0j-v5.js"></script>
+    <script type="module" crossorigin src="/assets/index-CbV5ml0j-v6.js?v=17"></script>
   </body>
 </html>
