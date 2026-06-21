@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { execSync } from 'child_process';
+import path from 'path';
 
 console.log("Preparing build target...");
 
@@ -31,8 +32,6 @@ const copyRecursive = (src, dest) => {
     fs.copyFileSync(src, dest);
   }
 };
-
-import path from 'path';
 
 if (fs.existsSync('public')) {
   fs.readdirSync('public').forEach(item => {
