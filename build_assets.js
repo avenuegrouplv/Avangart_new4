@@ -1,6 +1,47 @@
 import fs from 'fs';
 import { execSync } from 'child_process';
 import path from 'path';
+import sharp from 'sharp';
+
+console.log("Converting source JPG images to WebP...");
+const targetDir = path.join('images', 'premium', 'Jūrmala. Dizaina elementi');
+if (!fs.existsSync(targetDir)) {
+  fs.mkdirSync(targetDir, { recursive: true });
+}
+
+const sourceImages = [
+  'img_0904_50314148253_l.jpg',
+  'img_0913_50314997062_l.jpg',
+  'img_0922_50314996792_l.jpg',
+  'img_0927_50314996627_l.jpg',
+  'img_0932_50314996407_l.jpg',
+  'img_0937_50314147088_l.jpg',
+  'img_0943_50314146858_l.jpg',
+  'img_0946_50314817201_l.jpg',
+  'img_0947_50314816941_l.jpg',
+  'img_0953_50314994932_l.jpg',
+  'img_0958_50314994662_l.jpg',
+  'img_0963_50314997547_l.jpg'
+];
+
+for (let i = 0; i < sourceImages.length; i++) {
+  const filename = sourceImages[i];
+  const sourcePath = path.join('.', filename);
+  const indexStr = String(i + 1).padStart(2, '0');
+  const destPath = path.join(targetDir, `img_${indexStr}.webp`);
+
+  if (fs.existsSync(sourcePath)) {
+    console.log(`Converting ${filename} to ${destPath}...`);
+    try {
+      await sharp(sourcePath)
+        .webp({ quality: 85 })
+        .toFile(destPath);
+      fs.unlinkSync(sourcePath);
+    } catch (err) {
+      console.error(`Error converting ${filename}:`, err);
+    }
+  }
+}
 
 console.log("Preparing build target...");
 
