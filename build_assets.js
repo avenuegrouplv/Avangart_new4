@@ -3,6 +3,136 @@ import { execSync } from 'child_process';
 import path from 'path';
 import sharp from 'sharp';
 
+const jsFiles = ['assets/index-CbV5ml0j.js', 'assets/index-CbV5ml0j-v6.js'];
+
+console.log("Converting custom process steps and logo...");
+const customImages = [
+  { src: 'Tehniskais-projekts.png', dest: 'images/tehniskais-projekts/img_01.webp' },
+  { src: 'Razosanas-darbnica.png', dest: 'images/razosana-darbnica/img_01.webp' },
+  { src: 'Piegade-montaza-garantija.jpeg', dest: 'images/piegade-montaza-garantija/img_01.webp' },
+  { src: 'Avangart-new.png', dest: 'images/logo/Avangart-new.webp' }
+];
+
+for (const item of customImages) {
+  if (fs.existsSync(item.src)) {
+    const dir = path.dirname(item.dest);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    console.log(`Converting custom image ${item.src} to ${item.dest}...`);
+    try {
+      await sharp(item.src)
+        .webp({ quality: 90 })
+        .toFile(item.dest);
+      fs.unlinkSync(item.src);
+    } catch (err) {
+      console.error(`Error converting ${item.src}:`, err);
+    }
+  }
+}
+
+// Logo background transparency cleaning
+const logoPath = 'images/logo/Avangart-new.webp';
+if (fs.existsSync(logoPath)) {
+  console.log("Cleaning logo background checkers and converting to true transparent WebP...");
+  try {
+    const logoImage = sharp(logoPath);
+    const { data, info } = await logoImage.raw().toBuffer({ resolveWithObject: true });
+    
+    console.log(`Logo properties: ${info.width}x${info.height}, channels: ${info.channels}`);
+    
+    // Analyze colors to find background checkers
+    const counts = {};
+    for (let i = 0; i < data.length; i += info.channels) {
+      const r = data[i];
+      const g = data[i+1];
+      const b = data[i+2];
+      const a = info.channels === 4 ? data[i+3] : 255;
+      const key = `${r},${g},${b},${a}`;
+      counts[key] = (counts[key] || 0) + 1;
+    }
+    const topColors = Object.entries(counts).sort((a,b) => b[1] - a[1]).slice(0, 25);
+    fs.writeFileSync('logo_colors.txt', JSON.stringify(topColors, null, 2), 'utf8');
+    console.log("Logo Top Colors logged with Alpha");
+
+    // Search and log how the logo is rendered in JS files
+    const logoUsage = [];
+    const logoCalls = [];
+    for (const file of jsFiles) {
+      if (fs.existsSync(file)) {
+        const fileContent = fs.readFileSync(file, 'utf8');
+        const match = fileContent.match(/.{0,150}AVANGART logo.{0,150}/g);
+        if (match) {
+          logoUsage.push(`--- File: ${file} ---`);
+          logoUsage.push(...match);
+        }
+        
+        // Find component calls of Rv
+        const calls = fileContent.match(/.{0,100}Rv\(.{0,100}/g) || fileContent.match(/.{0,100}u\.jsx\(Rv,.{0,100}/g);
+        if (calls) {
+          logoCalls.push(`--- File: ${file} ---`);
+          logoCalls.push(...calls);
+        }
+      }
+    }
+    fs.writeFileSync('logo_usage.txt', logoUsage.join('\n'), 'utf8');
+    fs.writeFileSync('logo_call.txt', logoCalls.join('\n'), 'utf8');
+    console.log("Logged logo usage and calls");
+
+    // Create transparent buffer (4 channels: RGBA)
+    const outBuffer = Buffer.alloc(info.width * info.height * 4);
+    let cleanedCount = 0;
+    
+    for (let i = 0, j = 0; i < data.length; i += info.channels, j += 4) {
+      const r = data[i];
+      const g = data[i+1];
+      const b = data[i+2];
+      const a = info.channels === 4 ? data[i+3] : 255;
+      
+      // A pixel is background if it is light grey or white (checkered pattern)
+      // Checkers are usually neutral grey/white, i.e., r, g, b are close and all above 160
+      const isChecker = (r > 150 && g > 150 && b > 150 && Math.abs(r - g) < 25 && Math.abs(r - b) < 25 && Math.abs(g - b) < 25);
+      
+      if (isChecker || a < 50) {
+        // Transparent
+        outBuffer[j] = 0;
+        outBuffer[j+1] = 0;
+        outBuffer[j+2] = 0;
+        outBuffer[j+3] = 0;
+        cleanedCount++;
+      } else {
+        // Keep original pixel but make sure it is fully opaque
+        outBuffer[j] = r;
+        outBuffer[j+1] = g;
+        outBuffer[j+2] = b;
+        outBuffer[j+3] = 255;
+      }
+    }
+    
+    console.log(`Cleaned ${cleanedCount} background pixels out of ${info.width * info.height} total pixels.`);
+    
+    // Save back the transparent image
+    const tempLogoPath = 'images/logo/Avangart-new-clean.webp';
+    await sharp(outBuffer, {
+      raw: {
+        width: info.width,
+        height: info.height,
+        channels: 4
+      }
+    })
+    .webp({ quality: 95 })
+    .toFile(tempLogoPath);
+    
+    // Replace old logo with transparent logo
+    fs.unlinkSync(logoPath);
+    fs.renameSync(tempLogoPath, logoPath);
+    console.log("Logo background cleaned successfully and saved.");
+  } catch (err) {
+    console.error("Error cleaning logo background:", err);
+  }
+}
+
+
 console.log("Converting source JPG images to WebP...");
 const targetDir = path.join('images', 'premium', 'Jūrmala. Dizaina elementi');
 if (!fs.existsSync(targetDir)) {
@@ -40,6 +170,28 @@ for (let i = 0; i < sourceImages.length; i++) {
     } catch (err) {
       console.error(`Error converting ${filename}:`, err);
     }
+  }
+}
+
+for (const file of jsFiles) {
+  if (fs.existsSync(file)) {
+    console.log(`Updating paths and logo in ${file}...`);
+    let content = fs.readFileSync(file, 'utf8');
+
+    // Replace the base64 logo string
+    content = content.replace(/ak="data:image\/png;base64,[^"]*"/g, 'ak="/images/logo/Avangart-new.webp"');
+
+    // Replace work process step image URLs
+    content = content.replace(/y0="https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp"/g, 'y0="/images/tehniskais-projekts/img_01.webp"');
+    content = content.replace(/x0="https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting\.webp"/g, 'x0="/images/razosana-darbnica/img_01.webp"');
+    content = content.replace(/j0="https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation\.webp"/g, 'j0="/images/piegade-montaza-garantija/img_01.webp"');
+
+    // Replace Zoom/Lightbox full thumbnails list with sliding 7-thumbnails window
+    const targetString = 'a.images.map((V,H)=>u.jsx("button",{type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-brand-orange ring-1 ring-brand-orange scale-105 opacity-100":"border-white/20 opacity-40 hover:opacity-100"),"aria-label":"Select page "+(H+1),children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})},H))';
+    const replacementString = 'Array.from({length:7}).map((_,s)=>{const startIdx=a.images.length>7?(d>=6?d-6:0):0;const H=startIdx+s;const V=H<a.images.length?a.images[H]:null;return V?u.jsx("button",{type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-brand-orange ring-1 ring-brand-orange scale-105 opacity-100":"border-white/20 opacity-40 hover:opacity-100"),"aria-label":"Select page "+(H+1),children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})},s):null})';
+    content = content.split(targetString).join(replacementString);
+
+    fs.writeFileSync(file, content, 'utf8');
   }
 }
 
