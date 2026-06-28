@@ -1,4 +1,4 @@
 --- File: assets/index-CbV5ml0j.js ---
-SUVORK5CYII=",Rv=({className:a,isDarkBackground:i=!1})=>{const r=i?{filter:"brightness(0) invert(1)"}:{filter:"none"};return u.jsx("img",{src:ak,alt:"AVANGART logo",loading:"eager",referrerPolicy:"no-referrer",style:r,className:ie("object-contain select-none transition-all duration-300",a)})},Dd=({lang:a})=>u.js
+AORAAA/v6.js",Rv=({className:a,isDarkBackground:i=!1})=>{const r=i?{filter:"brightness(0) invert(1)"}:{filter:"none"};return u.jsx("img",{src:ak,alt:"AVANGART logo",loading:"eager",referrerPolicy:"no-referrer",style:r,className:ie("object-contain select-none transition-all duration-300",a)})},Dd=({lang:a})=>u.js
 --- File: assets/index-CbV5ml0j-v6.js ---
-SUVORK5CYII=",Rv=({className:a,isDarkBackground:i=!1})=>{const r=i?{filter:"brightness(0) invert(1)"}:{filter:"none"};return u.jsx("img",{src:ak,alt:"AVANGART logo",loading:"eager",referrerPolicy:"no-referrer",style:r,className:ie("object-contain select-none transition-all duration-300",a)})},Dd=({lang:a})=>u.js
+AORAAA/v6.js",Rv=({className:a,isDarkBackground:i=!1})=>{const r=i?{filter:"brightness(0) invert(1)"}:{filter:"none"};return u.jsx("img",{src:ak,alt:"AVANGART logo",loading:"eager",referrerPolicy:"no-referrer",style:r,className:ie("object-contain select-none transition-all duration-300",a)})},Dd=({lang:a})=>u.js
