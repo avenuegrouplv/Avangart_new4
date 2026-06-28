@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node build_assets.js",
+    "fix": "node fix_all.cjs",
     "dev": "node server.js",
     "start": "node server.js"
   },
