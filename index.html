@@ -23,17 +23,20 @@
         scroll-snap-align: center !important;
         flex-shrink: 0 !important;
         margin: 0 !important;
-        width: calc(50vw - 16px) !important;
-        min-width: calc(50vw - 16px) !important;
-        max-width: calc(50vw - 16px) !important;
+        width: calc(50vw - 20px) !important;
+        min-width: calc(50vw - 20px) !important;
+        max-width: calc(50vw - 20px) !important;
+        background-color: #ffffff !important;
+        border: 1px solid #e4e4e7 !important;
+        border-radius: 4px !important;
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
       }
 
       .category-carousel-card.active-card {
         transform: scale(1.20) !important;
         z-index: 10 !important;
-        border-color: #d6a266 !important;
-        box-shadow: 0 12px 25px rgba(0,0,0,0.12) !important;
+        border: 2px solid #d6a266 !important;
+        box-shadow: 0 16px 32px rgba(0,0,0,0.18) !important;
       }
       
       #portfolio-categories-container {
@@ -41,11 +44,11 @@
         overflow-x: auto !important;
         scroll-behavior: auto !important;
         scroll-snap-type: x mandatory !important;
-        gap: 16px !important;
-        padding-left: calc(25vw + 8px) !important;
-        padding-right: calc(25vw + 8px) !important;
-        padding-top: 10px !important;
-        padding-bottom: 10px !important;
+        gap: 36px !important;
+        padding-left: calc(25vw + 10px) !important;
+        padding-right: calc(25vw + 10px) !important;
+        padding-top: 36px !important;
+        padding-bottom: 52px !important;
         width: 100vw !important;
         max-width: 100vw !important;
         margin-left: calc(-50vw + 50%) !important;
@@ -54,23 +57,28 @@
       
       @media (min-width: 1024px) {
         .category-carousel-card {
-          scroll-snap-align: start !important;
-          width: calc((100% - 80px) / 5) !important;
-          min-width: calc((100% - 80px) / 5) !important;
-          max-width: calc((100% - 80px) / 5) !important;
-          transform: none !important;
-          box-shadow: none !important;
+          scroll-snap-align: center !important;
+          width: calc((100% - 160px) / 5) !important;
+          min-width: calc((100% - 160px) / 5) !important;
+          max-width: calc((100% - 160px) / 5) !important;
+          border: 1px solid #e4e4e7 !important;
+        }
+        .category-carousel-card.active-card {
+          transform: scale(1.15) !important;
+          z-index: 10 !important;
+          border: 2px solid #d6a266 !important;
+          box-shadow: 0 16px 32px rgba(0,0,0,0.18) !important;
         }
         #portfolio-categories-container {
           width: 100% !important;
           max-width: 1200px !important;
           margin-left: auto !important;
           margin-right: auto !important;
-          padding-left: 0 !important;
-          padding-right: 0 !important;
-          padding-top: 0 !important;
-          padding-bottom: 4px !important;
-          gap: 20px !important;
+          padding-left: 24px !important;
+          padding-right: 24px !important;
+          padding-top: 36px !important;
+          padding-bottom: 52px !important;
+          gap: 40px !important;
         }
       }
     
@@ -103,7 +111,8 @@
         if (!el || !el.children.length) return;
         const card = el.children[0];
         const cardWidth = card.getBoundingClientRect().width;
-        const gap = 20;
+        const style = window.getComputedStyle(el);
+        const gap = parseFloat(style.gap) || 36;
         const itemWidth = cardWidth + gap;
         const currentScroll = el.scrollLeft;
         const targetScroll = Math.round(currentScroll / itemWidth) * itemWidth - itemWidth;
@@ -115,7 +124,8 @@
         if (!el || !el.children.length) return;
         const card = el.children[0];
         const cardWidth = card.getBoundingClientRect().width;
-        const gap = 20;
+        const style = window.getComputedStyle(el);
+        const gap = parseFloat(style.gap) || 36;
         const itemWidth = cardWidth + gap;
         const currentScroll = el.scrollLeft;
         const targetScroll = Math.round(currentScroll / itemWidth) * itemWidth + itemWidth;

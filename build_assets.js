@@ -90,8 +90,9 @@ if (fs.existsSync(logoPath)) {
       const a = info.channels === 4 ? data[i+3] : 255;
       
       // A pixel is background if it is light grey or white (checkered pattern)
-      // Checkers are usually neutral grey/white, i.e., r, g, b are close and all above 160
-      const isChecker = (r > 150 && g > 150 && b > 150 && Math.abs(r - g) < 25 && Math.abs(r - b) < 25 && Math.abs(g - b) < 25);
+      // Checkers are usually neutral grey/white, i.e., r, g, b are close and all above 150
+      const intensity = (r + g + b) / 3;
+      const isChecker = intensity > 150;
       
       if (isChecker || a < 50) {
         // Transparent
@@ -173,6 +174,86 @@ for (let i = 0; i < sourceImages.length; i++) {
   }
 }
 
+function moveAndRenameProject(content) {
+  // 1. Find the index of '{id:105,'
+  const targetIdStr = '{id:105,';
+  const id105Index = content.indexOf(targetIdStr);
+  if (id105Index === -1) {
+    console.log("Could not find id:105");
+    return content;
+  }
+  
+  // 2. Extract the complete object starting at id105Index
+  let braceCount = 0;
+  let endIndex = -1;
+  for (let i = id105Index; i < content.length; i++) {
+    if (content[i] === '{') braceCount++;
+    else if (content[i] === '}') {
+      braceCount--;
+      if (braceCount === 0) {
+        endIndex = i + 1;
+        break;
+      }
+    }
+  }
+  
+  if (endIndex === -1) {
+    console.log("Could not find end of id:105 object");
+    return content;
+  }
+  
+  let objectStr = content.substring(id105Index, endIndex);
+  
+  // 3. Remove the object and the preceding or trailing comma from the original content
+  let before = content.substring(0, id105Index);
+  let after = content.substring(endIndex);
+  
+  // Clean up commas
+  if (before.endsWith(',')) {
+    before = before.slice(0, -1);
+  } else if (after.startsWith(',')) {
+    after = after.slice(1);
+  }
+  
+  let contentWithout105 = before + after;
+  
+  // 4. Modify the object properties as requested
+  objectStr = objectStr.replace('title:"Jūrmala. Dizaina elementi"', 'title:"Jūrmala. Dzintara prospekts 2"');
+  objectStr = objectStr.replace('titleEN:"Jurmala. Design elements"', 'titleEN:"Jurmala. Dzintara prospekts 2"');
+  objectStr = objectStr.replace('category:"Dizaina elementi"', 'category:"PREMIUM PROJEKTI"');
+  
+  // 5. Insert this modified object right after the id:101 object
+  const id101Index = contentWithout105.indexOf('{id:101,');
+  if (id101Index === -1) {
+    console.log("Could not find id:101");
+    return content;
+  }
+  
+  braceCount = 0;
+  let id101EndIndex = -1;
+  for (let i = id101Index; i < contentWithout105.length; i++) {
+    if (contentWithout105[i] === '{') braceCount++;
+    else if (contentWithout105[i] === '}') {
+      braceCount--;
+      if (braceCount === 0) {
+        id101EndIndex = i + 1;
+        break;
+      }
+    }
+  }
+  
+  if (id101EndIndex === -1) {
+    console.log("Could not find end of id:101 object");
+    return content;
+  }
+  
+  let before101 = contentWithout105.substring(0, id101EndIndex);
+  let after101 = contentWithout105.substring(id101EndIndex);
+  
+  let newContent = before101 + ',' + objectStr + after101;
+  return newContent;
+}
+
 for (const file of jsFiles) {
   if (fs.existsSync(file)) {
     console.log(`Updating paths and logo in ${file}...`);
@@ -190,6 +271,9 @@ for (const file of jsFiles) {
     const targetString = 'a.images.map((V,H)=>u.jsx("button",{type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-brand-orange ring-1 ring-brand-orange scale-105 opacity-100":"border-white/20 opacity-40 hover:opacity-100"),"aria-label":"Select page "+(H+1),children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})},H))';
     const replacementString = 'Array.from({length:7}).map((_,s)=>{const startIdx=a.images.length>7?(d>=6?d-6:0):0;const H=startIdx+s;const V=H<a.images.length?a.images[H]:null;return V?u.jsx("button",{type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-brand-orange ring-1 ring-brand-orange scale-105 opacity-100":"border-white/20 opacity-40 hover:opacity-100"),"aria-label":"Select page "+(H+1),children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})},s):null})';
     content = content.split(targetString).join(replacementString);
+
+    // Apply the project move and rename logic
+    content = moveAndRenameProject(content);
 
     fs.writeFileSync(file, content, 'utf8');
   }
