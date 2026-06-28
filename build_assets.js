@@ -491,6 +491,22 @@ function moveAndRenameProject(content) {
   return content.substring(0, firstBracketIndex) + newProjectsArray + content.substring(endIndex);
 }
 
+// Pre-calculate 600px optimized Base64 PNG logo string for Netlify & instant loading
+let logoBase64 = '';
+const webpPathForBase64 = 'images/logo/Avangart-new.webp';
+if (fs.existsSync(webpPathForBase64)) {
+  try {
+    const buffer = await sharp(webpPathForBase64)
+      .resize({ width: 600 })
+      .png({ quality: 90 })
+      .toBuffer();
+    logoBase64 = buffer.toString('base64');
+    console.log(`Successfully generated optimized Base64 logo of length ${logoBase64.length}`);
+  } catch (err) {
+    console.error("Error generating optimized Base64 logo:", err);
+  }
+}
+
 for (const file of jsFiles) {
   const sourceTemplate = path.join('public', file);
   if (fs.existsSync(sourceTemplate)) {
@@ -506,8 +522,12 @@ for (const file of jsFiles) {
     console.log(`Updating paths and logo in ${file}...`);
     let content = fs.readFileSync(file, 'utf8');
 
-    // Replace the base64 logo string
-    content = content.replace(/ak="data:image\/png;base64,[^"]*"/g, 'ak="/images/logo/Avangart-new.webp"');
+    // Replace the base64 logo string with optimized Base64 PNG string for Netlify
+    if (logoBase64) {
+      content = content.replace(/ak="data:image\/png;base64,[^"]*"/g, `ak="data:image/png;base64,${logoBase64}"`);
+    } else {
+      content = content.replace(/ak="data:image\/png;base64,[^"]*"/g, 'ak="/images/logo/Avangart-new.webp"');
+    }
 
     // Replace work process step image URLs
     content = content.replace(/y0="https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp"/g, 'y0="/images/tehniskais-projekts/img_01.webp"');
@@ -521,7 +541,7 @@ for (const file of jsFiles) {
 
     // 1. Navigation buttons for Mūsu īstenotie projekti
     const navTarget = 'b.titleLV})})]},g))})';
-    const navReplacement = 'b.titleLV})})]},g))}),u.jsxs("div",{className:"flex justify-center items-center gap-12 mt-1 mb-8",children:[u.jsx("button",{onClick:()=>window.scrollPortfolioPrev&&window.scrollPortfolioPrev(),className:"text-zinc-500 hover:text-brand-orange text-[100px] font-extralight flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all bg-transparent border-none outline-none focus:outline-none","aria-label":"Scroll left",children:"<"}),u.jsx("button",{onClick:()=>window.scrollPortfolioNext&&window.scrollPortfolioNext(),className:"text-zinc-500 hover:text-brand-orange text-[100px] font-extralight flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all bg-transparent border-none outline-none focus:outline-none","aria-label":"Scroll right",children:">"})]})';
+    const navReplacement = 'b.titleLV})})]},g))}),u.jsxs("div",{className:"flex justify-center items-center gap-12 mt-1 mb-8",children:[u.jsx("button",{onClick:()=>window.scrollPortfolioPrev&&window.scrollPortfolioPrev(),className:"home-nav-btn","aria-label":"Scroll left",children:"<"}),u.jsx("button",{onClick:()=>window.scrollPortfolioNext&&window.scrollPortfolioNext(),className:"home-nav-btn","aria-label":"Scroll right",children:">"})]})';
     content = content.split(navTarget).join(navReplacement);
 
     // 2. Fix the active thumbnail border in the Portfolio page to match the cards
