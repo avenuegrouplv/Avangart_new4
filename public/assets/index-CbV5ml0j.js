@@ -189,10 +189,10 @@ Error generating stack: `+s.message+`
   },
   {
     id: 4,
-    title: "Ekskluzīvs bērnistabas mēbeļu komplekts",
-    titleEN: "Bespoke kids room furniture set",
+    title: "Portfolio 1",
+    titleEN: "Portfolio 1",
     category: "Bērnistabas",
-    images: [Mv, KT, PT, WT, IT, JT],
+    images: [],
     description: "Bērnistabas mēbeļu komplekts privātmājai Ādažos. Gultas rāmis un pie sienas montētie naktsskapīši izgatavoti no īpaši atlasītiem ozolkoka dēļiem, kas pulēti ar dabīgo vasku. Galvgalis apvilkts ar nodilumizturīgu dabisko lina maisauduma tekstilu. Pie sienas montētie naktsskapīši rada gaisīgu un modernu efektu telpā.",
     descriptionEN: "A kids room furniture collection for a private house in Ādaži. The bed frame and wall-mounted bedside tables are made of specially selected oak planks polished with natural wax. The headboard is upholstered in highly durable natural linen textile. The wall-mounted bedside tables create a light and modern feel in the space.",
     materials: "Ozols, tekstils",
