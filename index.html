@@ -29,11 +29,11 @@
         background-color: #ffffff !important;
         border: 1px solid #e4e4e7 !important;
         border-radius: 4px !important;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
+        transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.7s ease, box-shadow 0.7s ease !important;
       }
 
       .category-carousel-card.active-card {
-        transform: scale(1.20) !important;
+        transform: scale(1.11) !important;
         z-index: 10 !important;
         border: 2px solid #d6a266 !important;
         box-shadow: 0 16px 32px rgba(0,0,0,0.18) !important;
@@ -64,7 +64,7 @@
           border: 1px solid #e4e4e7 !important;
         }
         .category-carousel-card.active-card {
-          transform: scale(1.15) !important;
+          transform: scale(1.08) !important;
           z-index: 10 !important;
           border: 2px solid #d6a266 !important;
           box-shadow: 0 16px 32px rgba(0,0,0,0.18) !important;
@@ -157,6 +157,28 @@
   <body class="bg-white text-zinc-900 font-sans antialiased">
     <div id="root"></div>
     <script type="text/javascript">
+      // Global smooth scroll helper with custom duration and easing
+      function smoothScrollTo(element, target, duration) {
+        const start = element.scrollLeft;
+        const change = target - start;
+        const startTime = performance.now();
+        
+        function animateScroll(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease-out cubic: slower deceleration, extremely pleasing
+          const ease = 1 - Math.pow(1 - progress, 3);
+          
+          element.scrollLeft = start + change * ease;
+          
+          if (progress < 1) {
+            window.requestAnimationFrame(animateScroll);
+          }
+        }
+        
+        window.requestAnimationFrame(animateScroll);
+      }
+
       // Global navigation functions for precise step-by-step scrolling
       window.scrollPortfolioPrev = function() {
         const el = document.getElementById("portfolio-categories-container");
@@ -168,7 +190,7 @@
         const itemWidth = cardWidth + gap;
         const currentScroll = el.scrollLeft;
         const targetScroll = Math.round(currentScroll / itemWidth) * itemWidth - itemWidth;
-        el.scrollTo({ left: targetScroll, behavior: "smooth" });
+        smoothScrollTo(el, targetScroll, 800);
       };
 
       window.scrollPortfolioNext = function() {
@@ -181,12 +203,12 @@
         const itemWidth = cardWidth + gap;
         const currentScroll = el.scrollLeft;
         const targetScroll = Math.round(currentScroll / itemWidth) * itemWidth + itemWidth;
-        el.scrollTo({ left: targetScroll, behavior: "smooth" });
+        smoothScrollTo(el, targetScroll, 800);
       };
 
       // Run the initial local storage sanitation check to clear stale cache
       try {
-        const currentVersion = "avangart-projects-list-v22";
+        const currentVersion = "avangart-projects-list-v23";
         const orderKey = "avangart-placeholders-order";
         
         // Remove old caches so that the app loads the correct configuration

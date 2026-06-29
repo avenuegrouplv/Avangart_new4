@@ -7,10 +7,10 @@ const jsFiles = ['assets/index-CbV5ml0j.js', 'assets/index-CbV5ml0j-v6.js'];
 
 console.log("Converting custom process steps and logo...");
 const customImages = [
-  { src: 'Tehniskais-projekts.png', dest: 'images/tehniskais-projekts/img_01.webp' },
-  { src: 'Razosanas-darbnica.png', dest: 'images/razosana-darbnica/img_01.webp' },
-  { src: 'Piegade-montaza-garantija.jpeg', dest: 'images/piegade-montaza-garantija/img_01.webp' },
-  { src: 'Avangart-new.png', dest: 'images/logo/Avangart-new.webp' }
+  { src: 'Avangart-new.png', dest: 'images/logo/Avangart-new.webp' },
+  { src: 'Tehniskais-projekts-1.png', dest: 'images/tehniskais-projekts/img_01.webp' },
+  { src: 'Razosanas-darbnica-1.png', dest: 'images/razosana-darbnica/img_01.webp' },
+  { src: 'Piegade-montaza-garantija-1.jpeg', dest: 'images/piegade-montaza-garantija/img_01.webp' }
 ];
 
 for (const item of customImages) {
@@ -221,28 +221,28 @@ function moveAndRenameProject(content) {
 
   const newProjectsArray = `[
   {
-    id: 105,
-    title: "Jūrmala. Dzintara prospekts",
-    titleEN: "Jurmala. Dzintara Avenue",
+    id: 101,
+    title: "Jūrmala. Dzintaru prospekts",
+    titleEN: "Jurmala. Dzintaru Avenue",
     category: "PREMIUM PROJEKTI",
     images: [
-      "/images/premium/Jūrmala. Dizaina elementi/img_01.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_02.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_03.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_04.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_05.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_06.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_07.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_08.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_09.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_10.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_11.webp",
-      "/images/premium/Jūrmala. Dizaina elementi/img_12.webp"
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0904_50314148253_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0913_50314997062_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0922_50314996792_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0927_50314996627_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0932_50314996407_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0937_50314147088_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0943_50314146858_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0946_50314817201_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0947_50314816941_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0953_50314994932_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0958_50314994662_l.jpg",
+      "https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev/img_0963_50314997547_l.jpg"
     ],
-    description: "Ekskluzīvs mēbeļu apdares un dizaina elementu projekts Jūrmalā. Eleganti koka sienu paneļi, individuālas apdares tekstūras un smalkas iedetaļas, kas lieliski papildina mūsdienu interjeru un piešķir telpai unikālu estētisko vērtību.",
-    descriptionEN: "An exclusive furniture finish and design elements project in Jurmala. Featuring elegant wood wall panels, custom finishes, and subtle details that beautifully complement the modern interior and add unique aesthetic value to the space.",
-    materials: "Dabīgais ozols, ekskluzīvas detaļas, integrēts LED apgaismojums, sienas paneļi",
-    materialsEN: "Natural oak, exclusive details, integrated LED lighting, wall panels",
+    description: "Premium līmeņa interjera iekārtojums un mēbeles ekskluzīvā projektā Dzintaru prospektā, Jūrmalā. Individuāli izstrādāti dizaina risinājumi, kuros apvienots augstākās klases kokapstrādes izpildījums ar modernu un elegantu funkcionalitāti – no harmoniskas bērnistabas un izsmalcinātas dzīvojamās telpas līdz perfekti pārdomātai virtuvei, luksusa guļamistabai un kamīna zonai ar slēptajām durvīm.",
+    descriptionEN: "Premium level interior design and bespoke furniture in an exclusive project on Dzintaru Avenue, Jurmala. Individually crafted design solutions combining top-class woodcraft execution with modern and elegant functionality – from a harmonious kids room and sophisticated living space to a perfectly planned kitchen, high-end master bedroom, and fireplace area with hidden doors.",
+    materials: "Premium ozola finierējums, tonēts dabīgais ozols, ekskluzīvas auduma tekstūras, iebūvēts LED apgaismojums, premium furnitūra",
+    materialsEN: "Premium oak veneer, tinted natural oak, exclusive fabric textures, integrated LED lighting, premium hardware",
     location: "Jūrmala",
     locationEN: "Jurmala",
     year: "2025"
@@ -334,7 +334,22 @@ function moveAndRenameProject(content) {
     title: "Rīga. Filozofu rezidences",
     titleEN: "Riga. Philosophers' Residences",
     category: "PREMIUM PROJEKTI",
-    images: [],
+    images: [
+      "/images/premium/filozofu/img_01.webp",
+      "/images/premium/filozofu/img_02.webp",
+      "/images/premium/filozofu/img_03.webp",
+      "/images/premium/filozofu/img_04.webp",
+      "/images/premium/filozofu/img_05.webp",
+      "/images/premium/filozofu/img_06.webp",
+      "/images/premium/filozofu/img_07.webp",
+      "/images/premium/filozofu/img_08.webp",
+      "/images/premium/filozofu/img_09.webp",
+      "/images/premium/filozofu/img_10.webp",
+      "/images/premium/filozofu/img_11.webp",
+      "/images/premium/filozofu/img_12.webp",
+      "/images/premium/filozofu/img_13.webp",
+      "/images/premium/filozofu/img_14.webp"
+    ],
     description: "Ekskluzīvs un augstvērtīgs interjera un mēbeļu dizaina projekts Filozofu rezidencēs, Rīgā. Individuāli izstrādātas mēbeles un augstākās klases iebūvētie risinājumi, kuros apvienots lakonisks modernisms ar izcilu un kvalitatīvu kokapstrādes izpildījumu.",
     descriptionEN: "An exclusive and premium-quality interior and furniture design project at the Philosophers' Residences in Riga. Featuring custom-made furniture and high-end integrated solutions combining sleek modernism with superior woodworking craftsmanship.",
     materials: "Ekskluzīvs ozola finierējums, dizaina elementi, integrēts LED apgaismojums",
@@ -357,9 +372,9 @@ function moveAndRenameProject(content) {
   },
   {
     id: 2,
-    title: "Portfolio 1",
-    titleEN: "Custom premium oak fitted kitchen",
-    category: "Virtuves", images: [YT],
+    title: "Iebūvētās mēbeles",
+    titleEN: "Built-in furniture",
+    category: "Virtuves", images: [qT, YT],
     description: "Iebūvētā virtuves iekārta izstrādāta divstāvu privātmājā Babītē. Tajā izmantotas dabīgā ozola fasādes ar saskaņotu koksnes tekstūru un eleganta akmens darba virsma. Koka detaļas ir tonētas siltā smilšu tonī un lakotas ar ekoloģisku, ūdens bāzes matēto laku. Aprīkota ar pilnībā integrētu Blum klusās aizvēršanas furnitūru un slēpto LED apgaismojumu darba virsmām.",
     descriptionEN: "A built-in kitchen set designed for a two-story private home in Babīte. It features natural oak facades with matched wood grain and an elegant stone worktop. Wooden details are tinted in a warm sand tone and varnished with an eco-friendly water-friendly water-based matte lacquer. Equipped with integrated Blum soft-close hardware and hidden countertop LED lighting.",
     materials: "Ozols, akmens virsma",
@@ -381,7 +396,7 @@ function moveAndRenameProject(content) {
   {
     id: 4,
     title: "Portfolio 1",
-    titleEN: "Bespoke kids room furniture set",
+    titleEN: "Portfolio 1",
     category: "Bērnistabas", images: [],
     description: "Bērnistabas mēbeļu komplekts privātmājai Ādažos. Gultas rāmis un pie sienas montētie naktsskapīši izgatavoti no īpaši atlasītiem ozolkoka dēļiem, kas pulēti ar dabīgo vasku. Galvgalis apvilkts ar nodilumizturīgu dabisko lina maisauduma tekstilu. Pie sienas montētie naktsskapīši rada gaisīgu un modernu efektu telpā.",
     descriptionEN: "A kids room furniture collection for a private house in Ādaži. The bed frame and wall-mounted bedside tables are made of specially selected oak planks polished with natural wax. The headboard is upholstered in highly durable natural linen textile. The wall-mounted bedside tables create a light and modern feel in the space.",
@@ -391,8 +406,8 @@ function moveAndRenameProject(content) {
   },
   {
     id: 5,
-    title: "Ekskluzīvas mitrumizturīgas ozolkoka mēbeles vannas istabai",
-    titleEN: "Premium humidity-resistant solid oak bathroom vanity system",
+    title: "Mitrumizturīgas ozolkoka vannas istabas mēbeles",
+    titleEN: "Humidity-resistant oak bathroom furniture",
     category: "Vannas istabas",
     images: [Dv, FT, _T],
     description: "Izsmalcināts vannas istabas mēbeļu komplekts, kas izgatavots no speciāli apstrādāta mitrumizturīga masīvā ozolkoka, kas aizsargāts ar speciālu eļļu. Komplektā ietilpst atvilktņu un durvju konsoles komplekts ar izlietni un spoguli, kurā iestrādāts slēpts LED aizmugures apgaismojums.",
@@ -508,13 +523,16 @@ for (const file of jsFiles) {
     console.log(`Updating paths and logo in ${file}...`);
     let content = fs.readFileSync(file, 'utf8');
 
+    // Run the project array updater/sync step
+    content = moveAndRenameProject(content);
+
+    // Replace step-by-step process image URLs directly with local optimized WebP paths
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp/g, '/images/tehniskais-projekts/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting\.webp/g, '/images/razosana-darbnica/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation\.webp/g, '/images/piegade-montaza-garantija/img_01.webp');
+
     // Replace the base64 logo string with optimized Base64 PNG string for Netlify
     content = content.replace(/ak="data:image\/png;base64,[^"]*"/g, `ak="data:image/png;base64,${logoBase64}"`);
-
-    // Replace work process step image URLs
-    content = content.replace(/y0="https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp"/g, 'y0="/images/tehniskais-projekts/img_01.webp"');
-    content = content.replace(/x0="https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting\.webp"/g, 'x0="/images/razosana-darbnica/img_01.webp"');
-    content = content.replace(/j0="https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation\.webp"/g, 'j0="/images/piegade-montaza-garantija/img_01.webp"');
 
     // Replace Zoom/Lightbox full thumbnails list with sliding 9-thumbnails window with fifth-index centering
     const targetString = 'a.images.map((V,H)=>u.jsx("button",{type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-brand-orange ring-1 ring-brand-orange scale-105 opacity-100":"border-white/20 opacity-40 hover:opacity-100"),"aria-label":"Select page "+(H+1),children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})},H))';
