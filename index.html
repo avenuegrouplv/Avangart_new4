@@ -20,7 +20,7 @@
 
       /* Carousel Cards Styles - exact size matching and 5 desktop / 1 mobile alignment */
       .category-carousel-card {
-        scroll-snap-align: center !important;
+        scroll-snap-align: none !important;
         flex-shrink: 0 !important;
         margin: 0 !important;
         width: calc(50vw - 20px) !important;
@@ -43,7 +43,7 @@
         display: flex !important;
         overflow-x: auto !important;
         scroll-behavior: auto !important;
-        scroll-snap-type: x mandatory !important;
+        scroll-snap-type: none !important;
         gap: 36px !important;
         padding-left: calc(25vw + 10px) !important;
         padding-right: calc(25vw + 10px) !important;
@@ -57,7 +57,7 @@
       
       @media (min-width: 1024px) {
         .category-carousel-card {
-          scroll-snap-align: center !important;
+          scroll-snap-align: none !important;
           width: calc((100% - 160px) / 5) !important;
           min-width: calc((100% - 160px) / 5) !important;
           max-width: calc((100% - 160px) / 5) !important;
@@ -166,44 +166,84 @@
         function animateScroll(currentTime) {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          // Ease-out cubic: slower deceleration, extremely pleasing
-          const ease = 1 - Math.pow(1 - progress, 3);
+          // Ease-out quartic: premium, incredibly fluid deceleration
+          const ease = 1 - Math.pow(1 - progress, 4);
           
           element.scrollLeft = start + change * ease;
           
           if (progress < 1) {
             window.requestAnimationFrame(animateScroll);
+          } else {
+            // Force final absolute precision alignment
+            element.scrollLeft = target;
           }
         }
         
         window.requestAnimationFrame(animateScroll);
       }
 
+      // Helper to calculate exact scroll position to center a specific card
+      // Uses offsetLeft and offsetWidth to get absolute, unscaled layout positions
+      // that are 100% immune to transform scale shifts or transitions.
+      function getCenteredScrollLeft(element, card) {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const containerCenter = element.clientWidth / 2;
+        return Math.round(cardCenter - containerCenter);
+      }
+
       // Global navigation functions for precise step-by-step scrolling
       window.scrollPortfolioPrev = function() {
         const el = document.getElementById("portfolio-categories-container");
         if (!el || !el.children.length) return;
-        const card = el.children[0];
-        const cardWidth = card.getBoundingClientRect().width;
-        const style = window.getComputedStyle(el);
-        const gap = parseFloat(style.gap) || 36;
-        const itemWidth = cardWidth + gap;
+        
+        const cards = Array.from(el.querySelectorAll('.category-carousel-card'));
+        if (!cards.length) return;
+        
         const currentScroll = el.scrollLeft;
-        const targetScroll = Math.round(currentScroll / itemWidth) * itemWidth - itemWidth;
-        smoothScrollTo(el, targetScroll, 800);
+        
+        let activeIndex = 0;
+        let minDistance = Infinity;
+        
+        // Find the card that is currently closest to the center using stable layout coordinates
+        cards.forEach((card, idx) => {
+          const targetScrollForCard = getCenteredScrollLeft(el, card);
+          const distance = Math.abs(currentScroll - targetScrollForCard);
+          if (distance < minDistance) {
+            minDistance = distance;
+            activeIndex = idx;
+          }
+        });
+        
+        const targetIndex = Math.max(0, activeIndex - 1);
+        const targetScroll = getCenteredScrollLeft(el, cards[targetIndex]);
+        smoothScrollTo(el, targetScroll, 900); // 900ms is perfectly tuned (twice as fast as 1800ms)
       };
 
       window.scrollPortfolioNext = function() {
         const el = document.getElementById("portfolio-categories-container");
         if (!el || !el.children.length) return;
-        const card = el.children[0];
-        const cardWidth = card.getBoundingClientRect().width;
-        const style = window.getComputedStyle(el);
-        const gap = parseFloat(style.gap) || 36;
-        const itemWidth = cardWidth + gap;
+        
+        const cards = Array.from(el.querySelectorAll('.category-carousel-card'));
+        if (!cards.length) return;
+        
         const currentScroll = el.scrollLeft;
-        const targetScroll = Math.round(currentScroll / itemWidth) * itemWidth + itemWidth;
-        smoothScrollTo(el, targetScroll, 800);
+        
+        let activeIndex = 0;
+        let minDistance = Infinity;
+        
+        // Find the card that is currently closest to the center using stable layout coordinates
+        cards.forEach((card, idx) => {
+          const targetScrollForCard = getCenteredScrollLeft(el, card);
+          const distance = Math.abs(currentScroll - targetScrollForCard);
+          if (distance < minDistance) {
+            minDistance = distance;
+            activeIndex = idx;
+          }
+        });
+        
+        const targetIndex = Math.min(cards.length - 1, activeIndex + 1);
+        const targetScroll = getCenteredScrollLeft(el, cards[targetIndex]);
+        smoothScrollTo(el, targetScroll, 900); // 900ms is perfectly tuned (twice as fast as 1800ms)
       };
 
       // Run the initial local storage sanitation check to clear stale cache
