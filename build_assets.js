@@ -247,41 +247,7 @@ function moveAndRenameProject(content) {
     locationEN: "Jurmala",
     year: "2025"
   },
-  {
-    id: 105,
-    title: "Rīga. Kuģu iela 2",
-    titleEN: "Riga. Kugu Street 2",
-    category: "PREMIUM PROJEKTI",
-    images: [
-      "/images/premium/kugu2/img_01.webp",
-      "/images/premium/kugu2/img_02.webp",
-      "/images/premium/kugu2/img_03.webp",
-      "/images/premium/kugu2/img_04.webp",
-      "/images/premium/kugu2/img_05.webp",
-      "/images/premium/kugu2/img_06.webp",
-      "/images/premium/kugu2/img_07.webp",
-      "/images/premium/kugu2/img_08.webp",
-      "/images/premium/kugu2/img_09.webp",
-      "/images/premium/kugu2/img_10.webp",
-      "/images/premium/kugu2/img_11.webp",
-      "/images/premium/kugu2/img_12.webp",
-      "/images/premium/kugu2/img_13.webp",
-      "/images/premium/kugu2/img_14.webp",
-      "/images/premium/kugu2/img_15.webp",
-      "/images/premium/kugu2/img_16.webp",
-      "/images/premium/kugu2/img_17.webp",
-      "/images/premium/kugu2/img_18.webp",
-      "/images/premium/kugu2/img_19.webp",
-      "/images/premium/kugu2/img_20.webp"
-    ],
-    description: "Jauns un ekskluzīvs mēbeļu dizaina un interjera projekts Klīversalā, Kuģu ielā, Rīgā. Augstākās klases integrētie risinājumi un eleganta estētika, kas radīta saskaņā ar unikālām arhitektūras līnijām.",
-    descriptionEN: "A new and exclusive bespoke furniture design and interior project on Kugu Street, Riga. Featuring top-class integrated solutions and elegant aesthetics, crafted to match unique architectural lines.",
-    materials: "Premium ozola un oša masīvkoks, ekskluzīva furnitūra, lakotas un krāsotas apdares",
-    materialsEN: "Premium solid oak and ash, high-end hardware, custom lacquered and painted finishes",
-    location: "Rīga, Kuģu iela",
-    locationEN: "Riga, Kugu Street",
-    year: "2025"
-  },
+
   {
     id: 102,
     title: "Rīga. Kuģu iela",
@@ -573,11 +539,6 @@ for (const file of jsFiles) {
     const targetString = 'a.images.map((V,H)=>u.jsx("button",{type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-brand-orange ring-1 ring-brand-orange scale-105 opacity-100":"border-white/20 opacity-40 hover:opacity-100"),"aria-label":"Select page "+(H+1),children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})},H))';
     const replacementString = 'Array.from({length:9}).map((_,s)=>{const startIdx=a.images.length>9?Math.max(0,Math.min(d-3,a.images.length-9)):0;const H=startIdx+s;const V=H<a.images.length?a.images[H]:null;return V?u.jsx("button",{type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-[2px] border-brand-orange ring-2 ring-brand-orange/80 scale-110 opacity-100 z-10 shadow-lg":"border-transparent opacity-40 hover:opacity-100"),"aria-label":"Select page "+(H+1),children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})},s):null})';
     content = content.split(targetString).join(replacementString);
-
-    // 1. Navigation buttons for Mūsu īstenotie projekti
-    const navTarget = 'b.titleLV})})]},g))})';
-    const navReplacement = 'b.titleLV})})]},g))}),u.jsxs("div",{className:"flex justify-center items-center gap-12 mt-1 mb-8",children:[u.jsx("button",{onClick:()=>window.scrollPortfolioPrev&&window.scrollPortfolioPrev(),className:"home-nav-btn","aria-label":"Scroll left",children:"<"}),u.jsx("button",{onClick:()=>window.scrollPortfolioNext&&window.scrollPortfolioNext(),className:"home-nav-btn","aria-label":"Scroll right",children:">"})]})';
-    content = content.split(navTarget).join(navReplacement);
 
     // 2. Fix the active thumbnail border in the Portfolio page to match the cards
     const thumbTarget = 'd===H?"border-[3px] border-brand-orange ring-4 ring-brand-orange/40 scale-[1.08] opacity-100 z-10 shadow-lg":"border-zinc-200 opacity-65 hover:opacity-100 shadow-sm"';
