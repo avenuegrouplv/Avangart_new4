@@ -607,6 +607,8 @@ for (const file of jsFiles) {
 
 
     fs.writeFileSync(file, content, 'utf8');
+    const publicPath = path.join('public', file);
+    fs.writeFileSync(publicPath, content, 'utf8');
   }
 }
 
