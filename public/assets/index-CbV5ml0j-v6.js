@@ -553,7 +553,7 @@ Error generating stack: `+s.message+`
           return p;
         });
         projects = $T.map(defaultProj => {
-          if (defaultProj.id === 101 || defaultProj.id === 102 || defaultProj.id === 103 || defaultProj.id === 104) {
+          if (defaultProj.id === 101 || defaultProj.id === 102 || defaultProj.id === 103 || defaultProj.id === 104 || defaultProj.id === 105) {
             return defaultProj;
           }
           const matched = parsed.find(p => p && (p.id === defaultProj.id));
