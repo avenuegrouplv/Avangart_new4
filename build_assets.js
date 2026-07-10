@@ -2,6 +2,34 @@ import fs from 'fs';
 import { execSync } from 'child_process';
 import path from 'path';
 import sharp from 'sharp';
+import https from 'https';
+
+// Robust native HTTPS-based file downloader supporting status-code 301/302 redirects
+function downloadFile(url, dest) {
+  return new Promise((resolve, reject) => {
+    function get(requestUrl) {
+      https.get(requestUrl, (response) => {
+        if (response.statusCode === 301 || response.statusCode === 302) {
+          get(response.headers.location);
+          return;
+        }
+        if (response.statusCode !== 200) {
+          reject(new Error(`Failed to get ${requestUrl}: status ${response.statusCode}`));
+          return;
+        }
+        const file = fs.createWriteStream(dest);
+        response.pipe(file);
+        file.on('finish', () => {
+          file.close(resolve);
+        });
+      }).on('error', (err) => {
+        fs.unlink(dest, () => {});
+        reject(err);
+      });
+    }
+    get(url);
+  });
+}
 
 // Download latest workflow images and premium portfolio images if they are missing or corrupted
 console.log("Checking and downloading latest external assets...");
@@ -41,7 +69,7 @@ try {
   for (const item of workflowDownloads) {
     if (!isWebPValid(item.dest)) {
       console.log(`Downloading missing/invalid workflow image: ${item.dest}...`);
-      execSync(`curl -s -L -o "${item.dest}" "${item.url}"`);
+      await downloadFile(item.url, item.dest);
     }
   }
 
@@ -52,7 +80,7 @@ try {
     const url = `https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/${fileName}`;
     if (!isWebPValid(destPath)) {
       console.log(`Downloading missing/invalid Filozofu image: ${destPath}...`);
-      execSync(`curl -s -L -o "${destPath}" "${url}"`);
+      await downloadFile(url, destPath);
     }
   }
 
@@ -647,7 +675,11 @@ for (const file of jsFiles) {
     content = moveAndRenameProject(content);
 
     // Replace step-by-step process image URLs directly with local optimized WebP paths
-    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/pirma-tiksanas(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
+    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/pirma-tiksanas(_[0-9]+)?\.(webp|png|jpeg)/gi, '/images/consultation-meeting/img_01.webp');
+    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Tehniskais-projekts(_[0-9]+)?\.(webp|png|jpeg)/gi, '/images/tehniskais-projekts/img_01.webp');
+    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Razosanas-darbnica(_[0-9]+)?\.(webp|png|jpeg)/gi, '/images/razosana-darbnica/img_01.webp');
+    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Piegade-montaza-garantija(_[0-9]+)?\.(webp|png|jpeg)/gi, '/images/piegade-montaza-garantija/img_01.webp');
+
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/consultation_meeting(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/designer_collaboration(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/tehniskais-projekts/img_01.webp');
