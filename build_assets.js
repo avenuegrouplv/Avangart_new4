@@ -128,6 +128,20 @@ if (fs.existsSync(logoPath)) {
     fs.unlinkSync(logoPath);
     fs.renameSync(tempLogoPath, logoPath);
     console.log("Logo background cleaned successfully and saved.");
+
+    // Generate ultimate premium favicon set from the transparent logo
+    console.log("Generating premium favicon set from the cleaned logo...");
+    const faviconBase = sharp(logoPath);
+    const pubDir = 'public';
+    if (!fs.existsSync(pubDir)) {
+      fs.mkdirSync(pubDir, { recursive: true });
+    }
+    await faviconBase.clone().resize(32, 32).webp({ quality: 90 }).toFile(path.join(pubDir, 'favicon.webp'));
+    await faviconBase.clone().resize(32, 32).png().toFile(path.join(pubDir, 'favicon.png'));
+    await faviconBase.clone().resize(48, 48).png().toFile(path.join(pubDir, 'favicon-48.png'));
+    await faviconBase.clone().resize(192, 192).png().toFile(path.join(pubDir, 'favicon-192.png'));
+    fs.copyFileSync(path.join(pubDir, 'favicon.png'), path.join(pubDir, 'favicon.ico'));
+    console.log("Favicon set generated successfully in public/.");
   } catch (err) {
     console.error("Error cleaning logo background:", err);
   }
@@ -524,6 +538,9 @@ for (const file of jsFiles) {
     console.log(`Updating paths and logo in ${file}...`);
     let content = fs.readFileSync(file, 'utf8');
 
+    // Replace window.location.hash with our clean pathname polyfill
+    content = content.replace(/window\.location\.hash/g, 'window.LocationRoute.hash');
+
     // Run the project array updater/sync step
     content = moveAndRenameProject(content);
 
@@ -531,6 +548,9 @@ for (const file of jsFiles) {
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp/g, '/images/tehniskais-projekts/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting\.webp/g, '/images/razosana-darbnica/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation\.webp/g, '/images/piegade-montaza-garantija/img_01.webp');
+
+    // Optimize Hero (LCP) image loading by injecting high fetchPriority and async decoding
+    content = content.replace('src:RT,alt:"Avangart mākslas un kāpņu dizains",className:"w-full h-full object-cover opacity-85",referrerPolicy:"no-referrer",loading:"eager"', 'src:RT,alt:"Avangart mākslas un kāpņu dizains",className:"w-full h-full object-cover opacity-85",referrerPolicy:"no-referrer",loading:"eager",fetchPriority:"high",decoding:"async"');
 
     // Replace the base64 logo string with optimized Base64 PNG string for Netlify
     content = content.replace(/ak="data:image\/png;base64,[^"]*"/g, `ak="data:image/png;base64,${logoBase64}"`);

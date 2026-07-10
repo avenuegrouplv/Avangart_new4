@@ -2,9 +2,251 @@
 <html lang="lv">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/webp" href="/images/logo/Avangart-new.webp" />
+    
+    <!-- LocationRoute Polyfill for clean path-based routing (without # URLs) -->
+    <script type="text/javascript">
+      window.LocationRoute = {
+        get hash() {
+          let p = window.location.pathname;
+          if (p === "/") {
+            let h = window.location.hash;
+            if (h && h !== "#" && h !== "#sakums" && h !== "#home") {
+              return "#sakums" + h;
+            }
+            return "#sakums";
+          }
+          let route = "#" + p.substring(1);
+          let h = window.location.hash;
+          if (h && h !== "#") {
+            route += h;
+          }
+          return route;
+        },
+        set hash(val) {
+          if (!val) {
+            window.history.pushState(null, "", "/");
+            window.dispatchEvent(new Event("hashchange"));
+            return;
+          }
+          let parts = val.split("#");
+          let mainRoute = parts[1] || "sakums";
+          let anchor = parts[2] ? "#" + parts[2] : "";
+          
+          let path = "/";
+          if (mainRoute !== "sakums" && mainRoute !== "home") {
+            path = "/" + mainRoute;
+          }
+          
+          window.history.pushState(null, "", path + anchor);
+          window.dispatchEvent(new Event("hashchange"));
+        }
+      };
+    </script>
+    
+    <!-- Preconnect to image optimization CDN domains to accelerate DNS/TCP/TLS handshakes -->
+    <link rel="preconnect" href="https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev" crossorigin />
+    <link rel="preconnect" href="https://pub-ba9eeea950024162b62a9badee82f816.r2.dev" crossorigin />
+    <link rel="preconnect" href="https://pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev" crossorigin />
+
+    <!-- Preload critical Hero (LCP) image immediately with high fetch priority -->
+    <link rel="preload" as="image" href="https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/ChatGPT%20Image%20May%2027%2C%202026%2C%2009_44_57%20PM.webp" fetchpriority="high" type="image/webp" />
+
+    <!-- Ultimate Favicon Set with Cache-Busting Versioning -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=5" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=5" />
+    <link rel="icon" type="image/webp" sizes="32x32" href="/favicon.webp?v=5" />
+    <link rel="shortcut icon" href="/favicon.ico?v=5" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AVANGART | Dizaina Mēbeļu Portfolio</title>
+    <title>AVANGART | Premium dizaina mēbeles un koka kāpnes pēc pasūtījuma</title>
+    
+    <!-- Fallback/Base Meta Tags -->
+    <meta name="description" content="Ekskluzīvas dizaina mēbeles, iebūvētās premium virtuves un koka kāpnes pēc pasūtījuma Latvijā. 40+ gadu galdniecības pieredze un 3D projektēšana." />
+    <link rel="canonical" href="https://avangart.lv/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://avangart.lv/" />
+    <meta property="og:title" content="AVANGART | Premium dizaina mēbeles un koka kāpnes pēc pasūtījuma" />
+    <meta property="og:description" content="Ekskluzīvas dizaina mēbeles, iebūvētās premium virtuves un koka kāpnes pēc pasūtījuma Latvijā. 40+ gadu galdniecības pieredze un 3D projektēšana." />
+    <meta property="og:image" content="https://avangart.lv/images/logo/Avangart-new.webp" />
+    <meta property="og:image:alt" content="AVANGART Premium dizaina mēbeļu un kāpņu studijas logotips" />
+    <meta property="og:locale" content="lv_LV" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://avangart.lv/" />
+    <meta name="twitter:title" content="AVANGART | Premium dizaina mēbeles un koka kāpnes pēc pasūtījuma" />
+    <meta name="twitter:description" content="Ekskluzīvas dizaina mēbeles, iebūvētās premium virtuves un koka kāpnes pēc pasūtījuma Latvijā. 40+ gadu galdniecības pieredze un 3D projektēšana." />
+    <meta name="twitter:image" content="https://avangart.lv/images/logo/Avangart-new.webp" />
+    <meta name="twitter:image:alt" content="AVANGART logotips" />
+
+    <!-- Dynamic SEO and JSON-LD Rich Schema.org Manager Script -->
+    <script type="text/javascript">
+      (function() {
+        function updateSEO() {
+          const hash = window.LocationRoute.hash || "#sakums";
+          const enHashes = ["#home", "#portfolio-premium-projects", "#work-process", "#portfolio-commercial", "#portfolio-livingrooms", "#portfolio-kitchens", "#portfolio-kidsrooms", "#portfolio-bathrooms", "#portfolio-wardrobes", "#portfolio-stairs", "#portfolio-doors", "#portfolio-design-objects", "#portfolio-design-elements", "#cooperation", "#contact", "#cookie-policy", "#privacy-policy"];
+          const isENG = enHashes.includes(hash) || (hash.indexOf('-projects') !== -1) || (hash.indexOf('-kitchens') !== -1) || (hash.indexOf('-stairs') !== -1);
+          
+          let title = "";
+          let description = "";
+          
+          if (isENG) {
+            title = "AVANGART | Bespoke Premium Furniture & Solid Wood Stairs";
+            description = "Exclusive custom furniture, premium kitchens, and bespoke solid wood stairs in Latvia. 40+ years of high-end joinery craftsmanship and 3D design.";
+          } else {
+            title = "AVANGART | Premium dizaina mēbeles un koka kāpnes pēc pasūtījuma";
+            description = "Ekskluzīvas dizaina mēbeles, iebūvētās premium virtuves un koka kāpnes pēc pasūtījuma Latvijā. 40+ gadu galdniecības pieredze un 3D projektēšana.";
+          }
+          
+          // Dynamically adjust browser tab title
+          document.title = title;
+          
+          // Helper to create or update meta tags in the header
+          const setMeta = (attr, name, val) => {
+            let el = document.querySelector(`meta[${attr}="${name}"]`);
+            if (!el) {
+              el = document.createElement("meta");
+              el.setAttribute(attr, name);
+              document.head.appendChild(el);
+            }
+            el.setAttribute("content", val);
+          };
+          
+          setMeta("name", "description", description);
+          setMeta("property", "og:title", title);
+          setMeta("property", "og:description", description);
+          setMeta("property", "og:url", "https://avangart.lv/" + hash);
+          setMeta("name", "twitter:title", title);
+          setMeta("name", "twitter:description", description);
+          
+          // Sync canonical link
+          let canonicalLink = document.querySelector("link[rel='canonical']");
+          if (!canonicalLink) {
+            canonicalLink = document.createElement("link");
+            canonicalLink.setAttribute("rel", "canonical");
+            document.head.appendChild(canonicalLink);
+          }
+          canonicalLink.setAttribute("href", "https://avangart.lv/" + hash);
+          
+          // Generate and inject Schema.org JSON-LD structured data
+          injectSchemas(isENG, hash);
+        }
+        
+        function injectSchemas(isENG, hash) {
+          // Clean up old scripts with the custom attribute
+          document.querySelectorAll("script[data-seo-schema]").forEach(e => e.remove());
+          
+          const currentUrl = "https://avangart.lv/" + hash;
+          
+          // 1. Organization & LocalBusiness
+          const localBusinessSchema = {
+            "@context": "https://schema.org",
+            "@type": "HomeAndConstructionBusiness",
+            "@id": "https://avangart.lv/#organization",
+            "name": "AVANGART",
+            "url": "https://avangart.lv/",
+            "logo": "https://avangart.lv/images/logo/Avangart-new.webp",
+            "image": "https://avangart.lv/images/logo/Avangart-new.webp",
+            "description": isENG ? "Premium Bespoke Joinery, Staircases & Design Furniture" : "Ekskluzīva mēbeļu ražošana un masīvkoka kāpņu izgatavošana pēc pasūtījuma",
+            "telephone": "+371 29495043",
+            "email": "aivars.avangart@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Zemgales iela 13, Brankas",
+              "addressLocality": "Cenu pagasts, Jelgavas novads",
+              "postalCode": "LV-3042",
+              "addressCountry": "LV"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 56.67812,
+              "longitude": 23.82084
+            },
+            "priceRange": "$$$$"
+          };
+          
+          // 2. WebSite
+          const webSiteSchema = {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": "https://avangart.lv/#website",
+            "url": "https://avangart.lv/",
+            "name": "AVANGART",
+            "description": isENG ? "Bespoke Joinery & Custom Furniture Latvia" : "Premium mēbeles un koka kāpnes"
+          };
+          
+          // 3. WebPage
+          const webPageSchema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": currentUrl + "#webpage",
+            "url": currentUrl,
+            "name": document.title,
+            "description": isENG ? "Bespoke design furniture and stairs in Latvia" : "Ekskluzīvas dizaina mēbeles un koka kāpnes pēc pasūtījuma"
+          };
+          
+          // 4. Custom Service list
+          const servicesSchema = {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": isENG ? "Bespoke Joinery and Wooden Staircases" : "Individuālie galdniecības risinājumi un koka kāpņu izgatavošana",
+            "provider": {
+              "@type": "HomeAndConstructionBusiness",
+              "name": "AVANGART",
+              "url": "https://avangart.lv/"
+            },
+            "description": isENG ? "Custom design, 3D modeling, precise crafting, and premium installation of solid oak stairs and bespoke luxury kitchens." : "Pilna cikla individuālie projekti: 3D modelēšana, precīza ražošana un ekskluzīvu mēbeļu un masīvkoka kāpņu montāža."
+          };
+          
+          // Inject standard ones
+          injectSchemaTag(localBusinessSchema);
+          injectSchemaTag(webSiteSchema);
+          injectSchemaTag(webPageSchema);
+          injectSchemaTag(servicesSchema);
+          
+          // 5. BreadcrumbList (if not home/sakums)
+          if (hash && hash !== "#sakums" && hash !== "#home" && hash !== "#") {
+            const cleanName = hash.replace("#", "").split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+            const breadcrumbSchema = {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": isENG ? "Home" : "Sākums",
+                  "item": isENG ? "https://avangart.lv/#home" : "https://avangart.lv/#sakums"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": cleanName,
+                  "item": currentUrl
+                }
+              ]
+            };
+            injectSchemaTag(breadcrumbSchema);
+          }
+        }
+        
+        function injectSchemaTag(obj) {
+          const script = document.createElement("script");
+          script.type = "application/ld+json";
+          script.setAttribute("data-seo-schema", "true");
+          script.text = JSON.stringify(obj);
+          document.head.appendChild(script);
+        }
+        
+        window.addEventListener("hashchange", updateSEO);
+        window.addEventListener("load", updateSEO);
+        updateSEO();
+      })();
+    </script>
+
     <!-- Link CSS -->
     <link rel="stylesheet" crossorigin href="/assets/index-KXNzc3bB.css" />
     <style>
