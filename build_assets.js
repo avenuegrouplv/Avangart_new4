@@ -566,6 +566,10 @@ for (const file of jsFiles) {
     const lbImgReplacement = 'u.jsx("img",{key:d,style:{opacity:0,transition:"opacity 0.6s ease-in-out"},onLoad:e=>e.currentTarget.style.opacity="1",onError:e=>e.currentTarget.style.opacity="1",src:a.images[d],alt:(i==="ENG"&&a.titleEN||a.title)+" - Zoom"';
     content = content.split(lbImgTarget).join(lbImgReplacement);
 
+    // 5. Add period to Latvian copyright text
+    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."');
+    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."');
+
 
     fs.writeFileSync(file, content, 'utf8');
     const publicPath = path.join('public', file);
