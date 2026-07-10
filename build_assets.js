@@ -631,13 +631,13 @@ for (const file of jsFiles) {
     const lbImgReplacement = 'u.jsx("img",{key:d,style:{opacity:0,transition:"opacity 0.6s ease-in-out"},onLoad:e=>e.currentTarget.style.opacity="1",onError:e=>e.currentTarget.style.opacity="1",src:a.images[d],alt:(i==="ENG"&&a.titleEN||a.title)+" - Zoom"';
     content = content.split(lbImgTarget).join(lbImgReplacement);
 
-    // 5. Add three periods to Latvian copyright text
-    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas..."');
-    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas..."');
-    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas..."');
-    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas..."');
-    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas.."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas..."');
-    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas.."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas..."');
+    // 5. Remove all periods from Latvian copyright text
+    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas..."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
+    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas..."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
+    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas.."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
+    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas.."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
+    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
+    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
 
 
     fs.writeFileSync(file, content, 'utf8');
@@ -690,16 +690,18 @@ if (fs.existsSync('assets')) {
   });
 }
 
-// Copy local /images folder to dist/images
+// Copy local /images folder to dist/images and public/images
 if (fs.existsSync('images')) {
+  if (!fs.existsSync('dist/images')) {
+    fs.mkdirSync('dist/images', { recursive: true });
+  }
+  if (!fs.existsSync('public/images')) {
+    fs.mkdirSync('public/images', { recursive: true });
+  }
   fs.readdirSync('images').forEach(item => {
     const srcPath = path.join('images', item);
-    const destPath = path.join('dist/images', item);
-    if (fs.statSync(srcPath).isDirectory()) {
-      copyRecursive(srcPath, destPath);
-    } else {
-      fs.copyFileSync(srcPath, destPath);
-    }
+    copyRecursive(srcPath, path.join('dist/images', item));
+    copyRecursive(srcPath, path.join('public/images', item));
   });
 }
 
