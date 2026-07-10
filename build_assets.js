@@ -3,6 +3,31 @@ import { execSync } from 'child_process';
 import path from 'path';
 import sharp from 'sharp';
 
+// Download latest workflow images from external source to local folder to ensure they exist for local builds and Netlify deploy
+console.log("Downloading latest workflow images from external source...");
+const dirsToCreate = [
+  'images/tehniskais-projekts',
+  'images/razosana-darbnica',
+  'images/piegade-montaza-garantija',
+  'images/consultation-meeting'
+];
+dirsToCreate.forEach(d => {
+  if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
+});
+
+try {
+  execSync('curl -s -L -o images/tehniskais-projekts/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp"');
+  execSync('curl -s -L -o images/razosana-darbnica/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp"');
+  execSync('curl -s -L -o images/piegade-montaza-garantija/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp"');
+  // Also ensure the first step has its image
+  if (!fs.existsSync('images/consultation-meeting/img_01.webp') || fs.statSync('images/consultation-meeting/img_01.webp').size < 100) {
+    execSync('curl -s -L -o images/consultation-meeting/img_01.webp "https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/consultation_meeting.webp"');
+  }
+  console.log("External workflow images successfully downloaded.");
+} catch (e) {
+  console.log("Warning: Could not download external workflow images via curl:", e.message);
+}
+
 const jsFiles = ['assets/index-CbV5ml0j.js', 'assets/index-CbV5ml0j-v6.js'];
 
 console.log("Converting custom process steps and logo...");
@@ -643,14 +668,14 @@ for (const file of jsFiles) {
     content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
 
     // 6. Replace the Darba gaita workflow images starting from the second one with the new external images
-    content = content.replace(/"\/images\/tehniskais-projekts\/img_01\.webp"/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp"');
-    content = content.replace(/'\/images\/tehniskais-projekts\/img_01\.webp'/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp"');
+    content = content.replace(/"\/images\/tehniskais-projekts\/img_01\.webp"/g, '"/images/tehniskais-projekts/img_01.webp"');
+    content = content.replace(/'\/images\/tehniskais-projekts\/img_01\.webp'/g, '"/images/tehniskais-projekts/img_01.webp"');
     
-    content = content.replace(/"\/images\/razosana-darbnica\/img_01\.webp"/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp"');
-    content = content.replace(/'\/images\/razosana-darbnica\/img_01\.webp'/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp"');
+    content = content.replace(/"\/images\/razosana-darbnica\/img_01\.webp"/g, '"/images/razosana-darbnica/img_01.webp"');
+    content = content.replace(/'\/images\/razosana-darbnica\/img_01\.webp'/g, '"/images/razosana-darbnica/img_01.webp"');
     
-    content = content.replace(/"\/images\/piegade-montaza-garantija\/img_01\.webp"/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp"');
-    content = content.replace(/'\/images\/piegade-montaza-garantija\/img_01\.webp'/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp"');
+    content = content.replace(/"\/images\/piegade-montaza-garantija\/img_01\.webp"/g, '"/images/piegade-montaza-garantija/img_01.webp"');
+    content = content.replace(/'\/images\/piegade-montaza-garantija\/img_01\.webp'/g, '"/images/piegade-montaza-garantija/img_01.webp"');
 
 
     fs.writeFileSync(file, content, 'utf8');
