@@ -674,19 +674,26 @@ for (const file of jsFiles) {
     // Run the project array updater/sync step
     content = moveAndRenameProject(content);
 
-    // Replace step-by-step process image URLs directly with local optimized WebP paths
-    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/pirma-tiksanas(_[0-9]+)?\.(webp|png|jpeg)/gi, '/images/consultation-meeting/img_01.webp');
-    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Tehniskais-projekts(_[0-9]+)?\.(webp|png|jpeg)/gi, '/images/tehniskais-projekts/img_01.webp');
-    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Razosanas-darbnica(_[0-9]+)?\.(webp|png|jpeg)/gi, '/images/razosana-darbnica/img_01.webp');
-    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Piegade-montaza-garantija(_[0-9]+)?\.(webp|png|jpeg)/gi, '/images/piegade-montaza-garantija/img_01.webp');
+    // Replace all step-by-step process image URLs (both new and historical R2 URLs) directly with local optimized WebP paths
+    
+    // Step 1: Consultation Meeting (Pirmā tikšanās)
+    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/pirma-tiksanas(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/consultation-meeting/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/consultation_meeting(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/consultation-meeting/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/designer_collaboration(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/consultation-meeting/img_01.webp');
 
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/consultation_meeting(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/designer_collaboration(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/tehniskais-projekts/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/bespoke_staircase(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/tehniskais-projekts/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/razosana-darbnica/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/bespoke_interior(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/razosana-darbnica/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/piegade-montaza-garantija/img_01.webp');
+    // Step 2: Technical Project (Tehniskais projekts)
+    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Tehniskais-projekts(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/tehniskais-projekts/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/tehniskais-projekts/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/bespoke_staircase(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/tehniskais-projekts/img_01.webp');
+
+    // Step 3: Manufacturing Workshop (Ražošana/darbnīca)
+    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Razosanas-darbnica(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/razosana-darbnica/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/razosana-darbnica/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/bespoke_interior(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/razosana-darbnica/img_01.webp');
+
+    // Step 4: Delivery & Installation (Piegāde, montāža, garantija)
+    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Piegade-montaza-garantija(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/piegade-montaza-garantija/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/piegade-montaza-garantija/img_01.webp');
 
     // Optimize Hero (LCP) image loading by injecting high fetchPriority and async decoding
     content = content.replace('src:RT,alt:"Avangart mākslas un kāpņu dizains",className:"w-full h-full object-cover opacity-85",referrerPolicy:"no-referrer",loading:"eager"', 'src:RT,alt:"Avangart mākslas un kāpņu dizains",className:"w-full h-full object-cover opacity-85",referrerPolicy:"no-referrer",loading:"eager",fetchPriority:"high",decoding:"async"');
@@ -733,15 +740,8 @@ for (const file of jsFiles) {
     content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
     content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
 
-    // 6. Replace the Darba gaita workflow images starting from the second one with the new external images
-    content = content.replace(/"\/images\/tehniskais-projekts\/img_01\.webp"/g, '"/images/tehniskais-projekts/img_01.webp"');
-    content = content.replace(/'\/images\/tehniskais-projekts\/img_01\.webp'/g, '"/images/tehniskais-projekts/img_01.webp"');
-    
-    content = content.replace(/"\/images\/razosana-darbnica\/img_01\.webp"/g, '"/images/razosana-darbnica/img_01.webp"');
-    content = content.replace(/'\/images\/razosana-darbnica\/img_01\.webp'/g, '"/images/razosana-darbnica/img_01.webp"');
-    
-    content = content.replace(/"\/images\/piegade-montaza-garantija\/img_01\.webp"/g, '"/images/piegade-montaza-garantija/img_01.webp"');
-    content = content.replace(/'\/images\/piegade-montaza-garantija\/img_01\.webp'/g, '"/images/piegade-montaza-garantija/img_01.webp"');
+    // 6. Step-by-step process images are already fully processed and replaced with local paths in the step above.
+    // No redundant replacements needed here.
 
 
     fs.writeFileSync(file, content, 'utf8');
