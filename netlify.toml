@@ -9,19 +9,29 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/*.webp"
+  for = "/**/*.webp"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/*.png"
+  for = "/**/*.png"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/*.ico"
+  for = "/**/*.jpg"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/**/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/**/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/"

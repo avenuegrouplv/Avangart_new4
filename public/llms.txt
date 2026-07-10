@@ -5,20 +5,20 @@ AVANGART is an exclusive custom joinery and design studio in Latvia (Riga, Jelga
 ## Core Navigation and Hash Routes
 
 ### Latvian Routes (Default)
-- **Sākums**: `https://avangart.lv/#sakums` - Main overview, brand philosophy, craftsmanship metrics, and introductory projects.
-- **Sadarbība Dizaineriem**: `https://avangart.lv/#sadarbiba-dizaineriem` - Detailed information on the reliable platform and B2B workflow tailored for interior designers and architects.
-- **Darba Gaita**: `https://avangart.lv/#darba-gaita` - Full-cycle service breakdown: Initial Sketch, Technical 3D Blueprint, Workshop Crafting, and Final Installation.
-- **Portfolio Kāpnes**: `https://avangart.lv/#portfolio-kapnes` - Collection of premium custom staircases (spiral, cantilever, solid oak).
-- **Portfolio Virtuves**: `https://avangart.lv/#portfolio-virtuves` - Handcrafted kitchens featuring solid oak facades and premium Blum fittings.
-- **Kontakti**: `https://avangart.lv/#kontakti` - Inquiry form and physical address details in Jelgavas novads, Brankas.
+- **[Sākums](https://avangart.lv/#sakums)** - Main overview, brand philosophy, craftsmanship metrics, and introductory projects.
+- **[Sadarbība Dizaineriem](https://avangart.lv/#sadarbiba-dizaineriem)** - Detailed information on the reliable platform and B2B workflow tailored for interior designers and architects.
+- **[Darba Gaita](https://avangart.lv/#darba-gaita)** - Full-cycle service breakdown: Initial Sketch, Technical 3D Blueprint, Workshop Crafting, and Final Installation.
+- **[Portfolio Kāpnes](https://avangart.lv/#portfolio-kapnes)** - Collection of premium custom staircases (spiral, cantilever, solid oak).
+- **[Portfolio Virtuves](https://avangart.lv/#portfolio-virtuves)** - Handcrafted kitchens featuring solid oak facades and premium Blum fittings.
+- **[Kontakti](https://avangart.lv/#kontakti)** - Inquiry form and physical address details in Jelgavas novads, Brankas.
 
 ### English Routes
-- **Home**: `https://avangart.lv/#home`
-- **Cooperation**: `https://avangart.lv/#cooperation`
-- **Work Process**: `https://avangart.lv/#work-process`
-- **Portfolio Stairs**: `https://avangart.lv/#portfolio-stairs`
-- **Portfolio Kitchens**: `https://avangart.lv/#portfolio-kitchens`
-- **Contact**: `https://avangart.lv/#contact`
+- **[Home](https://avangart.lv/#home)** - English version home page.
+- **[Cooperation](https://avangart.lv/#cooperation)** - Collaboration guidelines for interior designers B2B.
+- **[Work Process](https://avangart.lv/#work-process)** - 4-step workflow from design to delivery.
+- **[Portfolio Stairs](https://avangart.lv/#portfolio-stairs)** - Custom staircase gallery.
+- **[Portfolio Kitchens](https://avangart.lv/#portfolio-kitchens)** - Bespoke premium kitchen models.
+- **[Contact](https://avangart.lv/#contact)** - Contact form and location details.
 
 ## Key Contact Details & Location
 

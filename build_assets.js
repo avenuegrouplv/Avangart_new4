@@ -480,20 +480,20 @@ function moveAndRenameProject(content) {
     titleEN: "Riga. Philosophers' Residences",
     category: "PREMIUM PROJEKTI",
     images: [
-      "/images/premium/filozofu/img_01.webp",
-      "/images/premium/filozofu/img_02.webp",
-      "/images/premium/filozofu/img_03.webp",
-      "/images/premium/filozofu/img_04.webp",
-      "/images/premium/filozofu/img_05.webp",
-      "/images/premium/filozofu/img_06.webp",
-      "/images/premium/filozofu/img_07.webp",
-      "/images/premium/filozofu/img_08.webp",
-      "/images/premium/filozofu/img_09.webp",
-      "/images/premium/filozofu/img_10.webp",
-      "/images/premium/filozofu/img_11.webp",
-      "/images/premium/filozofu/img_12.webp",
-      "/images/premium/filozofu/img_13.webp",
-      "/images/premium/filozofu/img_14.webp"
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_01.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_02.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_03.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_04.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_05.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_06.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_07.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_08.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_09.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_10.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_11.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_12.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_13.webp",
+      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_14.webp"
     ],
     description: "Ekskluzīvs un augstvērtīgs interjera un mēbeļu dizaina projekts Filozofu rezidencēs, Rīgā. Individuāli izstrādātas mēbeles un augstākās klases iebūvētie risinājumi, kuros apvienots lakonisks modernisms ar izcilu un kvalitatīvu kokapstrādes izpildījumu.",
     descriptionEN: "An exclusive and premium-quality interior and furniture design project at the Philosophers' Residences in Riga. Featuring custom-made furniture and high-end integrated solutions combining sleek modernism with superior woodworking craftsmanship.",
@@ -784,6 +784,10 @@ const copyRecursive = (src, dest) => {
 if (fs.existsSync('public')) {
   fs.readdirSync('public').forEach(item => {
     copyRecursive(path.join('public', item), path.join('dist', item));
+    // Also copy key SEO, robots, llms and favicons to the root directory for standard root hosting platforms
+    if (['robots.txt', 'llms.txt', 'sitemap.xml', '_redirects'].includes(item) || item.startsWith('favicon')) {
+      fs.copyFileSync(path.join('public', item), item);
+    }
   });
 }
 
