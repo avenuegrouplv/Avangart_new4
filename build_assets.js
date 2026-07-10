@@ -527,9 +527,10 @@ for (const file of jsFiles) {
     content = moveAndRenameProject(content);
 
     // Replace step-by-step process image URLs directly with local optimized WebP paths
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp/g, '/images/tehniskais-projekts/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting\.webp/g, '/images/razosana-darbnica/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation\.webp/g, '/images/piegade-montaza-garantija/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/consultation_meeting\.webp/g, 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/pirma-tiksanas.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp/g, 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting\.webp/g, 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation\.webp/g, 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp');
 
     // Replace the base64 logo string with optimized Base64 PNG string for Netlify
     content = content.replace(/ak="data:image\/png;base64,[^"]*"/g, `ak="data:image/png;base64,${logoBase64}"`);
