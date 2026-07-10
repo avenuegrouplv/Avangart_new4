@@ -2,191 +2,34 @@ import fs from 'fs';
 import { execSync } from 'child_process';
 import path from 'path';
 import sharp from 'sharp';
-import https from 'https';
-
-// Robust native HTTPS-based file downloader supporting status-code 301/302 redirects
-function downloadFile(url, dest) {
-  return new Promise((resolve, reject) => {
-    function get(requestUrl) {
-      https.get(requestUrl, (response) => {
-        if (response.statusCode === 301 || response.statusCode === 302) {
-          get(response.headers.location);
-          return;
-        }
-        if (response.statusCode !== 200) {
-          reject(new Error(`Failed to get ${requestUrl}: status ${response.statusCode}`));
-          return;
-        }
-        const file = fs.createWriteStream(dest);
-        response.pipe(file);
-        file.on('finish', () => {
-          file.close(resolve);
-        });
-      }).on('error', (err) => {
-        fs.unlink(dest, () => {});
-        reject(err);
-      });
-    }
-    get(url);
-  });
-}
-
-// Download latest workflow images and premium portfolio images if they are missing or corrupted
-console.log("Checking and downloading latest external assets...");
-const dirsToCreate = [
-  'images/tehniskais-projekts',
-  'images/razosana-darbnica',
-  'images/piegade-montaza-garantija',
-  'images/consultation-meeting',
-  'images/premium/filozofu'
-];
-dirsToCreate.forEach(d => {
-  if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
-});
-
-function isWebPValid(filePath) {
-  if (!fs.existsSync(filePath)) return false;
-  try {
-    const fd = fs.openSync(filePath, 'r');
-    const buf = Buffer.alloc(12);
-    fs.readSync(fd, buf, 0, 12, 0);
-    fs.closeSync(fd);
-    return buf.slice(8, 12).toString('ascii') === 'WEBP';
-  } catch (e) {
-    return false;
-  }
-}
-
-try {
-  // 1. Download workflow images if invalid/missing
-  const workflowDownloads = [
-    { dest: 'images/consultation-meeting/img_01.webp', url: 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/pirma-tiksanas.webp' },
-    { dest: 'images/tehniskais-projekts/img_01.webp', url: 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp' },
-    { dest: 'images/razosana-darbnica/img_01.webp', url: 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp' },
-    { dest: 'images/piegade-montaza-garantija/img_01.webp', url: 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp' }
-  ];
-
-  for (const item of workflowDownloads) {
-    if (!isWebPValid(item.dest)) {
-      console.log(`Downloading missing/invalid workflow image: ${item.dest}...`);
-      await downloadFile(item.url, item.dest);
-    }
-  }
-
-  // 2. Download Filozofu premium images if invalid/missing
-  for (let i = 1; i <= 14; i++) {
-    const fileName = `img_${String(i).padStart(2, '0')}.webp`;
-    const destPath = `images/premium/filozofu/${fileName}`;
-    const url = `https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/${fileName}`;
-    if (!isWebPValid(destPath)) {
-      console.log(`Downloading missing/invalid Filozofu image: ${destPath}...`);
-      await downloadFile(url, destPath);
-    }
-  }
-
-  console.log("External assets verification and download completed successfully.");
-} catch (e) {
-  console.log("Warning during external assets download:", e.message);
-}
 
 const jsFiles = ['assets/index-CbV5ml0j.js', 'assets/index-CbV5ml0j-v6.js'];
 
 console.log("Converting custom process steps and logo...");
 const customImages = [
   { src: 'Avangart-new.png', dest: 'images/logo/Avangart-new.webp' },
-  { src: 'Tehniskais-projekts.png', dest: 'images/tehniskais-projekts/img_01.webp', fallback: 'Tehniskais-projekts-1.png' },
-  { src: 'Razosanas-darbnica.png', dest: 'images/razosana-darbnica/img_01.webp', fallback: 'Razosanas-darbnica-1.png' },
-  { src: 'Piegade-montaza-garantija.jpeg', dest: 'images/piegade-montaza-garantija/img_01.webp', fallback: 'Piegade-montaza-garantija-1.jpeg' }
+  { src: 'Tehniskais-projekts-1.png', dest: 'images/tehniskais-projekts/img_01.webp' },
+  { src: 'Razosanas-darbnica-1.png', dest: 'images/razosana-darbnica/img_01.webp' },
+  { src: 'Piegade-montaza-garantija-1.jpeg', dest: 'images/piegade-montaza-garantija/img_01.webp' }
 ];
 
 for (const item of customImages) {
-  let sourceFile = item.src;
-  if (!fs.existsSync(sourceFile) && item.fallback && fs.existsSync(item.fallback)) {
-    sourceFile = item.fallback;
-  }
-  if (fs.existsSync(sourceFile)) {
+  if (fs.existsSync(item.src)) {
     const dir = path.dirname(item.dest);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    console.log(`Converting custom image ${sourceFile} to ${item.dest}...`);
+    console.log(`Converting custom image ${item.src} to ${item.dest}...`);
     try {
-      let pipeline = sharp(sourceFile);
-      if (item.dest !== 'images/logo/Avangart-new.webp') {
-        // High quality web resize: max width 1400px keeping aspect ratio
-        pipeline = pipeline.resize({ width: 1400, height: 1400, fit: 'inside', withoutEnlargement: true });
-      }
-      await pipeline
-        .webp({ quality: 80 })
+      await sharp(item.src)
+        .webp({ quality: 90 })
         .toFile(item.dest);
-      fs.unlinkSync(sourceFile);
+      fs.unlinkSync(item.src);
     } catch (err) {
-      console.error(`Error converting ${sourceFile}:`, err);
-    }
-  } else {
-    console.log(`Source file ${item.src} (or fallback) does not exist, skipping.`);
-  }
-}
-
-async function optimizeWebpInDirectory(dirPath, maxWidth = 1400) {
-  if (!fs.existsSync(dirPath)) return;
-  console.log(`Checking directory for WebP optimization: ${dirPath}`);
-  const files = fs.readdirSync(dirPath);
-  for (const file of files) {
-    if (file.toLowerCase().endsWith('.webp')) {
-      const filePath = path.join(dirPath, file);
-      try {
-        const stats = fs.statSync(filePath);
-        // Optimize if larger than 120KB
-        if (stats.size > 120 * 1024) {
-          console.log(`Optimizing large webp image: ${filePath} (${Math.round(stats.size/1024)} KB)`);
-          const buffer = await sharp(filePath)
-            .resize({ width: maxWidth, height: maxWidth, fit: 'inside', withoutEnlargement: true })
-            .webp({ quality: 80 })
-            .toBuffer();
-          fs.writeFileSync(filePath, buffer);
-          const newStats = fs.statSync(filePath);
-          console.log(`Optimized ${filePath} to ${Math.round(newStats.size/1024)} KB`);
-        }
-      } catch (err) {
-        console.log(`[Info] Skipping WebP optimization for ${filePath} (using original format)`);
-      }
+      console.error(`Error converting ${item.src}:`, err);
     }
   }
 }
-
-async function generateThumbnailsRecursively(dirPath) {
-  if (!fs.existsSync(dirPath)) return;
-  const items = fs.readdirSync(dirPath);
-  for (const item of items) {
-    const fullPath = path.join(dirPath, item);
-    if (fs.statSync(fullPath).isDirectory()) {
-      await generateThumbnailsRecursively(fullPath);
-    } else if (item.toLowerCase().endsWith('.webp') && !item.toLowerCase().endsWith('-thumb.webp')) {
-      const thumbPath = fullPath.replace(/\.webp$/i, '-thumb.webp');
-      if (!fs.existsSync(thumbPath)) {
-        try {
-          console.log(`Generating thumbnail: ${thumbPath}...`);
-          await sharp(fullPath)
-            .resize({ width: 320, height: 320, fit: 'inside', withoutEnlargement: true })
-            .webp({ quality: 70 })
-            .toFile(thumbPath);
-        } catch (err) {
-          console.error(`Failed to generate thumbnail for ${fullPath}:`, err.message);
-        }
-      }
-    }
-  }
-}
-
-// Automatically optimize the directories of interest
-await optimizeWebpInDirectory('images/premium/filozofu', 1400);
-await optimizeWebpInDirectory('images/tehniskais-projekts', 1400);
-await optimizeWebpInDirectory('images/razosana-darbnica', 1400);
-await optimizeWebpInDirectory('images/piegade-montaza-garantija', 1400);
-
-console.log("Generating lightweight thumbnails for local WebP images recursively...");
-await generateThumbnailsRecursively('images');
 
 // Logo background transparency cleaning
 const logoPath = 'images/logo/Avangart-new.webp';
@@ -285,20 +128,6 @@ if (fs.existsSync(logoPath)) {
     fs.unlinkSync(logoPath);
     fs.renameSync(tempLogoPath, logoPath);
     console.log("Logo background cleaned successfully and saved.");
-
-    // Generate ultimate premium favicon set from the transparent logo
-    console.log("Generating premium favicon set from the cleaned logo...");
-    const faviconBase = sharp(logoPath);
-    const pubDir = 'public';
-    if (!fs.existsSync(pubDir)) {
-      fs.mkdirSync(pubDir, { recursive: true });
-    }
-    await faviconBase.clone().resize(32, 32).webp({ quality: 90 }).toFile(path.join(pubDir, 'favicon.webp'));
-    await faviconBase.clone().resize(32, 32).png().toFile(path.join(pubDir, 'favicon.png'));
-    await faviconBase.clone().resize(48, 48).png().toFile(path.join(pubDir, 'favicon-48.png'));
-    await faviconBase.clone().resize(192, 192).png().toFile(path.join(pubDir, 'favicon-192.png'));
-    fs.copyFileSync(path.join(pubDir, 'favicon.png'), path.join(pubDir, 'favicon.ico'));
-    console.log("Favicon set generated successfully in public/.");
   } catch (err) {
     console.error("Error cleaning logo background:", err);
   }
@@ -418,7 +247,6 @@ function moveAndRenameProject(content) {
     locationEN: "Jurmala",
     year: "2025"
   },
-
   {
     id: 102,
     title: "Rīga. Kuģu iela",
@@ -695,35 +523,13 @@ for (const file of jsFiles) {
     console.log(`Updating paths and logo in ${file}...`);
     let content = fs.readFileSync(file, 'utf8');
 
-    // Replace window.location.hash with our clean pathname polyfill
-    content = content.replace(/window\.location\.hash/g, 'window.LocationRoute.hash');
-
     // Run the project array updater/sync step
     content = moveAndRenameProject(content);
 
-    // Replace all step-by-step process image URLs (both new and historical R2 URLs) directly with local optimized WebP paths
-    
-    // Step 1: Consultation Meeting (Pirmā tikšanās)
-    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/pirma-tiksanas(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/consultation-meeting/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/consultation_meeting(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/consultation-meeting/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/designer_collaboration(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/consultation-meeting/img_01.webp');
-
-    // Step 2: Technical Project (Tehniskais projekts)
-    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Tehniskais-projekts(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/tehniskais-projekts/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/tehniskais-projekts/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/bespoke_staircase(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/tehniskais-projekts/img_01.webp');
-
-    // Step 3: Manufacturing Workshop (Ražošana/darbnīca)
-    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Razosanas-darbnica(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/razosana-darbnica/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/razosana-darbnica/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/bespoke_interior(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/razosana-darbnica/img_01.webp');
-
-    // Step 4: Delivery & Installation (Piegāde, montāža, garantija)
-    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/Piegade-montaza-garantija(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/piegade-montaza-garantija/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation(_[0-9]+)?\.(webp|png|jpeg|jpg)/gi, '/images/piegade-montaza-garantija/img_01.webp');
-
-    // Optimize Hero (LCP) image loading by injecting high fetchPriority and async decoding
-    content = content.replace('src:RT,alt:"Avangart mākslas un kāpņu dizains",className:"w-full h-full object-cover opacity-85",referrerPolicy:"no-referrer",loading:"eager"', 'src:RT,alt:"Avangart mākslas un kāpņu dizains",className:"w-full h-full object-cover opacity-85",referrerPolicy:"no-referrer",loading:"eager",fetchPriority:"high",decoding:"async"');
+    // Replace step-by-step process image URLs directly with local optimized WebP paths
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp/g, '/images/tehniskais-projekts/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting\.webp/g, '/images/razosana-darbnica/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation\.webp/g, '/images/piegade-montaza-garantija/img_01.webp');
 
     // Replace the base64 logo string with optimized Base64 PNG string for Netlify
     content = content.replace(/ak="data:image\/png;base64,[^"]*"/g, `ak="data:image/png;base64,${logoBase64}"`);
@@ -732,6 +538,11 @@ for (const file of jsFiles) {
     const targetString = 'a.images.map((V,H)=>u.jsx("button",{type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-brand-orange ring-1 ring-brand-orange scale-105 opacity-100":"border-white/20 opacity-40 hover:opacity-100"),"aria-label":"Select page "+(H+1),children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})},H))';
     const replacementString = 'Array.from({length:9}).map((_,s)=>{const startIdx=a.images.length>9?Math.max(0,Math.min(d-3,a.images.length-9)):0;const H=startIdx+s;const V=H<a.images.length?a.images[H]:null;return V?u.jsx("button",{type:"button",onClick:()=>h(H),className:ie("w-12 h-9 overflow-hidden border transition-all duration-200 relative shrink-0 cursor-pointer",d===H?"border-[2px] border-brand-orange ring-2 ring-brand-orange/80 scale-110 opacity-100 z-10 shadow-lg":"border-transparent opacity-40 hover:opacity-100"),"aria-label":"Select page "+(H+1),children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})},s):null})';
     content = content.split(targetString).join(replacementString);
+
+    // 1. Navigation buttons for Mūsu īstenotie projekti
+    const navTarget = 'b.titleLV})})]},g))})';
+    const navReplacement = 'b.titleLV})})]},g))}),u.jsxs("div",{className:"flex justify-center items-center gap-12 mt-1 mb-8",children:[u.jsx("button",{onClick:()=>window.scrollPortfolioPrev&&window.scrollPortfolioPrev(),className:"home-nav-btn","aria-label":"Scroll left",children:"<"}),u.jsx("button",{onClick:()=>window.scrollPortfolioNext&&window.scrollPortfolioNext(),className:"home-nav-btn","aria-label":"Scroll right",children:">"})]})';
+    content = content.split(navTarget).join(navReplacement);
 
     // 2. Fix the active thumbnail border in the Portfolio page to match the cards
     const thumbTarget = 'd===H?"border-[3px] border-brand-orange ring-4 ring-brand-orange/40 scale-[1.08] opacity-100 z-10 shadow-lg":"border-zinc-200 opacity-65 hover:opacity-100 shadow-sm"';
@@ -759,27 +570,8 @@ for (const file of jsFiles) {
     const lbImgReplacement = 'u.jsx("img",{key:d,style:{opacity:0,transition:"opacity 0.6s ease-in-out"},onLoad:e=>e.currentTarget.style.opacity="1",onError:e=>e.currentTarget.style.opacity="1",src:a.images[d],alt:(i==="ENG"&&a.titleEN||a.title)+" - Zoom"';
     content = content.split(lbImgTarget).join(lbImgReplacement);
 
-    // 5. Remove all periods from Latvian copyright text
-    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas..."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
-    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas..."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
-    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas.."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
-    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas.."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
-    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
-    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
-
-    // 6. Step-by-step process images are already fully processed and replaced with local paths in the step above.
-    // No redundant replacements needed here.
-
-    // 7. Dynamic Image Optimization Wrapper Replacements
-    content = content.split('src:RT,alt:"Avangart mākslas un kāpņu dizains"').join('src:window.getOptimizedImageUrl(RT,1420),alt:"Avangart mākslas un kāpņu dizains"');
-    content = content.split('src:a.images[d],alt:(i==="ENG"&&a.titleEN||a.title)+" - img "+(d+1)').join('src:window.getOptimizedImageUrl(a.images[d],400),alt:(i==="ENG"&&a.titleEN||a.title)+" - img "+(d+1)');
-    content = content.split('children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 select-none",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})').join('children:u.jsx("img",{src:window.getOptimizedImageUrl(V,200),alt:"",className:"w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 select-none",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})');
-    content = content.split('src:a.images[d],alt:(i==="ENG"&&a.titleEN||a.title)+" - Zoom"').join('src:window.getOptimizedImageUrl(a.images[d],1420),alt:(i==="ENG"&&a.titleEN||a.title)+" - Zoom"');
-    content = content.split('children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})').join('children:u.jsx("img",{src:window.getOptimizedImageUrl(V,150),alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})');
 
     fs.writeFileSync(file, content, 'utf8');
-    const publicPath = path.join('public', file);
-    fs.writeFileSync(publicPath, content, 'utf8');
   }
 }
 
@@ -817,10 +609,6 @@ const copyRecursive = (src, dest) => {
 if (fs.existsSync('public')) {
   fs.readdirSync('public').forEach(item => {
     copyRecursive(path.join('public', item), path.join('dist', item));
-    // Also copy key SEO, robots, llms and favicons to the root directory for standard root hosting platforms
-    if (['robots.txt', 'llms.txt', 'sitemap.xml', '_redirects'].includes(item) || item.startsWith('favicon')) {
-      fs.copyFileSync(path.join('public', item), item);
-    }
   });
 }
 
@@ -831,18 +619,16 @@ if (fs.existsSync('assets')) {
   });
 }
 
-// Copy local /images folder to dist/images and public/images
+// Copy local /images folder to dist/images
 if (fs.existsSync('images')) {
-  if (!fs.existsSync('dist/images')) {
-    fs.mkdirSync('dist/images', { recursive: true });
-  }
-  if (!fs.existsSync('public/images')) {
-    fs.mkdirSync('public/images', { recursive: true });
-  }
   fs.readdirSync('images').forEach(item => {
     const srcPath = path.join('images', item);
-    copyRecursive(srcPath, path.join('dist/images', item));
-    copyRecursive(srcPath, path.join('public/images', item));
+    const destPath = path.join('dist/images', item);
+    if (fs.statSync(srcPath).isDirectory()) {
+      copyRecursive(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
   });
 }
 
