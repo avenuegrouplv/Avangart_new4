@@ -16,13 +16,10 @@ dirsToCreate.forEach(d => {
 });
 
 try {
+  execSync('curl -s -L -o images/consultation-meeting/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/pirma-tiksanas.webp"');
   execSync('curl -s -L -o images/tehniskais-projekts/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp"');
   execSync('curl -s -L -o images/razosana-darbnica/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp"');
   execSync('curl -s -L -o images/piegade-montaza-garantija/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp"');
-  // Also ensure the first step has its image
-  if (!fs.existsSync('images/consultation-meeting/img_01.webp') || fs.statSync('images/consultation-meeting/img_01.webp').size < 100) {
-    execSync('curl -s -L -o images/consultation-meeting/img_01.webp "https://pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev/consultation_meeting.webp"');
-  }
   console.log("External workflow images successfully downloaded.");
 } catch (e) {
   console.log("Warning: Could not download external workflow images via curl:", e.message);
@@ -614,6 +611,7 @@ for (const file of jsFiles) {
     content = moveAndRenameProject(content);
 
     // Replace step-by-step process image URLs directly with local optimized WebP paths
+    content = content.replace(/https:\/\/pub-41d35c1d87bf464da7b6ee6300c51d0e\.r2\.dev\/pirma-tiksanas(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/consultation_meeting(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/designer_collaboration(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/tehniskais-projekts/img_01.webp');
