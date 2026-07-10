@@ -43,6 +43,37 @@
       };
     </script>
     
+    <!-- Image Optimization & CDN Delivery Engine -->
+    <script type="text/javascript">
+      window.getOptimizedImageUrl = function(url, width, quality) {
+        if (!url) return "";
+        if (url.startsWith("data:")) return url;
+        
+        quality = quality || 80;
+        
+        // For local WebP images, if a thumbnail size is requested, use our pre-built -thumb.webp file
+        if (url.indexOf("/images/") === 0) {
+          if (width <= 450 && url.indexOf(".webp") !== -1 && url.indexOf("-thumb.webp") === -1) {
+            return url.replace(".webp", "-thumb.webp");
+          }
+          return url;
+        }
+        
+        // On production Netlify, route remote R2 and other images through Netlify Image CDN
+        var isNetlify = typeof window !== "undefined" && 
+                        window.location.hostname !== "localhost" && 
+                        window.location.hostname !== "127.0.0.1" && 
+                        window.location.hostname.indexOf("ais-dev") === -1 && 
+                        window.location.hostname.indexOf("ais-pre") === -1;
+                        
+        if (isNetlify) {
+          return "/.netlify/images?url=" + encodeURIComponent(url) + "&w=" + width + "&q=" + quality;
+        }
+        
+        return url;
+      };
+    </script>
+    
     <!-- Preconnect to image optimization CDN domains to accelerate DNS/TCP/TLS handshakes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

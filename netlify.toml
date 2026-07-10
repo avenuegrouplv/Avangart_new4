@@ -40,3 +40,12 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
     X-Frame-Options = "DENY"
+
+[images]
+  allowed_domains = [
+    "pub-125a4c281d7c440d9eaaedcb178381f9.r2.dev",
+    "pub-ba9eeea950024162b62a9badee82f816.r2.dev",
+    "pub-49ac8e2ba233437c8bf8122564d7997c.r2.dev",
+    "pub-259b6281ac664ea885ac1af3a4df6551.r2.dev",
+    "pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev"
+  ]

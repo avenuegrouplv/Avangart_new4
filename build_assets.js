@@ -155,11 +155,38 @@ async function optimizeWebpInDirectory(dirPath, maxWidth = 1400) {
   }
 }
 
+async function generateThumbnailsRecursively(dirPath) {
+  if (!fs.existsSync(dirPath)) return;
+  const items = fs.readdirSync(dirPath);
+  for (const item of items) {
+    const fullPath = path.join(dirPath, item);
+    if (fs.statSync(fullPath).isDirectory()) {
+      await generateThumbnailsRecursively(fullPath);
+    } else if (item.toLowerCase().endsWith('.webp') && !item.toLowerCase().endsWith('-thumb.webp')) {
+      const thumbPath = fullPath.replace(/\.webp$/i, '-thumb.webp');
+      if (!fs.existsSync(thumbPath)) {
+        try {
+          console.log(`Generating thumbnail: ${thumbPath}...`);
+          await sharp(fullPath)
+            .resize({ width: 320, height: 320, fit: 'inside', withoutEnlargement: true })
+            .webp({ quality: 70 })
+            .toFile(thumbPath);
+        } catch (err) {
+          console.error(`Failed to generate thumbnail for ${fullPath}:`, err.message);
+        }
+      }
+    }
+  }
+}
+
 // Automatically optimize the directories of interest
 await optimizeWebpInDirectory('images/premium/filozofu', 1400);
 await optimizeWebpInDirectory('images/tehniskais-projekts', 1400);
 await optimizeWebpInDirectory('images/razosana-darbnica', 1400);
 await optimizeWebpInDirectory('images/piegade-montaza-garantija', 1400);
+
+console.log("Generating lightweight thumbnails for local WebP images recursively...");
+await generateThumbnailsRecursively('images');
 
 // Logo background transparency cleaning
 const logoPath = 'images/logo/Avangart-new.webp';
@@ -480,20 +507,20 @@ function moveAndRenameProject(content) {
     titleEN: "Riga. Philosophers' Residences",
     category: "PREMIUM PROJEKTI",
     images: [
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_01.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_02.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_03.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_04.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_05.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_06.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_07.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_08.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_09.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_10.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_11.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_12.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_13.webp",
-      "https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/img_14.webp"
+      "/images/premium/filozofu/img_01.webp",
+      "/images/premium/filozofu/img_02.webp",
+      "/images/premium/filozofu/img_03.webp",
+      "/images/premium/filozofu/img_04.webp",
+      "/images/premium/filozofu/img_05.webp",
+      "/images/premium/filozofu/img_06.webp",
+      "/images/premium/filozofu/img_07.webp",
+      "/images/premium/filozofu/img_08.webp",
+      "/images/premium/filozofu/img_09.webp",
+      "/images/premium/filozofu/img_10.webp",
+      "/images/premium/filozofu/img_11.webp",
+      "/images/premium/filozofu/img_12.webp",
+      "/images/premium/filozofu/img_13.webp",
+      "/images/premium/filozofu/img_14.webp"
     ],
     description: "Ekskluzīvs un augstvērtīgs interjera un mēbeļu dizaina projekts Filozofu rezidencēs, Rīgā. Individuāli izstrādātas mēbeles un augstākās klases iebūvētie risinājumi, kuros apvienots lakonisks modernisms ar izcilu un kvalitatīvu kokapstrādes izpildījumu.",
     descriptionEN: "An exclusive and premium-quality interior and furniture design project at the Philosophers' Residences in Riga. Featuring custom-made furniture and high-end integrated solutions combining sleek modernism with superior woodworking craftsmanship.",
@@ -743,6 +770,12 @@ for (const file of jsFiles) {
     // 6. Step-by-step process images are already fully processed and replaced with local paths in the step above.
     // No redundant replacements needed here.
 
+    // 7. Dynamic Image Optimization Wrapper Replacements
+    content = content.split('src:RT,alt:"Avangart mākslas un kāpņu dizains"').join('src:window.getOptimizedImageUrl(RT,1420),alt:"Avangart mākslas un kāpņu dizains"');
+    content = content.split('src:a.images[d],alt:(i==="ENG"&&a.titleEN||a.title)+" - img "+(d+1)').join('src:window.getOptimizedImageUrl(a.images[d],400),alt:(i==="ENG"&&a.titleEN||a.title)+" - img "+(d+1)');
+    content = content.split('children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 select-none",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})').join('children:u.jsx("img",{src:window.getOptimizedImageUrl(V,200),alt:"",className:"w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 select-none",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})');
+    content = content.split('src:a.images[d],alt:(i==="ENG"&&a.titleEN||a.title)+" - Zoom"').join('src:window.getOptimizedImageUrl(a.images[d],1420),alt:(i==="ENG"&&a.titleEN||a.title)+" - Zoom"');
+    content = content.split('children:u.jsx("img",{src:V,alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})').join('children:u.jsx("img",{src:window.getOptimizedImageUrl(V,150),alt:"",className:"w-full h-full object-cover",referrerPolicy:"no-referrer",loading:"lazy",decoding:"async"})');
 
     fs.writeFileSync(file, content, 'utf8');
     const publicPath = path.join('public', file);
