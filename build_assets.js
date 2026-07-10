@@ -3,26 +3,62 @@ import { execSync } from 'child_process';
 import path from 'path';
 import sharp from 'sharp';
 
-// Download latest workflow images from external source to local folder to ensure they exist for local builds and Netlify deploy
-console.log("Downloading latest workflow images from external source...");
+// Download latest workflow images and premium portfolio images if they are missing or corrupted
+console.log("Checking and downloading latest external assets...");
 const dirsToCreate = [
   'images/tehniskais-projekts',
   'images/razosana-darbnica',
   'images/piegade-montaza-garantija',
-  'images/consultation-meeting'
+  'images/consultation-meeting',
+  'images/premium/filozofu'
 ];
 dirsToCreate.forEach(d => {
   if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
 });
 
+function isWebPValid(filePath) {
+  if (!fs.existsSync(filePath)) return false;
+  try {
+    const fd = fs.openSync(filePath, 'r');
+    const buf = Buffer.alloc(12);
+    fs.readSync(fd, buf, 0, 12, 0);
+    fs.closeSync(fd);
+    return buf.slice(8, 12).toString('ascii') === 'WEBP';
+  } catch (e) {
+    return false;
+  }
+}
+
 try {
-  execSync('curl -s -L -o images/consultation-meeting/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/pirma-tiksanas.webp"');
-  execSync('curl -s -L -o images/tehniskais-projekts/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp"');
-  execSync('curl -s -L -o images/razosana-darbnica/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp"');
-  execSync('curl -s -L -o images/piegade-montaza-garantija/img_01.webp "https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp"');
-  console.log("External workflow images successfully downloaded.");
+  // 1. Download workflow images if invalid/missing
+  const workflowDownloads = [
+    { dest: 'images/consultation-meeting/img_01.webp', url: 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/pirma-tiksanas.webp' },
+    { dest: 'images/tehniskais-projekts/img_01.webp', url: 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp' },
+    { dest: 'images/razosana-darbnica/img_01.webp', url: 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp' },
+    { dest: 'images/piegade-montaza-garantija/img_01.webp', url: 'https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp' }
+  ];
+
+  for (const item of workflowDownloads) {
+    if (!isWebPValid(item.dest)) {
+      console.log(`Downloading missing/invalid workflow image: ${item.dest}...`);
+      execSync(`curl -s -L -o "${item.dest}" "${item.url}"`);
+    }
+  }
+
+  // 2. Download Filozofu premium images if invalid/missing
+  for (let i = 1; i <= 14; i++) {
+    const fileName = `img_${String(i).padStart(2, '0')}.webp`;
+    const destPath = `images/premium/filozofu/${fileName}`;
+    const url = `https://pub-ba9eeea950024162b62a9badee82f816.r2.dev/Filozofu/${fileName}`;
+    if (!isWebPValid(destPath)) {
+      console.log(`Downloading missing/invalid Filozofu image: ${destPath}...`);
+      execSync(`curl -s -L -o "${destPath}" "${url}"`);
+    }
+  }
+
+  console.log("External assets verification and download completed successfully.");
 } catch (e) {
-  console.log("Warning: Could not download external workflow images via curl:", e.message);
+  console.log("Warning during external assets download:", e.message);
 }
 
 const jsFiles = ['assets/index-CbV5ml0j.js', 'assets/index-CbV5ml0j-v6.js'];
