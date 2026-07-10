@@ -71,7 +71,6 @@ async function optimizeWebpInDirectory(dirPath, maxWidth = 1400) {
 
 // Automatically optimize the directories of interest
 await optimizeWebpInDirectory('images/premium/filozofu', 1400);
-await optimizeWebpInDirectory('assets/premium/filozofu', 1400);
 await optimizeWebpInDirectory('images/tehniskais-projekts', 1400);
 await optimizeWebpInDirectory('images/razosana-darbnica', 1400);
 await optimizeWebpInDirectory('images/piegade-montaza-garantija', 1400);
@@ -590,6 +589,7 @@ for (const file of jsFiles) {
     content = moveAndRenameProject(content);
 
     // Replace step-by-step process image URLs directly with local optimized WebP paths
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/consultation_meeting\.webp/g, '/images/consultation-meeting/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp/g, '/images/tehniskais-projekts/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting\.webp/g, '/images/razosana-darbnica/img_01.webp');
     content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation\.webp/g, '/images/piegade-montaza-garantija/img_01.webp');
@@ -631,11 +631,11 @@ for (const file of jsFiles) {
     const lbImgReplacement = 'u.jsx("img",{key:d,style:{opacity:0,transition:"opacity 0.6s ease-in-out"},onLoad:e=>e.currentTarget.style.opacity="1",onError:e=>e.currentTarget.style.opacity="1",src:a.images[d],alt:(i==="ENG"&&a.titleEN||a.title)+" - Zoom"';
     content = content.split(lbImgTarget).join(lbImgReplacement);
 
-    // 5. Add period to Latvian copyright text
-    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas.."');
-    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas.."');
-    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas.."');
-    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas.."');
+    // 5. Remove any periods from Latvian copyright text
+    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas.."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
+    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas.."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
+    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
+    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
 
 
     fs.writeFileSync(file, content, 'utf8');
