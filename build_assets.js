@@ -63,7 +63,7 @@ async function optimizeWebpInDirectory(dirPath, maxWidth = 1400) {
           console.log(`Optimized ${filePath} to ${Math.round(newStats.size/1024)} KB`);
         }
       } catch (err) {
-        console.error(`Error optimizing ${filePath}:`, err);
+        console.log(`[Info] Skipping WebP optimization for ${filePath} (using original format)`);
       }
     }
   }
@@ -589,10 +589,13 @@ for (const file of jsFiles) {
     content = moveAndRenameProject(content);
 
     // Replace step-by-step process image URLs directly with local optimized WebP paths
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/consultation_meeting\.webp/g, '/images/consultation-meeting/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design\.webp/g, '/images/tehniskais-projekts/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting\.webp/g, '/images/razosana-darbnica/img_01.webp');
-    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation\.webp/g, '/images/piegade-montaza-garantija/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/consultation_meeting(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/designer_collaboration(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/consultation-meeting/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_design(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/tehniskais-projekts/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/bespoke_staircase(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/tehniskais-projekts/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/furniture_crafting(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/razosana-darbnica/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/bespoke_interior(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/razosana-darbnica/img_01.webp');
+    content = content.replace(/https:\/\/pub-125a4c281d7c440d9eaaedcb178381f9\.r2\.dev\/staircase_installation(_[0-9]+)?\.(webp|png|jpeg)/g, '/images/piegade-montaza-garantija/img_01.webp');
 
     // Optimize Hero (LCP) image loading by injecting high fetchPriority and async decoding
     content = content.replace('src:RT,alt:"Avangart mākslas un kāpņu dizains",className:"w-full h-full object-cover opacity-85",referrerPolicy:"no-referrer",loading:"eager"', 'src:RT,alt:"Avangart mākslas un kāpņu dizains",className:"w-full h-full object-cover opacity-85",referrerPolicy:"no-referrer",loading:"eager",fetchPriority:"high",decoding:"async"');
@@ -638,6 +641,16 @@ for (const file of jsFiles) {
     content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas.."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
     content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"');
     content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"');
+
+    // 6. Replace the Darba gaita workflow images starting from the second one with the new external images
+    content = content.replace(/"\/images\/tehniskais-projekts\/img_01\.webp"/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp"');
+    content = content.replace(/'\/images\/tehniskais-projekts\/img_01\.webp'/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Tehniskais-projekts.webp"');
+    
+    content = content.replace(/"\/images\/razosana-darbnica\/img_01\.webp"/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp"');
+    content = content.replace(/'\/images\/razosana-darbnica\/img_01\.webp'/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Razosanas-darbnica.webp"');
+    
+    content = content.replace(/"\/images\/piegade-montaza-garantija\/img_01\.webp"/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp"');
+    content = content.replace(/'\/images\/piegade-montaza-garantija\/img_01\.webp'/g, '"https://pub-41d35c1d87bf464da7b6ee6300c51d0e.r2.dev/Piegade-montaza-garantija.webp"');
 
 
     fs.writeFileSync(file, content, 'utf8');
