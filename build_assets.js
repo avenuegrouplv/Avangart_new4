@@ -8,28 +8,73 @@ const jsFiles = ['assets/index-CbV5ml0j.js', 'assets/index-CbV5ml0j-v6.js'];
 console.log("Converting custom process steps and logo...");
 const customImages = [
   { src: 'Avangart-new.png', dest: 'images/logo/Avangart-new.webp' },
-  { src: 'Tehniskais-projekts-1.png', dest: 'images/tehniskais-projekts/img_01.webp' },
-  { src: 'Razosanas-darbnica-1.png', dest: 'images/razosana-darbnica/img_01.webp' },
-  { src: 'Piegade-montaza-garantija-1.jpeg', dest: 'images/piegade-montaza-garantija/img_01.webp' }
+  { src: 'Tehniskais-projekts.png', dest: 'images/tehniskais-projekts/img_01.webp', fallback: 'Tehniskais-projekts-1.png' },
+  { src: 'Razosanas-darbnica.png', dest: 'images/razosana-darbnica/img_01.webp', fallback: 'Razosanas-darbnica-1.png' },
+  { src: 'Piegade-montaza-garantija.jpeg', dest: 'images/piegade-montaza-garantija/img_01.webp', fallback: 'Piegade-montaza-garantija-1.jpeg' }
 ];
 
 for (const item of customImages) {
-  if (fs.existsSync(item.src)) {
+  let sourceFile = item.src;
+  if (!fs.existsSync(sourceFile) && item.fallback && fs.existsSync(item.fallback)) {
+    sourceFile = item.fallback;
+  }
+  if (fs.existsSync(sourceFile)) {
     const dir = path.dirname(item.dest);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    console.log(`Converting custom image ${item.src} to ${item.dest}...`);
+    console.log(`Converting custom image ${sourceFile} to ${item.dest}...`);
     try {
-      await sharp(item.src)
-        .webp({ quality: 90 })
+      let pipeline = sharp(sourceFile);
+      if (item.dest !== 'images/logo/Avangart-new.webp') {
+        // High quality web resize: max width 1400px keeping aspect ratio
+        pipeline = pipeline.resize({ width: 1400, height: 1400, fit: 'inside', withoutEnlargement: true });
+      }
+      await pipeline
+        .webp({ quality: 80 })
         .toFile(item.dest);
-      fs.unlinkSync(item.src);
+      fs.unlinkSync(sourceFile);
     } catch (err) {
-      console.error(`Error converting ${item.src}:`, err);
+      console.error(`Error converting ${sourceFile}:`, err);
+    }
+  } else {
+    console.log(`Source file ${item.src} (or fallback) does not exist, skipping.`);
+  }
+}
+
+async function optimizeWebpInDirectory(dirPath, maxWidth = 1400) {
+  if (!fs.existsSync(dirPath)) return;
+  console.log(`Checking directory for WebP optimization: ${dirPath}`);
+  const files = fs.readdirSync(dirPath);
+  for (const file of files) {
+    if (file.toLowerCase().endsWith('.webp')) {
+      const filePath = path.join(dirPath, file);
+      try {
+        const stats = fs.statSync(filePath);
+        // Optimize if larger than 120KB
+        if (stats.size > 120 * 1024) {
+          console.log(`Optimizing large webp image: ${filePath} (${Math.round(stats.size/1024)} KB)`);
+          const buffer = await sharp(filePath)
+            .resize({ width: maxWidth, height: maxWidth, fit: 'inside', withoutEnlargement: true })
+            .webp({ quality: 80 })
+            .toBuffer();
+          fs.writeFileSync(filePath, buffer);
+          const newStats = fs.statSync(filePath);
+          console.log(`Optimized ${filePath} to ${Math.round(newStats.size/1024)} KB`);
+        }
+      } catch (err) {
+        console.error(`Error optimizing ${filePath}:`, err);
+      }
     }
   }
 }
+
+// Automatically optimize the directories of interest
+await optimizeWebpInDirectory('images/premium/filozofu', 1400);
+await optimizeWebpInDirectory('assets/premium/filozofu', 1400);
+await optimizeWebpInDirectory('images/tehniskais-projekts', 1400);
+await optimizeWebpInDirectory('images/razosana-darbnica', 1400);
+await optimizeWebpInDirectory('images/piegade-montaza-garantija', 1400);
 
 // Logo background transparency cleaning
 const logoPath = 'images/logo/Avangart-new.webp';
@@ -587,8 +632,10 @@ for (const file of jsFiles) {
     content = content.split(lbImgTarget).join(lbImgReplacement);
 
     // 5. Add period to Latvian copyright text
-    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."');
-    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."');
+    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas"').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas.."');
+    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas"').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas.."');
+    content = content.split('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas."').join('"SIA AVANGART \\u00a9 2026 I Visas ties\\u012bbas aizsarg\\u0101tas.."');
+    content = content.split('"SIA AVANGART © 2026 I Visas tiesības aizsargātas."').join('"SIA AVANGART © 2026 I Visas tiesības aizsargātas.."');
 
 
     fs.writeFileSync(file, content, 'utf8');
